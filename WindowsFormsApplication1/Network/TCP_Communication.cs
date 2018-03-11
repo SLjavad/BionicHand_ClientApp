@@ -14,10 +14,16 @@ namespace WindowsFormsApplication1
     abstract class TCP_Communication : TcpClient
     {
         public event EventHandler<MessageReceiveEventArgs> ReceiveMessageHandler;
-        
+        public event EventHandler ConnectionTerminateHandler;
+
         protected virtual void OnMessageReceived(MessageReceiveEventArgs args)
         {
             ReceiveMessageHandler?.Invoke(this, args);
+        }
+
+        protected virtual void OnConnectionTerminated()
+        {
+            ConnectionTerminateHandler?.Invoke(this,EventArgs.Empty);
         }
 
         public void TCPConnect(string IP , int port)
@@ -43,7 +49,7 @@ namespace WindowsFormsApplication1
         // Receive TCP
         public abstract void ReceiveMessage();
 
-        // Process Method
+        //Process Method
         //protected abstract void Process();
 
         public bool IsConnected()

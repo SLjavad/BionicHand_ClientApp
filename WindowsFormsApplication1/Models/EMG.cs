@@ -27,27 +27,29 @@ namespace WindowsFormsApplication1.Models
                 {
                     try
                     {
-
+                        if (IsConnected())
+                        {
+                            byte[] messageByte = new byte[ReceiveBufferSize];
+                            ns.Read(messageByte, 0, ReceiveBufferSize);
+                            string message = Encoding.ASCII.GetString(messageByte);
+                            MessageReceiveEventArgs receiveEventArgs = new MessageReceiveEventArgs();
+                            receiveEventArgs.DeviceType = "EMG";
+                            receiveEventArgs.Message = message;
+                            //Process();
+                            base.OnMessageReceived(receiveEventArgs);
+                        }
+                        else
+                        {
+                            System.Windows.Forms.MessageBox.Show("Connection terminated");
+                            base.OnConnectionTerminated();
+                        }
                     }
                     catch (IOException ex)
                     {
                         System.Windows.Forms.MessageBox.Show(ex.Message.Contains("existing connection was forcibly closed") ? "Connection terminated" : ex.GetBaseException().ToString());
+                        base.OnConnectionTerminated();
                     }
-                    if (IsConnected())
-                    {
-                        byte[] messageByte = new byte[ReceiveBufferSize];
-                        ns.Read(messageByte, 0, ReceiveBufferSize);
-                        string message = Encoding.ASCII.GetString(messageByte);
-                        MessageReceiveEventArgs receiveEventArgs = new MessageReceiveEventArgs();
-                        receiveEventArgs.DeviceType = "EMG";
-                        receiveEventArgs.Message = message;
-                        //Process();
-                        base.OnMessageReceived(receiveEventArgs);
-                    }
-                    else
-                    {
-                        System.Windows.Forms.MessageBox.Show("Connection terminated");
-                    }
+                    
                     
                 }
             });

@@ -46,7 +46,7 @@
     
     mimetype: application/x-microsoft.net.object.binary.base64
     value   : The object must be serialized with 
-            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
@@ -60,6 +60,7 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
@@ -68,9 +69,10 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="name" use="required" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
               <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
@@ -85,9 +87,10 @@
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
@@ -109,9 +112,35 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="emgMouseEnter" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAh1JREFUSEvt
+        lr9rFEEUx1dDGsEiqcyxO3OJhoiiBNIJom1CqkCaVHczswu2NiI2EggWYv4AGzEIdjaS/BmS5B9IQMzt
+        zgWTNEp+wPq+c+8O2cvdzSUQkeQLw7735jvz4dh9cxNc6bzKg+BaGplXqVSaS/2rVjZPM2nmOPXSbjm5
+        mwmd0zjJg/kBLvsrD15fp8W/sUkqzSiXeyoNKw8YnOdTySCX/YVFzQ2wGZd76nKAU6Fi8p3gezgT2Jbj
+        SVrwLZV6oR8weVacV+rls4GFfulAQq8WwfhardSf68JMsb0l8nQEu84Q5tOPUjVie7vQf25RpNeKYKq9
+        5fwD21uiWkewFeorYvpRL9jeUE3E961U04i7gmlTzlfgzWT8CMPFXcDYCzH2htdKM1MT1XtYtO2MoXno
+        C65PqJv0PMTg2AsMBs9tAXyABO/CGyyTkeYcx17gxvt2cweXEmw2KTiyob7jC94pJTfouUfjJ8deYBtW
+        xik+Jt9G8D3Uw5lQY/jifMHw1iNVwkCMmpvrAW541RiYiFvqBqZj8Q3n79neEtW6gM0Xl0fqOdvbhSaH
+        CU1fBNty5Rb14NJpf5Hk6QjGOUHQxX3xbIjt7cKxhuOtHlafFMFsOVW05iOD3xXBbPFXP+BUxLP0etZt
+        ZB5fKPhv/cdgui3S4l0ax8228dG5wVAWJbdxsHPqJfRpA2x+4cLI5YsRrkDoDE6v9C8VBH8AAgkff/B2
+        tLQAAAAASUVORK5CYII=
+</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="RFIDMouseEnter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8_RFID_Sensor_30px_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GloveMouseEnter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GloveMouseEnter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HandMouseEnter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HandMouseEnter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

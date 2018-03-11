@@ -36,11 +36,13 @@ namespace WindowsFormsApplication1.Models
                         else
                         {
                             System.Windows.Forms.MessageBox.Show("Connection terminated");
+                            base.OnConnectionTerminated();
                         }
                     }
                     catch (IOException ex)
                     {
                         System.Windows.Forms.MessageBox.Show(ex.Message.Contains("existing connection was forcibly closed") ? "Connection terminated" : ex.GetBaseException().ToString());
+                        base.OnConnectionTerminated();
                     }
 
                 }

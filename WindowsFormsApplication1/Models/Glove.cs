@@ -18,7 +18,7 @@ namespace WindowsFormsApplication1.Models
         Int16[] channels = new Int16[6];
         GloveGestureEnum gloveGesture;
 
-        public override void ReceiveMessage()
+        public override void StartReceiveMessage()
         {
             NetworkStream ns = GetStream();
             Task.Run(() => {

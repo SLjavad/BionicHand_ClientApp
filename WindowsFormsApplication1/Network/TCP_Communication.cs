@@ -28,16 +28,20 @@ namespace WindowsFormsApplication1
 
         public void TCPConnect(string IP , int port)
         {
-            try
-            { 
-                Connect(IPAddress.Parse(IP), port);
-                NoDelay = true;
-                Console.WriteLine("Connected");
-            }
-            catch (Exception e)
+            Task.Run(() =>
             {
-                MessageBox.Show(e.StackTrace + "\n" + e.Message);
-            }
+                try
+                {
+                    Connect(IPAddress.Parse(IP), port);
+                    NoDelay = true;
+                    MessageBox.Show("Connected");
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.StackTrace + "\n" + e.Message);
+                }
+            });
+            
         }
         // Send TCP
         public void SendMessage(string message)
@@ -47,7 +51,7 @@ namespace WindowsFormsApplication1
             networkStream.Write(messageBuffer, 0, message.Length);
         }
         // Receive TCP
-        public abstract void ReceiveMessage();
+        public abstract void StartReceiveMessage();
 
         //Process Method
         //protected abstract void Process();

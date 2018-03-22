@@ -54,20 +54,45 @@
             this.bunifuDragControl3 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.bunifuDragControl4 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.panelConnect = new System.Windows.Forms.Panel();
-            this.panelControls = new System.Windows.Forms.Panel();
-            this.PanelHAND = new System.Windows.Forms.Panel();
-            this.panelCharts = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.btnTcpConnect = new System.Windows.Forms.Button();
             this.txtPort = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtIP = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.panelControls = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.trPinky = new System.Windows.Forms.TrackBar();
+            this.trRing = new System.Windows.Forms.TrackBar();
+            this.trMiddle = new System.Windows.Forms.TrackBar();
+            this.trIndex = new System.Windows.Forms.TrackBar();
+            this.trThumb = new System.Windows.Forms.TrackBar();
+            this.PanelHAND = new System.Windows.Forms.Panel();
+            this.panelCharts = new System.Windows.Forms.Panel();
+            this.btnStartChart = new System.Windows.Forms.Button();
+            this.btnRefreshCharts = new System.Windows.Forms.Button();
+            this.btnChartAdd = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.ChartAll = new LiveCharts.WinForms.CartesianChart();
             this.bunifuDragControl5 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.PanelEMG = new System.Windows.Forms.Panel();
+            this.EmgChart5 = new LiveCharts.WinForms.CartesianChart();
+            this.EmgChart7 = new LiveCharts.WinForms.CartesianChart();
+            this.EmgChart4 = new LiveCharts.WinForms.CartesianChart();
+            this.EmgChart2 = new LiveCharts.WinForms.CartesianChart();
+            this.EmgChart1 = new LiveCharts.WinForms.CartesianChart();
+            this.EmgChart6 = new LiveCharts.WinForms.CartesianChart();
+            this.EmgChart3 = new LiveCharts.WinForms.CartesianChart();
+            this.EmgChart = new LiveCharts.WinForms.CartesianChart();
+            this.btnStart = new System.Windows.Forms.Button();
             this.PanelRFID = new System.Windows.Forms.Panel();
             this.PanelGLOVE = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
@@ -78,6 +103,15 @@
             this.btnPanelEMG.SuspendLayout();
             this.panelConnect.SuspendLayout();
             this.panel8.SuspendLayout();
+            this.panelControls.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trPinky)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trRing)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trMiddle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trIndex)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trThumb)).BeginInit();
+            this.PanelHAND.SuspendLayout();
+            this.panelCharts.SuspendLayout();
+            this.PanelEMG.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -112,7 +146,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(871, 53);
+            this.panel3.Size = new System.Drawing.Size(1120, 53);
             this.panel3.TabIndex = 1;
             // 
             // bunifuImageButton1
@@ -121,7 +155,7 @@
             this.bunifuImageButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuImageButton1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton1.Image")));
             this.bunifuImageButton1.ImageActive = null;
-            this.bunifuImageButton1.Location = new System.Drawing.Point(826, 8);
+            this.bunifuImageButton1.Location = new System.Drawing.Point(1075, 8);
             this.bunifuImageButton1.Name = "bunifuImageButton1";
             this.bunifuImageButton1.Size = new System.Drawing.Size(33, 39);
             this.bunifuImageButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -181,7 +215,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 53);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(205, 548);
+            this.panel1.Size = new System.Drawing.Size(205, 697);
             this.panel1.TabIndex = 2;
             // 
             // btnPanelGlove
@@ -203,7 +237,7 @@
             this.pnlGLOVE.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlGLOVE.Location = new System.Drawing.Point(0, 0);
             this.pnlGLOVE.Name = "pnlGLOVE";
-            this.pnlGLOVE.Size = new System.Drawing.Size(5, 80);
+            this.pnlGLOVE.Size = new System.Drawing.Size(10, 80);
             this.pnlGLOVE.TabIndex = 4;
             // 
             // btnGlove
@@ -247,7 +281,7 @@
             this.pnlHAND.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlHAND.Location = new System.Drawing.Point(0, 0);
             this.pnlHAND.Name = "pnlHAND";
-            this.pnlHAND.Size = new System.Drawing.Size(5, 80);
+            this.pnlHAND.Size = new System.Drawing.Size(10, 80);
             this.pnlHAND.TabIndex = 3;
             // 
             // btnHand
@@ -291,7 +325,7 @@
             this.pnlRFID.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlRFID.Location = new System.Drawing.Point(0, 0);
             this.pnlRFID.Name = "pnlRFID";
-            this.pnlRFID.Size = new System.Drawing.Size(5, 80);
+            this.pnlRFID.Size = new System.Drawing.Size(10, 80);
             this.pnlRFID.TabIndex = 2;
             // 
             // btnRFID
@@ -336,7 +370,7 @@
             this.pnlEMG.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlEMG.Location = new System.Drawing.Point(0, 0);
             this.pnlEMG.Name = "pnlEMG";
-            this.pnlEMG.Size = new System.Drawing.Size(5, 80);
+            this.pnlEMG.Size = new System.Drawing.Size(10, 80);
             this.pnlEMG.TabIndex = 1;
             // 
             // btnEMG
@@ -394,32 +428,10 @@
             // 
             this.panelConnect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.panelConnect.Controls.Add(this.panel8);
-            this.panelConnect.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelConnect.Location = new System.Drawing.Point(0, 0);
+            this.panelConnect.Location = new System.Drawing.Point(35, 275);
             this.panelConnect.Name = "panelConnect";
-            this.panelConnect.Size = new System.Drawing.Size(666, 548);
+            this.panelConnect.Size = new System.Drawing.Size(154, 103);
             this.panelConnect.TabIndex = 3;
-            // 
-            // panelControls
-            // 
-            this.panelControls.Location = new System.Drawing.Point(51, 146);
-            this.panelControls.Name = "panelControls";
-            this.panelControls.Size = new System.Drawing.Size(138, 66);
-            this.panelControls.TabIndex = 3;
-            // 
-            // PanelHAND
-            // 
-            this.PanelHAND.Location = new System.Drawing.Point(199, 161);
-            this.PanelHAND.Name = "PanelHAND";
-            this.PanelHAND.Size = new System.Drawing.Size(200, 100);
-            this.PanelHAND.TabIndex = 6;
-            // 
-            // panelCharts
-            // 
-            this.panelCharts.Location = new System.Drawing.Point(182, 44);
-            this.panelCharts.Name = "panelCharts";
-            this.panelCharts.Size = new System.Drawing.Size(171, 96);
-            this.panelCharts.TabIndex = 0;
             // 
             // panel8
             // 
@@ -430,7 +442,7 @@
             this.panel8.Controls.Add(this.label3);
             this.panel8.Controls.Add(this.txtIP);
             this.panel8.Controls.Add(this.label2);
-            this.panel8.Location = new System.Drawing.Point(173, 55);
+            this.panel8.Location = new System.Drawing.Point(297, 129);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(321, 438);
             this.panel8.TabIndex = 2;
@@ -459,7 +471,7 @@
             this.txtPort.Location = new System.Drawing.Point(66, 268);
             this.txtPort.Name = "txtPort";
             this.txtPort.Size = new System.Drawing.Size(186, 27);
-            this.txtPort.TabIndex = 0;
+            this.txtPort.TabIndex = 1;
             this.txtPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
@@ -494,6 +506,220 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "IP :";
             // 
+            // panelControls
+            // 
+            this.panelControls.Controls.Add(this.label7);
+            this.panelControls.Controls.Add(this.label8);
+            this.panelControls.Controls.Add(this.label6);
+            this.panelControls.Controls.Add(this.label5);
+            this.panelControls.Controls.Add(this.label4);
+            this.panelControls.Controls.Add(this.trPinky);
+            this.panelControls.Controls.Add(this.trRing);
+            this.panelControls.Controls.Add(this.trMiddle);
+            this.panelControls.Controls.Add(this.trIndex);
+            this.panelControls.Controls.Add(this.trThumb);
+            this.panelControls.Location = new System.Drawing.Point(51, 146);
+            this.panelControls.Name = "panelControls";
+            this.panelControls.Size = new System.Drawing.Size(138, 66);
+            this.panelControls.TabIndex = 3;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label7.Location = new System.Drawing.Point(475, 301);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(45, 21);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Pinky";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label8.Location = new System.Drawing.Point(252, 167);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(55, 21);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Middle";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label6.Location = new System.Drawing.Point(365, 211);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(40, 21);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Ring";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label5.Location = new System.Drawing.Point(149, 213);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(47, 21);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Index";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label4.Location = new System.Drawing.Point(45, 301);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(58, 21);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Thumb";
+            // 
+            // trPinky
+            // 
+            this.trPinky.Location = new System.Drawing.Point(475, 146);
+            this.trPinky.Maximum = 100;
+            this.trPinky.Minimum = -100;
+            this.trPinky.Name = "trPinky";
+            this.trPinky.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trPinky.Size = new System.Drawing.Size(45, 161);
+            this.trPinky.TabIndex = 0;
+            this.trPinky.TickStyle = System.Windows.Forms.TickStyle.Both;
+            // 
+            // trRing
+            // 
+            this.trRing.Location = new System.Drawing.Point(362, 55);
+            this.trRing.Maximum = 100;
+            this.trRing.Minimum = -100;
+            this.trRing.Name = "trRing";
+            this.trRing.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trRing.Size = new System.Drawing.Size(45, 161);
+            this.trRing.TabIndex = 0;
+            this.trRing.TickStyle = System.Windows.Forms.TickStyle.Both;
+            // 
+            // trMiddle
+            // 
+            this.trMiddle.Location = new System.Drawing.Point(256, 9);
+            this.trMiddle.Maximum = 100;
+            this.trMiddle.Minimum = -100;
+            this.trMiddle.Name = "trMiddle";
+            this.trMiddle.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trMiddle.Size = new System.Drawing.Size(45, 161);
+            this.trMiddle.TabIndex = 0;
+            this.trMiddle.TickStyle = System.Windows.Forms.TickStyle.Both;
+            // 
+            // trIndex
+            // 
+            this.trIndex.Location = new System.Drawing.Point(150, 55);
+            this.trIndex.Maximum = 100;
+            this.trIndex.Minimum = -100;
+            this.trIndex.Name = "trIndex";
+            this.trIndex.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trIndex.Size = new System.Drawing.Size(45, 161);
+            this.trIndex.TabIndex = 0;
+            this.trIndex.TickStyle = System.Windows.Forms.TickStyle.Both;
+            // 
+            // trThumb
+            // 
+            this.trThumb.Location = new System.Drawing.Point(51, 146);
+            this.trThumb.Maximum = 100;
+            this.trThumb.Minimum = -100;
+            this.trThumb.Name = "trThumb";
+            this.trThumb.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trThumb.Size = new System.Drawing.Size(45, 161);
+            this.trThumb.TabIndex = 0;
+            this.trThumb.TickStyle = System.Windows.Forms.TickStyle.Both;
+            // 
+            // PanelHAND
+            // 
+            this.PanelHAND.Controls.Add(this.button1);
+            this.PanelHAND.Location = new System.Drawing.Point(216, 235);
+            this.PanelHAND.Name = "PanelHAND";
+            this.PanelHAND.Size = new System.Drawing.Size(200, 100);
+            this.PanelHAND.TabIndex = 6;
+            // 
+            // panelCharts
+            // 
+            this.panelCharts.Controls.Add(this.btnStartChart);
+            this.panelCharts.Controls.Add(this.btnRefreshCharts);
+            this.panelCharts.Controls.Add(this.btnChartAdd);
+            this.panelCharts.Controls.Add(this.comboBox1);
+            this.panelCharts.Controls.Add(this.ChartAll);
+            this.panelCharts.Location = new System.Drawing.Point(214, 40);
+            this.panelCharts.Name = "panelCharts";
+            this.panelCharts.Size = new System.Drawing.Size(246, 109);
+            this.panelCharts.TabIndex = 0;
+            // 
+            // btnStartChart
+            // 
+            this.btnStartChart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(134)))), ((int)(((byte)(213)))));
+            this.btnStartChart.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnStartChart.FlatAppearance.BorderSize = 0;
+            this.btnStartChart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStartChart.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnStartChart.ForeColor = System.Drawing.Color.White;
+            this.btnStartChart.Location = new System.Drawing.Point(487, 413);
+            this.btnStartChart.Name = "btnStartChart";
+            this.btnStartChart.Size = new System.Drawing.Size(113, 29);
+            this.btnStartChart.TabIndex = 3;
+            this.btnStartChart.Text = "Start";
+            this.btnStartChart.UseVisualStyleBackColor = false;
+            this.btnStartChart.Click += new System.EventHandler(this.btnStartChart_Click);
+            // 
+            // btnRefreshCharts
+            // 
+            this.btnRefreshCharts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(134)))), ((int)(((byte)(213)))));
+            this.btnRefreshCharts.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRefreshCharts.FlatAppearance.BorderSize = 0;
+            this.btnRefreshCharts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefreshCharts.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnRefreshCharts.ForeColor = System.Drawing.Color.White;
+            this.btnRefreshCharts.Location = new System.Drawing.Point(6, 459);
+            this.btnRefreshCharts.Name = "btnRefreshCharts";
+            this.btnRefreshCharts.Size = new System.Drawing.Size(113, 29);
+            this.btnRefreshCharts.TabIndex = 3;
+            this.btnRefreshCharts.Text = "Refresh";
+            this.btnRefreshCharts.UseVisualStyleBackColor = false;
+            this.btnRefreshCharts.Click += new System.EventHandler(this.btnRefreshCharts_Click);
+            // 
+            // btnChartAdd
+            // 
+            this.btnChartAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(134)))), ((int)(((byte)(213)))));
+            this.btnChartAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnChartAdd.FlatAppearance.BorderSize = 0;
+            this.btnChartAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChartAdd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnChartAdd.ForeColor = System.Drawing.Color.White;
+            this.btnChartAdd.Location = new System.Drawing.Point(6, 414);
+            this.btnChartAdd.Name = "btnChartAdd";
+            this.btnChartAdd.Size = new System.Drawing.Size(113, 29);
+            this.btnChartAdd.TabIndex = 3;
+            this.btnChartAdd.Text = "Add";
+            this.btnChartAdd.UseVisualStyleBackColor = false;
+            this.btnChartAdd.Click += new System.EventHandler(this.btnChartAdd_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboBox1.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "abz",
+            "asdsg",
+            "ergdfg",
+            "dvbxvb"});
+            this.comboBox1.Location = new System.Drawing.Point(175, 414);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(154, 29);
+            this.comboBox1.TabIndex = 1;
+            // 
+            // ChartAll
+            // 
+            this.ChartAll.BackColor = System.Drawing.Color.White;
+            this.ChartAll.Location = new System.Drawing.Point(6, 12);
+            this.ChartAll.Name = "ChartAll";
+            this.ChartAll.Size = new System.Drawing.Size(648, 380);
+            this.ChartAll.TabIndex = 0;
+            this.ChartAll.Text = "cartesianChart1";
+            // 
             // bunifuDragControl5
             // 
             this.bunifuDragControl5.Fixed = true;
@@ -503,10 +729,109 @@
             // 
             // PanelEMG
             // 
-            this.PanelEMG.Location = new System.Drawing.Point(25, 242);
+            this.PanelEMG.Controls.Add(this.EmgChart5);
+            this.PanelEMG.Controls.Add(this.EmgChart7);
+            this.PanelEMG.Controls.Add(this.EmgChart4);
+            this.PanelEMG.Controls.Add(this.EmgChart2);
+            this.PanelEMG.Controls.Add(this.EmgChart1);
+            this.PanelEMG.Controls.Add(this.EmgChart6);
+            this.PanelEMG.Controls.Add(this.EmgChart3);
+            this.PanelEMG.Controls.Add(this.EmgChart);
+            this.PanelEMG.Controls.Add(this.btnStart);
+            this.PanelEMG.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelEMG.Location = new System.Drawing.Point(0, 0);
             this.PanelEMG.Name = "PanelEMG";
-            this.PanelEMG.Size = new System.Drawing.Size(164, 91);
+            this.PanelEMG.Size = new System.Drawing.Size(915, 697);
             this.PanelEMG.TabIndex = 4;
+            this.PanelEMG.VisibleChanged += new System.EventHandler(this.PanelEMG_VisibleChanged);
+            // 
+            // EmgChart5
+            // 
+            this.EmgChart5.BackColor = System.Drawing.Color.White;
+            this.EmgChart5.Location = new System.Drawing.Point(608, 238);
+            this.EmgChart5.Name = "EmgChart5";
+            this.EmgChart5.Size = new System.Drawing.Size(295, 220);
+            this.EmgChart5.TabIndex = 4;
+            this.EmgChart5.Text = "cartesianChart1";
+            // 
+            // EmgChart7
+            // 
+            this.EmgChart7.BackColor = System.Drawing.Color.White;
+            this.EmgChart7.Location = new System.Drawing.Point(307, 465);
+            this.EmgChart7.Name = "EmgChart7";
+            this.EmgChart7.Size = new System.Drawing.Size(295, 220);
+            this.EmgChart7.TabIndex = 4;
+            this.EmgChart7.Text = "cartesianChart1";
+            // 
+            // EmgChart4
+            // 
+            this.EmgChart4.BackColor = System.Drawing.Color.White;
+            this.EmgChart4.Location = new System.Drawing.Point(307, 238);
+            this.EmgChart4.Name = "EmgChart4";
+            this.EmgChart4.Size = new System.Drawing.Size(295, 220);
+            this.EmgChart4.TabIndex = 4;
+            this.EmgChart4.Text = "cartesianChart1";
+            // 
+            // EmgChart2
+            // 
+            this.EmgChart2.BackColor = System.Drawing.Color.White;
+            this.EmgChart2.Location = new System.Drawing.Point(608, 7);
+            this.EmgChart2.Name = "EmgChart2";
+            this.EmgChart2.Size = new System.Drawing.Size(295, 220);
+            this.EmgChart2.TabIndex = 4;
+            this.EmgChart2.Text = "cartesianChart1";
+            // 
+            // EmgChart1
+            // 
+            this.EmgChart1.BackColor = System.Drawing.Color.White;
+            this.EmgChart1.Location = new System.Drawing.Point(307, 6);
+            this.EmgChart1.Name = "EmgChart1";
+            this.EmgChart1.Size = new System.Drawing.Size(295, 220);
+            this.EmgChart1.TabIndex = 4;
+            this.EmgChart1.Text = "cartesianChart1";
+            // 
+            // EmgChart6
+            // 
+            this.EmgChart6.BackColor = System.Drawing.Color.White;
+            this.EmgChart6.Location = new System.Drawing.Point(6, 465);
+            this.EmgChart6.Name = "EmgChart6";
+            this.EmgChart6.Size = new System.Drawing.Size(295, 220);
+            this.EmgChart6.TabIndex = 4;
+            this.EmgChart6.Text = "cartesianChart1";
+            // 
+            // EmgChart3
+            // 
+            this.EmgChart3.BackColor = System.Drawing.Color.White;
+            this.EmgChart3.Location = new System.Drawing.Point(6, 238);
+            this.EmgChart3.Name = "EmgChart3";
+            this.EmgChart3.Size = new System.Drawing.Size(295, 220);
+            this.EmgChart3.TabIndex = 4;
+            this.EmgChart3.Text = "cartesianChart1";
+            // 
+            // EmgChart
+            // 
+            this.EmgChart.BackColor = System.Drawing.Color.White;
+            this.EmgChart.Location = new System.Drawing.Point(6, 6);
+            this.EmgChart.Name = "EmgChart";
+            this.EmgChart.Size = new System.Drawing.Size(295, 220);
+            this.EmgChart.TabIndex = 4;
+            this.EmgChart.Text = "cartesianChart1";
+            // 
+            // btnStart
+            // 
+            this.btnStart.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnStart.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnStart.FlatAppearance.BorderSize = 0;
+            this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStart.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnStart.ForeColor = System.Drawing.Color.White;
+            this.btnStart.Location = new System.Drawing.Point(706, 571);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(108, 54);
+            this.btnStart.TabIndex = 1;
+            this.btnStart.Text = "Start";
+            this.btnStart.UseVisualStyleBackColor = false;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // PanelRFID
             // 
@@ -524,24 +849,34 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.panelConnect);
-            this.panel4.Controls.Add(this.PanelGLOVE);
             this.panel4.Controls.Add(this.PanelEMG);
-            this.panel4.Controls.Add(this.panelCharts);
             this.panel4.Controls.Add(this.PanelHAND);
+            this.panel4.Controls.Add(this.panelConnect);
+            this.panel4.Controls.Add(this.panelCharts);
             this.panel4.Controls.Add(this.panelControls);
+            this.panel4.Controls.Add(this.PanelGLOVE);
             this.panel4.Controls.Add(this.PanelRFID);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(205, 53);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(666, 548);
+            this.panel4.Size = new System.Drawing.Size(915, 697);
             this.panel4.TabIndex = 8;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(362, 57);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(871, 601);
+            this.ClientSize = new System.Drawing.Size(1120, 750);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
@@ -561,6 +896,16 @@
             this.panelConnect.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
+            this.panelControls.ResumeLayout(false);
+            this.panelControls.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trPinky)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trRing)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trMiddle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trIndex)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trThumb)).EndInit();
+            this.PanelHAND.ResumeLayout(false);
+            this.panelCharts.ResumeLayout(false);
+            this.PanelEMG.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -605,5 +950,30 @@
         private System.Windows.Forms.Panel PanelEMG;
         private System.Windows.Forms.Panel PanelRFID;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private LiveCharts.WinForms.CartesianChart ChartAll;
+        private System.Windows.Forms.Button btnChartAdd;
+        private System.Windows.Forms.TrackBar trThumb;
+        private System.Windows.Forms.TrackBar trPinky;
+        private System.Windows.Forms.TrackBar trRing;
+        private System.Windows.Forms.TrackBar trMiddle;
+        private System.Windows.Forms.TrackBar trIndex;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnStart;
+        private LiveCharts.WinForms.CartesianChart EmgChart;
+        private System.Windows.Forms.Button btnRefreshCharts;
+        private System.Windows.Forms.Button btnStartChart;
+        private LiveCharts.WinForms.CartesianChart EmgChart5;
+        private LiveCharts.WinForms.CartesianChart EmgChart4;
+        private LiveCharts.WinForms.CartesianChart EmgChart2;
+        private LiveCharts.WinForms.CartesianChart EmgChart1;
+        private LiveCharts.WinForms.CartesianChart EmgChart3;
+        private LiveCharts.WinForms.CartesianChart EmgChart7;
+        private LiveCharts.WinForms.CartesianChart EmgChart6;
+        private System.Windows.Forms.Button button1;
     }
 }

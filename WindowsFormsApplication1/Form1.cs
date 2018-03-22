@@ -697,7 +697,7 @@ namespace WindowsFormsApplication1
         {
             
             eMG.TCPConnect("127.0.0.1", 1234);
-            eMG.ReceiveMessage();
+            eMG.StartReceiveMessage();
             eMG.ReceiveMessageHandler += EMG_ReceiveMessageHandler;
         }
 

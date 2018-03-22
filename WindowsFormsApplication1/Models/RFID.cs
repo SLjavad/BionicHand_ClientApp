@@ -17,7 +17,7 @@ namespace WindowsFormsApplication1.Models
 
         RFIDGestureEnum RFIDgesture;
 
-        public override void ReceiveMessage()
+        public override void StartReceiveMessage()
         {
             NetworkStream ns = GetStream();
             Task.Run(() => {

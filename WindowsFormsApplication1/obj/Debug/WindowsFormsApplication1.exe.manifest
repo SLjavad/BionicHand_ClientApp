@@ -66,14 +66,50 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WindowsFormsApplication1.exe" size="489984">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LiveCharts.dll" size="152064">
+      <assemblyIdentity name="LiveCharts" version="0.9.7.0" publicKeyToken="0BC1F845D1EBB8DF" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>n8+Jg3tg9pwcUB5M+k0oYIh6/QuPMlgDNn55Wk47yco=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LiveCharts.WinForms.dll" size="19456">
+      <assemblyIdentity name="LiveCharts.WinForms" version="0.9.7.1" publicKeyToken="0BC1F845D1EBB8DF" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>pbYcFyYwTmty4JoPNd2/UviadaTijm7QmMjR32CBtK0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LiveCharts.Wpf.dll" size="217600">
+      <assemblyIdentity name="LiveCharts.Wpf" version="0.9.7.0" publicKeyToken="0BC1F845D1EBB8DF" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>G9uxtcGlBlPlwmFh6bfAPtxRhyGm4Q6hgKhASdlnEGs=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WindowsFormsApplication1.exe" size="503808">
       <assemblyIdentity name="WindowsFormsApplication1" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>o+P9lfoO1eXJVQHQFM0nbpWMJ/QDYVjBtmkYJTLbZqU=</dsig:DigestValue>
+        <dsig:DigestValue>U7TjjMsqmBinT/TZtrrFMxQeUo6jx5B+Qj0xpeJP1AI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

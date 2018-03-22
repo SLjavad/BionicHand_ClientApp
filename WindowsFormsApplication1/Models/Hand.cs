@@ -10,11 +10,25 @@ namespace WindowsFormsApplication1.Models
 {
     class Hand : TCP_Communication
     {
-        Finger finger;
+        Finger thumb , index , middle , ring , pinky;
         Int16 currentGesture;
         Int16 chargeBattery;
 
-        public override void ReceiveMessage()
+        private void HandleMessage(string message)
+        {
+            if (message.StartsWith("fhget:"))
+            {
+                string[] values = message.Split(':')[1].Split(',');
+                MessageReceiveEventArgs receiveEventArgs = new MessageReceiveEventArgs();
+                receiveEventArgs.DeviceType = "Hand";
+                receiveEventArgs.Message = message;
+                base.OnMessageReceived(receiveEventArgs);
+            }
+            //TODO
+            
+        }
+
+        public override void StartReceiveMessage()
         {
             NetworkStream ns = GetStream();
             Task.Run(() => {
@@ -25,13 +39,10 @@ namespace WindowsFormsApplication1.Models
                         if (IsConnected())
                         {
                             byte[] messageByte = new byte[ReceiveBufferSize];
-                            ns.Read(messageByte, 0, ReceiveBufferSize);
-                            string message = Encoding.ASCII.GetString(messageByte);
-                            MessageReceiveEventArgs receiveEventArgs = new MessageReceiveEventArgs();
-                            receiveEventArgs.DeviceType = "Hand";
-                            receiveEventArgs.Message = message;
-                            //Process();
-                            base.OnMessageReceived(receiveEventArgs);
+                            int a = ns.Read(messageByte, 0, ReceiveBufferSize);
+                            byte[] Result = new byte[a];
+                            Array.Copy(messageByte, Result, a);
+                            string message = Encoding.ASCII.GetString(Result);
                         }
                         else
                         {

@@ -52,3 +52,13 @@ J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsAppl
 J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.TcpConfig.resources
 J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\Bunifu_UI_v1.5.3.dll
 J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.MainPage.resources
+J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\LiveCharts.dll
+J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\LiveCharts.WinForms.dll
+J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\LiveCharts.Wpf.dll
+J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\LiveCharts.pdb
+J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\LiveCharts.xml
+J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\LiveCharts.WinForms.pdb
+J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\LiveCharts.WinForms.xml
+J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\LiveCharts.Wpf.pdb
+J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\LiveCharts.Wpf.xml
+J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.CopyComplete

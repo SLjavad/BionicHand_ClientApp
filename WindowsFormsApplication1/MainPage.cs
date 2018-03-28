@@ -20,6 +20,7 @@ namespace WindowsFormsApplication1
         RFID rfid = new RFID();
         Glove glove = new Glove();
         Hand hand = new Hand();
+        frmLog frmLog = new frmLog();
         
         //ChartValues<ChartModel> EmgChartValues = new ChartValues<ChartModel>();
 
@@ -111,21 +112,30 @@ namespace WindowsFormsApplication1
             int[] values = Array.ConvertAll(e.Message.Split(','),int.Parse);
             this.Invoke(new Action(() =>
             {
-                trThumb.Value = values[0];
-                trIndex.Value = values[1];
-                trMiddle.Value = values[2];
-                trRing.Value = values[3];
-                trPinky.Value = values[4];
-                thumbCur.Text = values[5].ToString();
-                indexCur.Text = values[6].ToString();
-                middleCur.Text = values[7].ToString();
-                ringCur.Text = values[8].ToString();
-                pinkyCur.Text = values[9].ToString();
-                lblThumbFsr.Text = values[10].ToString();
-                lblIndexFsr.Text = values[11].ToString();
-                lblMiddleFsr.Text = values[12].ToString();
-                lblRingFsr.Text = values[13].ToString();
-                lblTemppinky.Text = values[14].ToString();
+                try
+                {
+                    trThumb.Value = values[0] > trThumb.Maximum ? trThumb.Maximum : (values[0] < trThumb.Minimum ? trThumb.Minimum : values[0]);
+                    trIndex.Value = values[1] > trIndex.Maximum ? trIndex.Maximum : (values[1] < trIndex.Minimum ? trIndex.Minimum : values[1]);
+                    trMiddle.Value = values[2] > trMiddle.Maximum ? trIndex.Maximum : (values[2] < trMiddle.Minimum ? trMiddle.Minimum : values[2]);
+                    trRing.Value = values[3] > trRing.Maximum ? trRing.Maximum : (values[3] < trRing.Minimum ? trRing.Minimum : values[3]);
+                    trPinky.Value = values[4] > trPinky.Maximum ? trPinky.Maximum : (values[4] < trPinky.Minimum ? trPinky.Minimum : values[4]);
+                    thumbCur.Text = values[5].ToString();
+                    indexCur.Text = values[6].ToString();
+                    middleCur.Text = values[7].ToString();
+                    ringCur.Text = values[8].ToString();
+                    pinkyCur.Text = values[9].ToString();
+                    lblThumbFsr.Text = values[10].ToString();
+                    lblIndexFsr.Text = values[11].ToString();
+                    lblMiddleFsr.Text = values[12].ToString();
+                    lblRingFsr.Text = values[13].ToString();
+                    lblTemppinky.Text = values[14].ToString();
+                    lblRfid.Text = $"RFID : {values[15].ToString()}";
+                }
+                catch (Exception ex)
+                {
+                MessageBox.Show(ex.GetBaseException().ToString()+"\n\n"+"Receiving from hand");
+                }
+                
             }));
             
         }
@@ -231,10 +241,12 @@ namespace WindowsFormsApplication1
         } 
         #endregion
 
-        private void resetTabs()
+        private void resetTab_ClearConnectionTexts()
         {
             btnControls.ForeColor = Color.Black;
             btnCharts.ForeColor = Color.Black;
+            txtIP.Clear();
+            txtPort.Clear();
         }
 
         private void SetActivePanel(Panel panel)
@@ -363,7 +375,7 @@ namespace WindowsFormsApplication1
 
         private void btnPanelEMG_Click(object sender, EventArgs e)
         {
-            resetTabs();
+            resetTab_ClearConnectionTexts();
             if (!emg.IsConnected())
             {
                 SetActivePanel(panelConnect);
@@ -381,7 +393,7 @@ namespace WindowsFormsApplication1
 
         private void btnPanelRFID_Click(object sender, EventArgs e)
         {
-            resetTabs();
+            resetTab_ClearConnectionTexts();
             if (!rfid.IsConnected())
             {
                 SetActivePanel(panelConnect);
@@ -397,7 +409,7 @@ namespace WindowsFormsApplication1
 
         private void btnPanelHand_Click(object sender, EventArgs e)
         {
-            resetTabs();
+            resetTab_ClearConnectionTexts();
             if (!hand.IsConnected())
             {
                 SetActivePanel(panelConnect);
@@ -413,7 +425,7 @@ namespace WindowsFormsApplication1
 
         private void btnPanelGlove_Click(object sender, EventArgs e)
         {
-            resetTabs();
+            resetTab_ClearConnectionTexts();
             if (!glove.IsConnected())
             {
                 SetActivePanel(panelConnect);
@@ -560,32 +572,47 @@ namespace WindowsFormsApplication1
 
         private void trThumb_Scroll(object sender, EventArgs e)
         {
-            hand.SendMessage(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100));
-            Console.WriteLine(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100));
+            if (btnStartHand.Text == "AutoReceive")
+            {
+                hand.SendMessage(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100));
+                Console.WriteLine(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100));
+            }
         }
 
         private void trIndex_Scroll(object sender, EventArgs e)
         {
-            hand.SendMessage(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100));
-            Console.WriteLine(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100));
+            if (btnStartHand.Text == "AutoReceive")
+            {
+                hand.SendMessage(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100));
+                Console.WriteLine(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100));
+            }
         }
 
         private void trMiddle_Scroll(object sender, EventArgs e)
         {
-            hand.SendMessage(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100));
-            Console.WriteLine(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100));
+            if (btnStartHand.Text == "AutoReceive")
+            {
+                hand.SendMessage(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100));
+                Console.WriteLine(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100)); 
+            }
         }
 
         private void trRing_Scroll(object sender, EventArgs e)
         {
-            hand.SendMessage(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100));
-            Console.WriteLine(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100));
+            if (btnStartHand.Text == "AutoReceive")
+            {
+                hand.SendMessage(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100));
+                Console.WriteLine(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100)); 
+            }
         }
 
         private void trPinky_Scroll(object sender, EventArgs e)
         {
-            hand.SendMessage(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100));
-            Console.WriteLine(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100));
+            if (btnStartHand.Text == "AutoReceive")
+            {
+                hand.SendMessage(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100));
+                Console.WriteLine(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100)); 
+            }
         }
     }
 }

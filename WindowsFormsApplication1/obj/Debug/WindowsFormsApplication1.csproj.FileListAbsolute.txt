@@ -62,3 +62,4 @@ J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsAppl
 J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\LiveCharts.Wpf.pdb
 J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\LiveCharts.Wpf.xml
 J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.CopyComplete
+J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.frmLog.resources

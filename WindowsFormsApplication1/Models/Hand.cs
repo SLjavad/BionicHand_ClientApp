@@ -17,6 +17,11 @@ namespace WindowsFormsApplication1.Models
 
         private void HandleMessage(string message)
         {
+            //fhget : thumbPos , indexPos , middlePos , ringPos , pinkyPos ,
+            //         """ Cur ,  """ Cur ,  """ Cur  , """ Cur ,  """ Cur ,
+            //         """ Fsr ,  """ Fsr ,  """ Fsr  , """ Fsr ,  """ Temp,
+            //        RFID
+
             if (message.StartsWith("fhget:"))
             {
                 string values = message.Split(':')[1].Split(new [] {Environment.NewLine},StringSplitOptions.None)[0];

@@ -31,7 +31,7 @@ namespace WindowsFormsApplication1.Models
                             ns.Read(messageByte, 0, ReceiveBufferSize);
                             string message = Encoding.ASCII.GetString(messageByte);
                             MessageReceiveEventArgs receiveEventArgs = new MessageReceiveEventArgs();
-                            receiveEventArgs.DeviceType = "RFID";
+                            receiveEventArgs.Parameter = "RFID";
                             receiveEventArgs.Message = message;
                             //Process();
                             base.OnMessageReceived(receiveEventArgs);

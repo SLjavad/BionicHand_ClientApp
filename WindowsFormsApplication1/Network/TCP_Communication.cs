@@ -38,7 +38,7 @@ namespace WindowsFormsApplication1
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(e.StackTrace + "\n" + e.Message);
+                    MessageBox.Show("Connection Failed");
                 }
             });
             

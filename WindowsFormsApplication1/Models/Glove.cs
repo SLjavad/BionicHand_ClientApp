@@ -32,7 +32,7 @@ namespace WindowsFormsApplication1.Models
                             ns.Read(messageByte, 0, ReceiveBufferSize);
                             string message = Encoding.ASCII.GetString(messageByte);
                             MessageReceiveEventArgs receiveEventArgs = new MessageReceiveEventArgs();
-                            receiveEventArgs.DeviceType = "Glove";
+                            receiveEventArgs.Parameter = "Glove";
                             receiveEventArgs.Message = message;
                             //Process();
                             base.OnMessageReceived(receiveEventArgs);

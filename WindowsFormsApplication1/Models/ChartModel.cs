@@ -8,7 +8,7 @@ namespace WindowsFormsApplication1.Models
 {
     class ChartModel
     {
-        public Int16 Data { get; set; }
+        public double Data { get; set; }
         public DateTime Time { get; set; }
     }
 }

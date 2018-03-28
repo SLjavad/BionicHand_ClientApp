@@ -13,26 +13,44 @@ namespace WindowsFormsApplication1.Models
         Finger thumb , index , middle , ring , pinky;
         Int16 currentGesture;
         Int16 chargeBattery;
+        NetworkStream ns;
 
         private void HandleMessage(string message)
         {
             if (message.StartsWith("fhget:"))
             {
-                string[] values = message.Split(':')[1].Split(',');
-                MessageReceiveEventArgs receiveEventArgs = new MessageReceiveEventArgs();
-                receiveEventArgs.DeviceType = "Hand";
-                receiveEventArgs.Message = message;
-                base.OnMessageReceived(receiveEventArgs);
+                string values = message.Split(':')[1].Split(new [] {Environment.NewLine},StringSplitOptions.None)[0];
+                for (int i = 0; i < values.Length; i++)
+                {
+                    MessageReceiveEventArgs receiveEventArgs = new MessageReceiveEventArgs();
+                    receiveEventArgs.Parameter = null;
+                    receiveEventArgs.Message = values;
+                    base.OnMessageReceived(receiveEventArgs);
+                }
             }
-            //TODO
-            
         }
+
+        public void StopReceiveMessage()
+        {
+            flag = false;
+        }
+
+        bool flag = false;
+
+        public Finger Thumb { get => thumb; set => thumb = value; }
+        public Finger Index { get => index; set => index = value; }
+        public Finger Middle { get => middle; set => middle = value; }
+        public Finger Ring { get => ring; set => ring = value; }
+        public Finger Pinky { get => pinky; set => pinky = value; }
+        public short CurrentGesture { get => currentGesture; set => currentGesture = value; }
+        public short ChargeBattery { get => chargeBattery; set => chargeBattery = value; }
 
         public override void StartReceiveMessage()
         {
-            NetworkStream ns = GetStream();
+            ns = GetStream();
+            flag = true;
             Task.Run(() => {
-                while (true)
+                while (flag)
                 {
                     try
                     {
@@ -43,6 +61,7 @@ namespace WindowsFormsApplication1.Models
                             byte[] Result = new byte[a];
                             Array.Copy(messageByte, Result, a);
                             string message = Encoding.ASCII.GetString(Result);
+                            HandleMessage(message);
                         }
                         else
                         {

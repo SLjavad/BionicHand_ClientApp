@@ -9,6 +9,6 @@ namespace WindowsFormsApplication1
     class MessageReceiveEventArgs : EventArgs
     {
         public string Message { get; set; }
-        public string DeviceType { get; set; }
+        public string Parameter { get; set; }
     }
 }

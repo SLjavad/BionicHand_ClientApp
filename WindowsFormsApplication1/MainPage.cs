@@ -20,21 +20,19 @@ namespace WindowsFormsApplication1
         RFID rfid = new RFID();
         Glove glove = new Glove();
         Hand hand = new Hand();
-
-        //LineSeries EmgChartSeries = new LineSeries();
-        //LineSeries EmgChartSeries1 = new LineSeries();
-        //LineSeries EmgChartSeries2 = new LineSeries();
-        //LineSeries EmgChartSeries3 = new LineSeries();
-        //LineSeries EmgChartSeries4 = new LineSeries();
-        //LineSeries EmgChartSeries5 = new LineSeries();
-        //LineSeries EmgChartSeries6 = new LineSeries();
-        //LineSeries EmgChartSeries7 = new LineSeries();
         
-        ChartValues<ChartModel> EmgChartValues = new ChartValues<ChartModel>();
+        //ChartValues<ChartModel> EmgChartValues = new ChartValues<ChartModel>();
 
         
 
         List<Panel> panelLists = new List<Panel>();
+        List<ChartValues<ChartModel>> EmgChartValues = new List<ChartValues<ChartModel>>()
+        {
+            new ChartValues<ChartModel>(),new ChartValues<ChartModel>(),
+            new ChartValues<ChartModel>(),new ChartValues<ChartModel>(),
+            new ChartValues<ChartModel>(),new ChartValues<ChartModel>(),
+            new ChartValues<ChartModel>(),new ChartValues<ChartModel>()
+        };
         List<LineSeries> lineSeries = new List<LineSeries>
         {
             new LineSeries(),new LineSeries(),new LineSeries(),
@@ -65,21 +63,15 @@ namespace WindowsFormsApplication1
 
         private void InitialEmgChart()
         {
-            foreach (LineSeries item in lineSeries)
+            for (int i = 0; i < 8; i++)
             {
-                item.Values = EmgChartValues;
-                item.StrokeThickness = 2;
-                item.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(107, 185, 69));
-                item.Fill = System.Windows.Media.Brushes.Transparent;
-                item.LineSmoothness = 0;
-                item.PointGeometry = null;
+                lineSeries[i].Values = EmgChartValues[i];
+                lineSeries[i].StrokeThickness = 2;
+                lineSeries[i].Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(107, 185, 69));
+                lineSeries[i].Fill = System.Windows.Media.Brushes.Transparent;
+                lineSeries[i].LineSmoothness = 0;
+                lineSeries[i].PointGeometry = null;
             }
-            //EmgChartSeries.Values = EmgChartValues;
-            //EmgChartSeries.StrokeThickness = 2;
-            //EmgChartSeries.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(107, 185, 69));
-            //EmgChartSeries.Fill = System.Windows.Media.Brushes.Transparent;
-            //EmgChartSeries.LineSmoothness = 0;
-            //EmgChartSeries.PointGeometry = null;
             foreach (LiveCharts.WinForms.CartesianChart item in PanelEMG.Controls.OfType<LiveCharts.WinForms.CartesianChart>())
             {
                 item.DisableAnimations = true;
@@ -89,7 +81,6 @@ namespace WindowsFormsApplication1
                 item.AxisX[0].MinValue = DateTime.Now.Ticks - TimeSpan.FromSeconds(10).Ticks;
                 item.AxisX[0].LabelFormatter = a => new DateTime((long)a).ToString("mm:ss");
                 item.AxisX[0].Separator = new Separator() { IsEnabled = true, StrokeThickness = 3, Step = TimeSpan.FromSeconds(1).Ticks };
-                item.Zoom = ZoomingOptions.Xy;
             }
             EmgChart.Series.Add(lineSeries[0]);
             EmgChart1.Series.Add(lineSeries[1]);
@@ -117,26 +108,49 @@ namespace WindowsFormsApplication1
 
         private void Hand_ReceiveMessageHandler(object sender, MessageReceiveEventArgs e)
         {
-            Console.WriteLine(e.Message);
+            int[] values = Array.ConvertAll(e.Message.Split(','),int.Parse);
+            this.Invoke(new Action(() =>
+            {
+                trThumb.Value = values[0];
+                trIndex.Value = values[1];
+                trMiddle.Value = values[2];
+                trRing.Value = values[3];
+                trPinky.Value = values[4];
+                thumbCur.Text = values[5].ToString();
+                indexCur.Text = values[6].ToString();
+                middleCur.Text = values[7].ToString();
+                ringCur.Text = values[8].ToString();
+                pinkyCur.Text = values[9].ToString();
+                lblThumbFsr.Text = values[10].ToString();
+                lblIndexFsr.Text = values[11].ToString();
+                lblMiddleFsr.Text = values[12].ToString();
+                lblRingFsr.Text = values[13].ToString();
+                lblTemppinky.Text = values[14].ToString();
+            }));
+            
         }
 
         private void Rfid_ReceiveMessageHandler(object sender, MessageReceiveEventArgs e)
         {
             throw new NotImplementedException();
         }
-        //int a = 0;
+
         private void Emg_ReceiveMessageHandler(object sender, MessageReceiveEventArgs e)
         {
-            if (EmgChart.InvokeRequired)
+            if (e.Parameter == "EMG8")
             {
+                double[] values = Array.ConvertAll(e.Message.Split(','), double.Parse);
                 try
                 {
-
-                    EmgChartValues.Add(new ChartModel
+                    for (int i = 0; i < 8; i++)
                     {
-                        Data = Convert.ToInt16(e.Message),
-                        Time = DateTime.Now
-                    });
+                        EmgChartValues[i].Add(new ChartModel
+                        {
+                            Data = (values[i] * 100),
+                            Time = DateTime.Now
+                        });
+                    }
+                    
                     this.Invoke(new Action(() =>
                     {
                         EmgChart.AxisX[0].MaxValue = DateTime.Now.Ticks + TimeSpan.FromSeconds(1).Ticks;
@@ -155,27 +169,31 @@ namespace WindowsFormsApplication1
                         EmgChart6.AxisX[0].MinValue = DateTime.Now.Ticks - TimeSpan.FromSeconds(3).Ticks;
                         EmgChart7.AxisX[0].MaxValue = DateTime.Now.Ticks + TimeSpan.FromSeconds(1).Ticks;
                         EmgChart7.AxisX[0].MinValue = DateTime.Now.Ticks - TimeSpan.FromSeconds(3).Ticks;
-                        EmgChartValues.CollectGarbage(lineSeries[0]);
-                        EmgChartValues.CollectGarbage(lineSeries[1]);
-                        EmgChartValues.CollectGarbage(lineSeries[2]);
-                        EmgChartValues.CollectGarbage(lineSeries[3]);
-                        EmgChartValues.CollectGarbage(lineSeries[4]);
-                        EmgChartValues.CollectGarbage(lineSeries[5]);
-                        EmgChartValues.CollectGarbage(lineSeries[6]);
-                        EmgChartValues.CollectGarbage(lineSeries[7]);
-                        if (EmgChartValues.Count > 100)
-                        {
-                            EmgChartValues.RemoveAt(0);
-                        }
+                        //EmgChartValues.CollectGarbage(lineSeries[0]);
+                        //EmgChartValues.CollectGarbage(lineSeries[1]);
+                        //EmgChartValues.CollectGarbage(lineSeries[2]);
+                        //EmgChartValues.CollectGarbage(lineSeries[3]);
+                        //EmgChartValues.CollectGarbage(lineSeries[4]);
+                        //EmgChartValues.CollectGarbage(lineSeries[5]);
+                        //EmgChartValues.CollectGarbage(lineSeries[6]);
+                        //EmgChartValues.CollectGarbage(lineSeries[7]);
+                        //for (int i = 0; i < 8; i++)
+                        //{
+                        //    if (EmgChartValues[i].Count > 100)
+                        //    {
+                        //        EmgChartValues[i].RemoveAt(0);
+                        //    }
+                        //}
+                        
                     }));
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.GetBaseException().ToString());
                 }
-
-
             }
+
+
             //MessageBox.Show(e.Message);
             //Console.WriteLine(e.Message);
             //if (richTextBox1.InvokeRequired)
@@ -191,6 +209,7 @@ namespace WindowsFormsApplication1
             //}
         }
 
+        #region Connection Terminates
         private void Glove_ConnectionTerminateHandler(object sender, EventArgs e)
         {
             pnlGLOVE.BackColor = Color.FromArgb(198, 40, 40);
@@ -209,7 +228,8 @@ namespace WindowsFormsApplication1
         private void Emg_ConnectionTerminateHandler(object sender, EventArgs e)
         {
             pnlEMG.BackColor = Color.FromArgb(198, 40, 40);
-        }
+        } 
+        #endregion
 
         private void resetTabs()
         {
@@ -347,6 +367,8 @@ namespace WindowsFormsApplication1
             if (!emg.IsConnected())
             {
                 SetActivePanel(panelConnect);
+                panel8.Enabled = true;
+                lblConnectionTitle.Text = "EMG Connection";
                 InitialEmgChart();
             }
             else
@@ -363,6 +385,8 @@ namespace WindowsFormsApplication1
             if (!rfid.IsConnected())
             {
                 SetActivePanel(panelConnect);
+                panel8.Enabled = true;
+                lblConnectionTitle.Text = "RFID Connection";
             }
             else
             {
@@ -377,6 +401,8 @@ namespace WindowsFormsApplication1
             if (!hand.IsConnected())
             {
                 SetActivePanel(panelConnect);
+                panel8.Enabled = true;
+                lblConnectionTitle.Text = "Hand Connection";
             }
             else
             {
@@ -391,6 +417,8 @@ namespace WindowsFormsApplication1
             if (!glove.IsConnected())
             {
                 SetActivePanel(panelConnect);
+                panel8.Enabled = true;
+                lblConnectionTitle.Text = "Glove Connection";
             }
             else
             {
@@ -515,7 +543,49 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(SendMessageConfig.SendToHand(5,55,100,32,100,54,9,17,100,12));
+            if (btnStartHand.Text == "AutoReceive")
+            {
+                hand.ReceiveMessageHandler += Hand_ReceiveMessageHandler;
+                hand.StartReceiveMessage();
+                btnStartHand.Text = "ManualSend";
+            }
+            else
+            {
+                hand.ReceiveMessageHandler -= Hand_ReceiveMessageHandler;
+                hand.StopReceiveMessage();
+                btnStartHand.Text = "AutoReceive";
+            }
+            //Console.WriteLine(SendMessageConfig.SendToHand(5,55,100,32,100,54,9,17,100,12));
+        }
+
+        private void trThumb_Scroll(object sender, EventArgs e)
+        {
+            hand.SendMessage(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100));
+            Console.WriteLine(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100));
+        }
+
+        private void trIndex_Scroll(object sender, EventArgs e)
+        {
+            hand.SendMessage(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100));
+            Console.WriteLine(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100));
+        }
+
+        private void trMiddle_Scroll(object sender, EventArgs e)
+        {
+            hand.SendMessage(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100));
+            Console.WriteLine(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100));
+        }
+
+        private void trRing_Scroll(object sender, EventArgs e)
+        {
+            hand.SendMessage(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100));
+            Console.WriteLine(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100));
+        }
+
+        private void trPinky_Scroll(object sender, EventArgs e)
+        {
+            hand.SendMessage(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100));
+            Console.WriteLine(SendMessageConfig.SendToHand((Int16)trThumb.Value, (Int16)trIndex.Value, (Int16)trMiddle.Value, (Int16)trRing.Value, (Int16)trPinky.Value, 100, 100, 100, 100, 100));
         }
     }
 }

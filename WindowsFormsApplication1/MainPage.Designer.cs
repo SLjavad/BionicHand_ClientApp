@@ -54,6 +54,7 @@
             this.bunifuDragControl3 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.bunifuDragControl4 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.panelConnect = new System.Windows.Forms.Panel();
+            this.lblConnectionTitle = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.btnTcpConnect = new System.Windows.Forms.Button();
             this.txtPort = new System.Windows.Forms.TextBox();
@@ -61,17 +62,33 @@
             this.txtIP = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panelControls = new System.Windows.Forms.Panel();
+            this.PanelHAND = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.lblTemppinky = new System.Windows.Forms.Label();
+            this.pinkyCur = new System.Windows.Forms.Label();
+            this.lblMiddleFsr = new System.Windows.Forms.Label();
+            this.lblRingFsr = new System.Windows.Forms.Label();
+            this.ringCur = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.middleCur = new System.Windows.Forms.Label();
+            this.lblThumbFsr = new System.Windows.Forms.Label();
+            this.lblIndexFsr = new System.Windows.Forms.Label();
+            this.indexCur = new System.Windows.Forms.Label();
+            this.thumbCur = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.trPinky = new System.Windows.Forms.TrackBar();
             this.trRing = new System.Windows.Forms.TrackBar();
             this.trMiddle = new System.Windows.Forms.TrackBar();
             this.trIndex = new System.Windows.Forms.TrackBar();
             this.trThumb = new System.Windows.Forms.TrackBar();
-            this.PanelHAND = new System.Windows.Forms.Panel();
+            this.btnStartHand = new System.Windows.Forms.Button();
             this.panelCharts = new System.Windows.Forms.Panel();
             this.btnStartChart = new System.Windows.Forms.Button();
             this.btnRefreshCharts = new System.Windows.Forms.Button();
@@ -92,7 +109,6 @@
             this.PanelRFID = new System.Windows.Forms.Panel();
             this.PanelGLOVE = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
@@ -103,13 +119,13 @@
             this.btnPanelEMG.SuspendLayout();
             this.panelConnect.SuspendLayout();
             this.panel8.SuspendLayout();
-            this.panelControls.SuspendLayout();
+            this.PanelHAND.SuspendLayout();
+            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trPinky)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trRing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trMiddle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trIndex)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trThumb)).BeginInit();
-            this.PanelHAND.SuspendLayout();
             this.panelCharts.SuspendLayout();
             this.PanelEMG.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -427,11 +443,23 @@
             // panelConnect
             // 
             this.panelConnect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.panelConnect.Controls.Add(this.lblConnectionTitle);
             this.panelConnect.Controls.Add(this.panel8);
-            this.panelConnect.Location = new System.Drawing.Point(35, 275);
+            this.panelConnect.Location = new System.Drawing.Point(19, 255);
             this.panelConnect.Name = "panelConnect";
-            this.panelConnect.Size = new System.Drawing.Size(154, 103);
+            this.panelConnect.Size = new System.Drawing.Size(329, 167);
             this.panelConnect.TabIndex = 3;
+            // 
+            // lblConnectionTitle
+            // 
+            this.lblConnectionTitle.Font = new System.Drawing.Font("Segoe UI Light", 30F);
+            this.lblConnectionTitle.ForeColor = System.Drawing.Color.Red;
+            this.lblConnectionTitle.Location = new System.Drawing.Point(41, 33);
+            this.lblConnectionTitle.Name = "lblConnectionTitle";
+            this.lblConnectionTitle.Size = new System.Drawing.Size(844, 73);
+            this.lblConnectionTitle.TabIndex = 3;
+            this.lblConnectionTitle.Text = "Wellcome Choose a Device";
+            this.lblConnectionTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel8
             // 
@@ -442,6 +470,7 @@
             this.panel8.Controls.Add(this.label3);
             this.panel8.Controls.Add(this.txtIP);
             this.panel8.Controls.Add(this.label2);
+            this.panel8.Enabled = false;
             this.panel8.Location = new System.Drawing.Point(297, 129);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(321, 438);
@@ -508,133 +537,340 @@
             // 
             // panelControls
             // 
-            this.panelControls.Controls.Add(this.label7);
-            this.panelControls.Controls.Add(this.label8);
-            this.panelControls.Controls.Add(this.label6);
-            this.panelControls.Controls.Add(this.label5);
-            this.panelControls.Controls.Add(this.label4);
-            this.panelControls.Controls.Add(this.trPinky);
-            this.panelControls.Controls.Add(this.trRing);
-            this.panelControls.Controls.Add(this.trMiddle);
-            this.panelControls.Controls.Add(this.trIndex);
-            this.panelControls.Controls.Add(this.trThumb);
             this.panelControls.Location = new System.Drawing.Point(51, 146);
             this.panelControls.Name = "panelControls";
             this.panelControls.Size = new System.Drawing.Size(138, 66);
             this.panelControls.TabIndex = 3;
             // 
+            // PanelHAND
+            // 
+            this.PanelHAND.Controls.Add(this.panel5);
+            this.PanelHAND.Controls.Add(this.label7);
+            this.PanelHAND.Controls.Add(this.label8);
+            this.PanelHAND.Controls.Add(this.label6);
+            this.PanelHAND.Controls.Add(this.label5);
+            this.PanelHAND.Controls.Add(this.lblTemppinky);
+            this.PanelHAND.Controls.Add(this.pinkyCur);
+            this.PanelHAND.Controls.Add(this.lblMiddleFsr);
+            this.PanelHAND.Controls.Add(this.lblRingFsr);
+            this.PanelHAND.Controls.Add(this.ringCur);
+            this.PanelHAND.Controls.Add(this.label11);
+            this.PanelHAND.Controls.Add(this.label12);
+            this.PanelHAND.Controls.Add(this.label9);
+            this.PanelHAND.Controls.Add(this.middleCur);
+            this.PanelHAND.Controls.Add(this.lblThumbFsr);
+            this.PanelHAND.Controls.Add(this.lblIndexFsr);
+            this.PanelHAND.Controls.Add(this.indexCur);
+            this.PanelHAND.Controls.Add(this.thumbCur);
+            this.PanelHAND.Controls.Add(this.label4);
+            this.PanelHAND.Controls.Add(this.trPinky);
+            this.PanelHAND.Controls.Add(this.trRing);
+            this.PanelHAND.Controls.Add(this.trMiddle);
+            this.PanelHAND.Controls.Add(this.trIndex);
+            this.PanelHAND.Controls.Add(this.trThumb);
+            this.PanelHAND.Controls.Add(this.btnStartHand);
+            this.PanelHAND.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelHAND.Location = new System.Drawing.Point(0, 0);
+            this.PanelHAND.Name = "PanelHAND";
+            this.PanelHAND.Size = new System.Drawing.Size(915, 697);
+            this.PanelHAND.TabIndex = 6;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.Navy;
+            this.panel5.Controls.Add(this.label10);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(915, 100);
+            this.panel5.TabIndex = 12;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI Light", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(335, 27);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(245, 46);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Hand Controller";
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label7.Location = new System.Drawing.Point(475, 301);
+            this.label7.Location = new System.Drawing.Point(599, 425);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(45, 21);
-            this.label7.TabIndex = 1;
+            this.label7.TabIndex = 7;
             this.label7.Text = "Pinky";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label8.Location = new System.Drawing.Point(252, 167);
+            this.label8.Location = new System.Drawing.Point(410, 291);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(55, 21);
-            this.label8.TabIndex = 1;
+            this.label8.TabIndex = 8;
             this.label8.Text = "Middle";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label6.Location = new System.Drawing.Point(365, 211);
+            this.label6.Location = new System.Drawing.Point(511, 329);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(40, 21);
-            this.label6.TabIndex = 1;
+            this.label6.TabIndex = 9;
             this.label6.Text = "Ring";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label5.Location = new System.Drawing.Point(149, 213);
+            this.label5.Location = new System.Drawing.Point(325, 366);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 21);
-            this.label5.TabIndex = 1;
+            this.label5.TabIndex = 10;
             this.label5.Text = "Index";
+            // 
+            // lblTemppinky
+            // 
+            this.lblTemppinky.AutoSize = true;
+            this.lblTemppinky.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblTemppinky.ForeColor = System.Drawing.Color.Blue;
+            this.lblTemppinky.Location = new System.Drawing.Point(604, 469);
+            this.lblTemppinky.Name = "lblTemppinky";
+            this.lblTemppinky.Size = new System.Drawing.Size(32, 21);
+            this.lblTemppinky.TabIndex = 11;
+            this.lblTemppinky.Text = "100";
+            this.lblTemppinky.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pinkyCur
+            // 
+            this.pinkyCur.AutoSize = true;
+            this.pinkyCur.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.pinkyCur.ForeColor = System.Drawing.Color.Red;
+            this.pinkyCur.Location = new System.Drawing.Point(604, 448);
+            this.pinkyCur.Name = "pinkyCur";
+            this.pinkyCur.Size = new System.Drawing.Size(32, 21);
+            this.pinkyCur.TabIndex = 11;
+            this.pinkyCur.Text = "100";
+            this.pinkyCur.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblMiddleFsr
+            // 
+            this.lblMiddleFsr.AutoSize = true;
+            this.lblMiddleFsr.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblMiddleFsr.ForeColor = System.Drawing.Color.Green;
+            this.lblMiddleFsr.Location = new System.Drawing.Point(420, 332);
+            this.lblMiddleFsr.Name = "lblMiddleFsr";
+            this.lblMiddleFsr.Size = new System.Drawing.Size(32, 21);
+            this.lblMiddleFsr.TabIndex = 11;
+            this.lblMiddleFsr.Text = "100";
+            this.lblMiddleFsr.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRingFsr
+            // 
+            this.lblRingFsr.AutoSize = true;
+            this.lblRingFsr.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblRingFsr.ForeColor = System.Drawing.Color.Green;
+            this.lblRingFsr.Location = new System.Drawing.Point(514, 369);
+            this.lblRingFsr.Name = "lblRingFsr";
+            this.lblRingFsr.Size = new System.Drawing.Size(32, 21);
+            this.lblRingFsr.TabIndex = 11;
+            this.lblRingFsr.Text = "100";
+            this.lblRingFsr.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ringCur
+            // 
+            this.ringCur.AutoSize = true;
+            this.ringCur.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.ringCur.ForeColor = System.Drawing.Color.Red;
+            this.ringCur.Location = new System.Drawing.Point(514, 350);
+            this.ringCur.Name = "ringCur";
+            this.ringCur.Size = new System.Drawing.Size(32, 21);
+            this.ringCur.TabIndex = 11;
+            this.ringCur.Text = "100";
+            this.ringCur.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI Light", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label11.ForeColor = System.Drawing.Color.Blue;
+            this.label11.Location = new System.Drawing.Point(737, 235);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(169, 37);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "Temperature";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Light", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label12.ForeColor = System.Drawing.Color.Green;
+            this.label12.Location = new System.Drawing.Point(740, 280);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(60, 37);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "FSR";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI Light", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(737, 190);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(108, 37);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "Current";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // middleCur
+            // 
+            this.middleCur.AutoSize = true;
+            this.middleCur.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.middleCur.ForeColor = System.Drawing.Color.Red;
+            this.middleCur.Location = new System.Drawing.Point(420, 312);
+            this.middleCur.Name = "middleCur";
+            this.middleCur.Size = new System.Drawing.Size(32, 21);
+            this.middleCur.TabIndex = 11;
+            this.middleCur.Text = "100";
+            this.middleCur.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblThumbFsr
+            // 
+            this.lblThumbFsr.AutoSize = true;
+            this.lblThumbFsr.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblThumbFsr.ForeColor = System.Drawing.Color.Green;
+            this.lblThumbFsr.Location = new System.Drawing.Point(229, 510);
+            this.lblThumbFsr.Name = "lblThumbFsr";
+            this.lblThumbFsr.Size = new System.Drawing.Size(32, 21);
+            this.lblThumbFsr.TabIndex = 11;
+            this.lblThumbFsr.Text = "100";
+            this.lblThumbFsr.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblIndexFsr
+            // 
+            this.lblIndexFsr.AutoSize = true;
+            this.lblIndexFsr.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblIndexFsr.ForeColor = System.Drawing.Color.Green;
+            this.lblIndexFsr.Location = new System.Drawing.Point(332, 407);
+            this.lblIndexFsr.Name = "lblIndexFsr";
+            this.lblIndexFsr.Size = new System.Drawing.Size(32, 21);
+            this.lblIndexFsr.TabIndex = 11;
+            this.lblIndexFsr.Text = "100";
+            this.lblIndexFsr.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // indexCur
+            // 
+            this.indexCur.AutoSize = true;
+            this.indexCur.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.indexCur.ForeColor = System.Drawing.Color.Red;
+            this.indexCur.Location = new System.Drawing.Point(332, 387);
+            this.indexCur.Name = "indexCur";
+            this.indexCur.Size = new System.Drawing.Size(32, 21);
+            this.indexCur.TabIndex = 11;
+            this.indexCur.Text = "100";
+            this.indexCur.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // thumbCur
+            // 
+            this.thumbCur.AutoSize = true;
+            this.thumbCur.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.thumbCur.ForeColor = System.Drawing.Color.Red;
+            this.thumbCur.Location = new System.Drawing.Point(229, 489);
+            this.thumbCur.Name = "thumbCur";
+            this.thumbCur.Size = new System.Drawing.Size(32, 21);
+            this.thumbCur.TabIndex = 11;
+            this.thumbCur.Text = "100";
+            this.thumbCur.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label4.Location = new System.Drawing.Point(45, 301);
+            this.label4.Location = new System.Drawing.Point(218, 468);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 21);
-            this.label4.TabIndex = 1;
+            this.label4.TabIndex = 11;
             this.label4.Text = "Thumb";
             // 
             // trPinky
             // 
-            this.trPinky.Location = new System.Drawing.Point(475, 146);
+            this.trPinky.Location = new System.Drawing.Point(599, 270);
             this.trPinky.Maximum = 100;
-            this.trPinky.Minimum = -100;
             this.trPinky.Name = "trPinky";
             this.trPinky.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trPinky.Size = new System.Drawing.Size(45, 161);
-            this.trPinky.TabIndex = 0;
+            this.trPinky.TabIndex = 2;
             this.trPinky.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trPinky.Scroll += new System.EventHandler(this.trPinky_Scroll);
             // 
             // trRing
             // 
-            this.trRing.Location = new System.Drawing.Point(362, 55);
+            this.trRing.Location = new System.Drawing.Point(508, 173);
             this.trRing.Maximum = 100;
-            this.trRing.Minimum = -100;
             this.trRing.Name = "trRing";
             this.trRing.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trRing.Size = new System.Drawing.Size(45, 161);
-            this.trRing.TabIndex = 0;
+            this.trRing.TabIndex = 3;
             this.trRing.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trRing.Scroll += new System.EventHandler(this.trRing_Scroll);
             // 
             // trMiddle
             // 
-            this.trMiddle.Location = new System.Drawing.Point(256, 9);
+            this.trMiddle.Location = new System.Drawing.Point(414, 133);
             this.trMiddle.Maximum = 100;
-            this.trMiddle.Minimum = -100;
             this.trMiddle.Name = "trMiddle";
             this.trMiddle.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trMiddle.Size = new System.Drawing.Size(45, 161);
-            this.trMiddle.TabIndex = 0;
+            this.trMiddle.TabIndex = 4;
             this.trMiddle.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trMiddle.Scroll += new System.EventHandler(this.trMiddle_Scroll);
             // 
             // trIndex
             // 
-            this.trIndex.Location = new System.Drawing.Point(150, 55);
+            this.trIndex.Location = new System.Drawing.Point(326, 208);
             this.trIndex.Maximum = 100;
-            this.trIndex.Minimum = -100;
             this.trIndex.Name = "trIndex";
             this.trIndex.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trIndex.Size = new System.Drawing.Size(45, 161);
-            this.trIndex.TabIndex = 0;
+            this.trIndex.TabIndex = 5;
             this.trIndex.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trIndex.Scroll += new System.EventHandler(this.trIndex_Scroll);
             // 
             // trThumb
             // 
-            this.trThumb.Location = new System.Drawing.Point(51, 146);
+            this.trThumb.Location = new System.Drawing.Point(224, 313);
             this.trThumb.Maximum = 100;
-            this.trThumb.Minimum = -100;
             this.trThumb.Name = "trThumb";
             this.trThumb.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trThumb.Size = new System.Drawing.Size(45, 161);
-            this.trThumb.TabIndex = 0;
+            this.trThumb.TabIndex = 6;
             this.trThumb.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trThumb.Scroll += new System.EventHandler(this.trThumb_Scroll);
             // 
-            // PanelHAND
+            // btnStartHand
             // 
-            this.PanelHAND.Controls.Add(this.button1);
-            this.PanelHAND.Location = new System.Drawing.Point(216, 235);
-            this.PanelHAND.Name = "PanelHAND";
-            this.PanelHAND.Size = new System.Drawing.Size(200, 100);
-            this.PanelHAND.TabIndex = 6;
+            this.btnStartHand.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnStartHand.FlatAppearance.BorderSize = 0;
+            this.btnStartHand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStartHand.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.btnStartHand.ForeColor = System.Drawing.Color.White;
+            this.btnStartHand.Location = new System.Drawing.Point(383, 586);
+            this.btnStartHand.Name = "btnStartHand";
+            this.btnStartHand.Size = new System.Drawing.Size(131, 48);
+            this.btnStartHand.TabIndex = 0;
+            this.btnStartHand.Text = "AutoReceive";
+            this.btnStartHand.UseVisualStyleBackColor = false;
+            this.btnStartHand.Click += new System.EventHandler(this.button1_Click);
             // 
             // panelCharts
             // 
@@ -738,10 +974,9 @@
             this.PanelEMG.Controls.Add(this.EmgChart3);
             this.PanelEMG.Controls.Add(this.EmgChart);
             this.PanelEMG.Controls.Add(this.btnStart);
-            this.PanelEMG.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelEMG.Location = new System.Drawing.Point(0, 0);
+            this.PanelEMG.Location = new System.Drawing.Point(654, 27);
             this.PanelEMG.Name = "PanelEMG";
-            this.PanelEMG.Size = new System.Drawing.Size(915, 697);
+            this.PanelEMG.Size = new System.Drawing.Size(214, 122);
             this.PanelEMG.TabIndex = 4;
             this.PanelEMG.VisibleChanged += new System.EventHandler(this.PanelEMG_VisibleChanged);
             // 
@@ -849,11 +1084,11 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.PanelEMG);
             this.panel4.Controls.Add(this.PanelHAND);
             this.panel4.Controls.Add(this.panelConnect);
-            this.panel4.Controls.Add(this.panelCharts);
             this.panel4.Controls.Add(this.panelControls);
+            this.panel4.Controls.Add(this.PanelEMG);
+            this.panel4.Controls.Add(this.panelCharts);
             this.panel4.Controls.Add(this.PanelGLOVE);
             this.panel4.Controls.Add(this.PanelRFID);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -861,16 +1096,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(915, 697);
             this.panel4.TabIndex = 8;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(362, 57);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MainPage
             // 
@@ -896,14 +1121,15 @@
             this.panelConnect.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            this.panelControls.ResumeLayout(false);
-            this.panelControls.PerformLayout();
+            this.PanelHAND.ResumeLayout(false);
+            this.PanelHAND.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trPinky)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trRing)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trMiddle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trIndex)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trThumb)).EndInit();
-            this.PanelHAND.ResumeLayout(false);
             this.panelCharts.ResumeLayout(false);
             this.PanelEMG.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -953,16 +1179,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private LiveCharts.WinForms.CartesianChart ChartAll;
         private System.Windows.Forms.Button btnChartAdd;
-        private System.Windows.Forms.TrackBar trThumb;
-        private System.Windows.Forms.TrackBar trPinky;
-        private System.Windows.Forms.TrackBar trRing;
-        private System.Windows.Forms.TrackBar trMiddle;
-        private System.Windows.Forms.TrackBar trIndex;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnStart;
         private LiveCharts.WinForms.CartesianChart EmgChart;
         private System.Windows.Forms.Button btnRefreshCharts;
@@ -974,6 +1190,32 @@
         private LiveCharts.WinForms.CartesianChart EmgChart3;
         private LiveCharts.WinForms.CartesianChart EmgChart7;
         private LiveCharts.WinForms.CartesianChart EmgChart6;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnStartHand;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TrackBar trPinky;
+        private System.Windows.Forms.TrackBar trRing;
+        private System.Windows.Forms.TrackBar trMiddle;
+        private System.Windows.Forms.TrackBar trIndex;
+        private System.Windows.Forms.TrackBar trThumb;
+        private System.Windows.Forms.Label pinkyCur;
+        private System.Windows.Forms.Label ringCur;
+        private System.Windows.Forms.Label middleCur;
+        private System.Windows.Forms.Label indexCur;
+        private System.Windows.Forms.Label thumbCur;
+        private System.Windows.Forms.Label lblTemppinky;
+        private System.Windows.Forms.Label lblMiddleFsr;
+        private System.Windows.Forms.Label lblRingFsr;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblThumbFsr;
+        private System.Windows.Forms.Label lblIndexFsr;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblConnectionTitle;
     }
 }

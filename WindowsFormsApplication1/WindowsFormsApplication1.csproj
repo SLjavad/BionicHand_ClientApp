@@ -114,6 +114,9 @@
     <Compile Include="Models\Glove.cs" />
     <Compile Include="Models\Hand.cs" />
     <Compile Include="Models\RFID.cs" />
+    <Compile Include="Network\BluetoothCommunication.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Network\SendMessageConfig.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

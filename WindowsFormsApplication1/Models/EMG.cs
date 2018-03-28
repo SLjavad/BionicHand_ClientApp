@@ -8,57 +8,86 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Runtime.InteropServices.ComTypes;
+using WindowsFormsApplication1.Network;
 
 namespace WindowsFormsApplication1.Models
 {
+    public enum EMGGestureEnum
+    {
+        Fist = 1, Open, ToOut, ToIn, Unknown
+    }
     class EMG : TCP_Communication
     {
-        public enum EMGGestureEnum
-        {
-            OpenAll , CloseAll , IndexUp , Pinch
-        }
-
         Int16[] channels = new Int16[8];
         EMGGestureEnum emgGesture;
 
-        CancellationTokenSource cancellationTokenSource;
-        CancellationToken cancellationToken;
+        //CancellationTokenSource cancellationTokenSource;
+        //CancellationToken cancellationToken;
         NetworkStream ns;
 
-         EMGGestureEnum EmgGesture { get => emgGesture; }
+
+        public EMGGestureEnum EmgGesture { get => emgGesture; }
 
         public void StopReceiveMessage()
         {
-            cancellationTokenSource.Cancel();
+            flag = false;
             ns.Close();
         }
 
         private void HandleMessage(string message)
         {
+            //base.OnMessageReceived(new MessageReceiveEventArgs()
+            //{
+            //    Message = message,
+            //    Parameter = null
+            //});
             if (message.StartsWith("EMG8:"))
             {
-                string[] value = message.Split(':')[1].Split(',');
+                string value = message.Split(':')[1].Split('#')[0];
                 MessageReceiveEventArgs receiveEventArgs = new MessageReceiveEventArgs
                 {
-                    DeviceType = "EMG",
-                    Message = message
+                    Parameter = "EMG8",
+                    Message = value
                 };
                 base.OnMessageReceived(receiveEventArgs);
             }
-            else if (message.StartsWith("gesture:"))
+            else if (message.StartsWith("GES:"))
             {
                 emgGesture = (EMGGestureEnum)int.Parse(message.Split(':')[1]);
+                //switch (EmgGesture)
+                //{
+                //    case EMGGestureEnum.Fist:
+                        
+                //        break;
+                //    case EMGGestureEnum.Open:
+                        
+                //        break;
+                //    case EMGGestureEnum.ToOut:
+                        
+                //        break;
+                //    case EMGGestureEnum.ToIn:
+                        
+                //        break;
+                //    case EMGGestureEnum.Unknown:
+                        
+                //        break;
+                //    default:
+                //        break;
+                //}
             }
         }
-
+        bool flag = false;
+        
+        
         public override void StartReceiveMessage()
         {
             ns = GetStream();
-            cancellationTokenSource = new CancellationTokenSource();
-            cancellationToken = cancellationTokenSource.Token;
-
-            Task.Run(() => {
-                while (!cancellationToken.IsCancellationRequested)
+            //cancellationTokenSource = new CancellationTokenSource();
+            //cancellationToken = cancellationTokenSource.Token;
+            flag = true;
+            Task.Run(() =>
+            {
+                while (flag)
                 {
                     try
                     {
@@ -70,7 +99,7 @@ namespace WindowsFormsApplication1.Models
                             Array.Copy(messageByte, Result, a);
                             string message = Encoding.ASCII.GetString(Result);
                             HandleMessage(message);
-                            //string[] message = Encoding.ASCII.GetString(Result).Split(new [] {','}, StringSplitOptions.RemoveEmptyEntries);
+
                             //Process();
                         }
                         else
@@ -86,11 +115,11 @@ namespace WindowsFormsApplication1.Models
                         base.OnConnectionTerminated();
                         break;
                     }
-                    
-                    
+
+
                 }
-            },cancellationToken);
-            
+            });
+
         }
     }
 }

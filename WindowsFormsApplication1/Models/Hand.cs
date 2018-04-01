@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Windows.Documents;
 
 namespace WindowsFormsApplication1.Models
 {
@@ -52,7 +54,23 @@ namespace WindowsFormsApplication1.Models
 
         public override void StartReceiveMessage()
         {
-            ns = GetStream();
+            try
+            {
+                ns = GetStream();
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("non-connected"))
+                {
+                    MessageBox.Show("Module is disconnected \nPlease Connect at first", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                }
+                else
+                {
+                    MessageBox.Show(ex.GetBaseException().ToString() + "\n\nHand Class");
+                }
+                return;
+            }
+            
             flag = true;
             Task.Run(() => {
                 while (flag)
@@ -70,14 +88,16 @@ namespace WindowsFormsApplication1.Models
                         }
                         else
                         {
-                            System.Windows.Forms.MessageBox.Show("Connection terminated");
+                            MessageBox.Show("Connection terminated");
                             base.OnConnectionTerminated();
+                            break;
                         }
                     }
                     catch (IOException ex)
                     {
-                        System.Windows.Forms.MessageBox.Show(ex.Message.Contains("existing connection was forcibly closed") ? "Connection terminated" : ex.GetBaseException().ToString());
+                        MessageBox.Show(ex.Message.Contains("existing connection was forcibly closed") ? "Connection terminated" : ex.GetBaseException().ToString());
                         base.OnConnectionTerminated();
+                        break;
                     }
 
                 }

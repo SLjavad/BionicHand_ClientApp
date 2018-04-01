@@ -33,25 +33,41 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnCharts = new System.Windows.Forms.Button();
             this.btnControls = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnPanelGlove = new System.Windows.Forms.Panel();
             this.pnlGLOVE = new System.Windows.Forms.Panel();
+            this.btnGlove = new System.Windows.Forms.Button();
             this.btnPanelHand = new System.Windows.Forms.Panel();
             this.pnlHAND = new System.Windows.Forms.Panel();
+            this.btnHand = new System.Windows.Forms.Button();
             this.btnPanelRFID = new System.Windows.Forms.Panel();
             this.pnlRFID = new System.Windows.Forms.Panel();
+            this.btnRFID = new System.Windows.Forms.Button();
             this.btnPanelEMG = new System.Windows.Forms.Panel();
             this.pnlEMG = new System.Windows.Forms.Panel();
+            this.btnEMG = new System.Windows.Forms.Button();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.bunifuDragControl2 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.bunifuDragControl3 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.bunifuDragControl4 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.panelConnect = new System.Windows.Forms.Panel();
             this.lblConnectionTitle = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.btnTcpConnect = new System.Windows.Forms.Button();
+            this.txtPort = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtIP = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panelControls = new System.Windows.Forms.Panel();
             this.PanelHAND = new System.Windows.Forms.Panel();
+            this.txtPinkyPos = new System.Windows.Forms.TextBox();
+            this.txtRingPos = new System.Windows.Forms.TextBox();
+            this.txtMiddlePos = new System.Windows.Forms.TextBox();
+            this.txtIndexPos = new System.Windows.Forms.TextBox();
+            this.txtThumbPos = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -63,7 +79,7 @@
             this.lblMiddleFsr = new System.Windows.Forms.Label();
             this.lblRingFsr = new System.Windows.Forms.Label();
             this.ringCur = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.lblRfid = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.middleCur = new System.Windows.Forms.Label();
@@ -86,6 +102,18 @@
             this.ChartAll = new LiveCharts.WinForms.CartesianChart();
             this.bunifuDragControl5 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.PanelEMG = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.btnConnect1ChannelEmg = new System.Windows.Forms.Button();
+            this.btnStart1ChannelEmg = new System.Windows.Forms.Button();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.emg1cChart = new LiveCharts.WinForms.CartesianChart();
+            this.btn1ChannelEmg = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numMax = new System.Windows.Forms.NumericUpDown();
             this.EmgChart5 = new LiveCharts.WinForms.CartesianChart();
             this.EmgChart7 = new LiveCharts.WinForms.CartesianChart();
             this.EmgChart4 = new LiveCharts.WinForms.CartesianChart();
@@ -98,26 +126,16 @@
             this.PanelRFID = new System.Windows.Forms.Panel();
             this.PanelGLOVE = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.lblRfid = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.btnTcpConnect = new System.Windows.Forms.Button();
-            this.txtPort = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtIP = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnGlove = new System.Windows.Forms.Button();
-            this.btnHand = new System.Windows.Forms.Button();
-            this.btnRFID = new System.Windows.Forms.Button();
-            this.btnEMG = new System.Windows.Forms.Button();
-            this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             this.panel1.SuspendLayout();
             this.btnPanelGlove.SuspendLayout();
             this.btnPanelHand.SuspendLayout();
             this.btnPanelRFID.SuspendLayout();
             this.btnPanelEMG.SuspendLayout();
             this.panelConnect.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.PanelHAND.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trPinky)).BeginInit();
@@ -127,9 +145,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.trThumb)).BeginInit();
             this.panelCharts.SuspendLayout();
             this.PanelEMG.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMax)).BeginInit();
             this.panel4.SuspendLayout();
-            this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -165,6 +186,21 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1120, 53);
             this.panel3.TabIndex = 1;
+            // 
+            // bunifuImageButton1
+            // 
+            this.bunifuImageButton1.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuImageButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuImageButton1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton1.Image")));
+            this.bunifuImageButton1.ImageActive = null;
+            this.bunifuImageButton1.Location = new System.Drawing.Point(1075, 8);
+            this.bunifuImageButton1.Name = "bunifuImageButton1";
+            this.bunifuImageButton1.Size = new System.Drawing.Size(33, 39);
+            this.bunifuImageButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.bunifuImageButton1.TabIndex = 0;
+            this.bunifuImageButton1.TabStop = false;
+            this.bunifuImageButton1.Zoom = 20;
+            this.bunifuImageButton1.Click += new System.EventHandler(this.bunifuImageButton1_Click);
             // 
             // btnCharts
             // 
@@ -242,6 +278,28 @@
             this.pnlGLOVE.Size = new System.Drawing.Size(10, 80);
             this.pnlGLOVE.TabIndex = 4;
             // 
+            // btnGlove
+            // 
+            this.btnGlove.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnGlove.FlatAppearance.BorderSize = 0;
+            this.btnGlove.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnGlove.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnGlove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGlove.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnGlove.ForeColor = System.Drawing.Color.White;
+            this.btnGlove.Image = ((System.Drawing.Image)(resources.GetObject("btnGlove.Image")));
+            this.btnGlove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGlove.Location = new System.Drawing.Point(58, 25);
+            this.btnGlove.Name = "btnGlove";
+            this.btnGlove.Size = new System.Drawing.Size(101, 27);
+            this.btnGlove.TabIndex = 0;
+            this.btnGlove.Text = "GLOVE";
+            this.btnGlove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGlove.UseVisualStyleBackColor = true;
+            this.btnGlove.Click += new System.EventHandler(this.btnPanelGlove_Click);
+            this.btnGlove.MouseEnter += new System.EventHandler(this.btnPanelGlove_MouseEnter);
+            this.btnGlove.MouseLeave += new System.EventHandler(this.btnPanelGlove_MouseLeave);
+            // 
             // btnPanelHand
             // 
             this.btnPanelHand.Controls.Add(this.pnlHAND);
@@ -263,6 +321,28 @@
             this.pnlHAND.Name = "pnlHAND";
             this.pnlHAND.Size = new System.Drawing.Size(10, 80);
             this.pnlHAND.TabIndex = 3;
+            // 
+            // btnHand
+            // 
+            this.btnHand.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnHand.FlatAppearance.BorderSize = 0;
+            this.btnHand.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnHand.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnHand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHand.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnHand.ForeColor = System.Drawing.Color.White;
+            this.btnHand.Image = ((System.Drawing.Image)(resources.GetObject("btnHand.Image")));
+            this.btnHand.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHand.Location = new System.Drawing.Point(56, 23);
+            this.btnHand.Name = "btnHand";
+            this.btnHand.Size = new System.Drawing.Size(101, 34);
+            this.btnHand.TabIndex = 0;
+            this.btnHand.Text = "HAND";
+            this.btnHand.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHand.UseVisualStyleBackColor = true;
+            this.btnHand.Click += new System.EventHandler(this.btnPanelHand_Click);
+            this.btnHand.MouseEnter += new System.EventHandler(this.btnPanelHand_MouseEnter);
+            this.btnHand.MouseLeave += new System.EventHandler(this.btnPanelHand_MouseLeave);
             // 
             // btnPanelRFID
             // 
@@ -286,6 +366,28 @@
             this.pnlRFID.Size = new System.Drawing.Size(10, 80);
             this.pnlRFID.TabIndex = 2;
             // 
+            // btnRFID
+            // 
+            this.btnRFID.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnRFID.FlatAppearance.BorderSize = 0;
+            this.btnRFID.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnRFID.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnRFID.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRFID.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnRFID.ForeColor = System.Drawing.Color.White;
+            this.btnRFID.Image = ((System.Drawing.Image)(resources.GetObject("btnRFID.Image")));
+            this.btnRFID.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRFID.Location = new System.Drawing.Point(56, 24);
+            this.btnRFID.Name = "btnRFID";
+            this.btnRFID.Size = new System.Drawing.Size(92, 31);
+            this.btnRFID.TabIndex = 0;
+            this.btnRFID.Text = "RFID";
+            this.btnRFID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRFID.UseVisualStyleBackColor = true;
+            this.btnRFID.Click += new System.EventHandler(this.btnPanelRFID_Click);
+            this.btnRFID.MouseEnter += new System.EventHandler(this.panel5_MouseEnter);
+            this.btnRFID.MouseLeave += new System.EventHandler(this.panel5_MouseLeave);
+            // 
             // btnPanelEMG
             // 
             this.btnPanelEMG.Controls.Add(this.pnlEMG);
@@ -308,6 +410,29 @@
             this.pnlEMG.Name = "pnlEMG";
             this.pnlEMG.Size = new System.Drawing.Size(10, 80);
             this.pnlEMG.TabIndex = 1;
+            // 
+            // btnEMG
+            // 
+            this.btnEMG.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEMG.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnEMG.FlatAppearance.BorderSize = 0;
+            this.btnEMG.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnEMG.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnEMG.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEMG.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnEMG.ForeColor = System.Drawing.Color.White;
+            this.btnEMG.Image = ((System.Drawing.Image)(resources.GetObject("btnEMG.Image")));
+            this.btnEMG.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEMG.Location = new System.Drawing.Point(56, 27);
+            this.btnEMG.Name = "btnEMG";
+            this.btnEMG.Size = new System.Drawing.Size(92, 26);
+            this.btnEMG.TabIndex = 4;
+            this.btnEMG.Text = "EMG";
+            this.btnEMG.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEMG.UseVisualStyleBackColor = true;
+            this.btnEMG.Click += new System.EventHandler(this.btnPanelEMG_Click);
+            this.btnEMG.MouseEnter += new System.EventHandler(this.btnPanelEMG_MouseEnter);
+            this.btnEMG.MouseLeave += new System.EventHandler(this.btnPanelEMG_MouseLeave);
             // 
             // bunifuDragControl1
             // 
@@ -358,6 +483,82 @@
             this.lblConnectionTitle.Text = "Wellcome Choose a Device";
             this.lblConnectionTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // panel8
+            // 
+            this.panel8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel8.BackgroundImage")));
+            this.panel8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel8.Controls.Add(this.btnTcpConnect);
+            this.panel8.Controls.Add(this.txtPort);
+            this.panel8.Controls.Add(this.label3);
+            this.panel8.Controls.Add(this.txtIP);
+            this.panel8.Controls.Add(this.label2);
+            this.panel8.Enabled = false;
+            this.panel8.Location = new System.Drawing.Point(297, 129);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(321, 438);
+            this.panel8.TabIndex = 2;
+            // 
+            // btnTcpConnect
+            // 
+            this.btnTcpConnect.AutoEllipsis = true;
+            this.btnTcpConnect.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnTcpConnect.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTcpConnect.FlatAppearance.BorderSize = 0;
+            this.btnTcpConnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTcpConnect.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnTcpConnect.ForeColor = System.Drawing.Color.White;
+            this.btnTcpConnect.Location = new System.Drawing.Point(66, 343);
+            this.btnTcpConnect.Name = "btnTcpConnect";
+            this.btnTcpConnect.Size = new System.Drawing.Size(198, 45);
+            this.btnTcpConnect.TabIndex = 2;
+            this.btnTcpConnect.Text = "Connect";
+            this.btnTcpConnect.UseVisualStyleBackColor = false;
+            this.btnTcpConnect.Click += new System.EventHandler(this.btnTcpConnect_Click);
+            // 
+            // txtPort
+            // 
+            this.txtPort.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPort.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.txtPort.Location = new System.Drawing.Point(66, 268);
+            this.txtPort.MaxLength = 5;
+            this.txtPort.Name = "txtPort";
+            this.txtPort.Size = new System.Drawing.Size(186, 27);
+            this.txtPort.TabIndex = 1;
+            this.txtPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPort.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtThumbPos_KeyPress);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Light", 15F);
+            this.label3.Location = new System.Drawing.Point(3, 267);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 28);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Port :";
+            // 
+            // txtIP
+            // 
+            this.txtIP.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtIP.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.txtIP.Location = new System.Drawing.Point(66, 187);
+            this.txtIP.Name = "txtIP";
+            this.txtIP.Size = new System.Drawing.Size(186, 27);
+            this.txtIP.TabIndex = 0;
+            this.txtIP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Light", 15F);
+            this.label2.Location = new System.Drawing.Point(21, 187);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(37, 28);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "IP :";
+            // 
             // panelControls
             // 
             this.panelControls.Location = new System.Drawing.Point(51, 146);
@@ -367,6 +568,11 @@
             // 
             // PanelHAND
             // 
+            this.PanelHAND.Controls.Add(this.txtPinkyPos);
+            this.PanelHAND.Controls.Add(this.txtRingPos);
+            this.PanelHAND.Controls.Add(this.txtMiddlePos);
+            this.PanelHAND.Controls.Add(this.txtIndexPos);
+            this.PanelHAND.Controls.Add(this.txtThumbPos);
             this.PanelHAND.Controls.Add(this.panel5);
             this.PanelHAND.Controls.Add(this.label7);
             this.PanelHAND.Controls.Add(this.label8);
@@ -377,7 +583,6 @@
             this.PanelHAND.Controls.Add(this.lblMiddleFsr);
             this.PanelHAND.Controls.Add(this.lblRingFsr);
             this.PanelHAND.Controls.Add(this.ringCur);
-            this.PanelHAND.Controls.Add(this.label11);
             this.PanelHAND.Controls.Add(this.lblRfid);
             this.PanelHAND.Controls.Add(this.label12);
             this.PanelHAND.Controls.Add(this.label9);
@@ -393,11 +598,75 @@
             this.PanelHAND.Controls.Add(this.trIndex);
             this.PanelHAND.Controls.Add(this.trThumb);
             this.PanelHAND.Controls.Add(this.btnStartHand);
-            this.PanelHAND.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelHAND.Location = new System.Drawing.Point(0, 0);
+            this.PanelHAND.Location = new System.Drawing.Point(19, 438);
             this.PanelHAND.Name = "PanelHAND";
-            this.PanelHAND.Size = new System.Drawing.Size(915, 697);
+            this.PanelHAND.Size = new System.Drawing.Size(341, 198);
             this.PanelHAND.TabIndex = 6;
+            // 
+            // txtPinkyPos
+            // 
+            this.txtPinkyPos.Font = new System.Drawing.Font("Segoe UI Light", 15F, System.Drawing.FontStyle.Bold);
+            this.txtPinkyPos.Location = new System.Drawing.Point(595, 238);
+            this.txtPinkyPos.MaxLength = 3;
+            this.txtPinkyPos.Name = "txtPinkyPos";
+            this.txtPinkyPos.Size = new System.Drawing.Size(49, 34);
+            this.txtPinkyPos.TabIndex = 13;
+            this.txtPinkyPos.Text = "0";
+            this.txtPinkyPos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPinkyPos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtThumbPos_KeyDown);
+            this.txtPinkyPos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtThumbPos_KeyPress);
+            // 
+            // txtRingPos
+            // 
+            this.txtRingPos.Font = new System.Drawing.Font("Segoe UI Light", 15F, System.Drawing.FontStyle.Bold);
+            this.txtRingPos.Location = new System.Drawing.Point(505, 139);
+            this.txtRingPos.MaxLength = 3;
+            this.txtRingPos.Name = "txtRingPos";
+            this.txtRingPos.Size = new System.Drawing.Size(49, 34);
+            this.txtRingPos.TabIndex = 13;
+            this.txtRingPos.Text = "0";
+            this.txtRingPos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRingPos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtThumbPos_KeyDown);
+            this.txtRingPos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtThumbPos_KeyPress);
+            // 
+            // txtMiddlePos
+            // 
+            this.txtMiddlePos.Font = new System.Drawing.Font("Segoe UI Light", 15F, System.Drawing.FontStyle.Bold);
+            this.txtMiddlePos.Location = new System.Drawing.Point(410, 103);
+            this.txtMiddlePos.MaxLength = 3;
+            this.txtMiddlePos.Name = "txtMiddlePos";
+            this.txtMiddlePos.Size = new System.Drawing.Size(49, 34);
+            this.txtMiddlePos.TabIndex = 13;
+            this.txtMiddlePos.Text = "0";
+            this.txtMiddlePos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtMiddlePos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtThumbPos_KeyDown);
+            this.txtMiddlePos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtThumbPos_KeyPress);
+            // 
+            // txtIndexPos
+            // 
+            this.txtIndexPos.Font = new System.Drawing.Font("Segoe UI Light", 15F, System.Drawing.FontStyle.Bold);
+            this.txtIndexPos.Location = new System.Drawing.Point(321, 178);
+            this.txtIndexPos.MaxLength = 3;
+            this.txtIndexPos.Name = "txtIndexPos";
+            this.txtIndexPos.Size = new System.Drawing.Size(49, 34);
+            this.txtIndexPos.TabIndex = 13;
+            this.txtIndexPos.Text = "0";
+            this.txtIndexPos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtIndexPos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtThumbPos_KeyDown);
+            this.txtIndexPos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtThumbPos_KeyPress);
+            // 
+            // txtThumbPos
+            // 
+            this.txtThumbPos.Font = new System.Drawing.Font("Segoe UI Light", 15F, System.Drawing.FontStyle.Bold);
+            this.txtThumbPos.Location = new System.Drawing.Point(220, 282);
+            this.txtThumbPos.MaxLength = 3;
+            this.txtThumbPos.Name = "txtThumbPos";
+            this.txtThumbPos.Size = new System.Drawing.Size(49, 34);
+            this.txtThumbPos.TabIndex = 13;
+            this.txtThumbPos.Text = "0";
+            this.txtThumbPos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtThumbPos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtThumbPos_KeyDown);
+            this.txtThumbPos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtThumbPos_KeyPress);
             // 
             // panel5
             // 
@@ -406,7 +675,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(915, 100);
+            this.panel5.Size = new System.Drawing.Size(341, 100);
             this.panel5.TabIndex = 12;
             // 
             // label10
@@ -520,24 +789,24 @@
             this.ringCur.Text = "100";
             this.ringCur.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label11
+            // lblRfid
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI Light", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label11.ForeColor = System.Drawing.Color.Blue;
-            this.label11.Location = new System.Drawing.Point(737, 235);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(169, 37);
-            this.label11.TabIndex = 11;
-            this.label11.Text = "Temperature";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblRfid.AutoSize = true;
+            this.lblRfid.Font = new System.Drawing.Font("Segoe UI Light", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblRfid.ForeColor = System.Drawing.Color.Black;
+            this.lblRfid.Location = new System.Drawing.Point(736, 356);
+            this.lblRfid.Name = "lblRfid";
+            this.lblRfid.Size = new System.Drawing.Size(88, 37);
+            this.lblRfid.TabIndex = 11;
+            this.lblRfid.Text = "RFID :";
+            this.lblRfid.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI Light", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label12.ForeColor = System.Drawing.Color.Green;
-            this.label12.Location = new System.Drawing.Point(740, 280);
+            this.label12.Location = new System.Drawing.Point(736, 235);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(60, 37);
             this.label12.TabIndex = 11;
@@ -549,7 +818,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI Light", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Location = new System.Drawing.Point(737, 190);
+            this.label9.Location = new System.Drawing.Point(736, 190);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(108, 37);
             this.label9.TabIndex = 11;
@@ -790,6 +1059,9 @@
             // 
             // PanelEMG
             // 
+            this.PanelEMG.Controls.Add(this.panel6);
+            this.PanelEMG.Controls.Add(this.btn1ChannelEmg);
+            this.PanelEMG.Controls.Add(this.groupBox1);
             this.PanelEMG.Controls.Add(this.EmgChart5);
             this.PanelEMG.Controls.Add(this.EmgChart7);
             this.PanelEMG.Controls.Add(this.EmgChart4);
@@ -799,11 +1071,147 @@
             this.PanelEMG.Controls.Add(this.EmgChart3);
             this.PanelEMG.Controls.Add(this.EmgChart);
             this.PanelEMG.Controls.Add(this.btnStart);
-            this.PanelEMG.Location = new System.Drawing.Point(654, 27);
+            this.PanelEMG.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelEMG.Location = new System.Drawing.Point(0, 0);
             this.PanelEMG.Name = "PanelEMG";
-            this.PanelEMG.Size = new System.Drawing.Size(214, 122);
+            this.PanelEMG.Size = new System.Drawing.Size(915, 697);
             this.PanelEMG.TabIndex = 4;
             this.PanelEMG.VisibleChanged += new System.EventHandler(this.PanelEMG_VisibleChanged);
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.btnConnect1ChannelEmg);
+            this.panel6.Controls.Add(this.btnStart1ChannelEmg);
+            this.panel6.Controls.Add(this.panel7);
+            this.panel6.Controls.Add(this.emg1cChart);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(915, 697);
+            this.panel6.TabIndex = 8;
+            // 
+            // btnConnect1ChannelEmg
+            // 
+            this.btnConnect1ChannelEmg.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnConnect1ChannelEmg.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConnect1ChannelEmg.FlatAppearance.BorderSize = 0;
+            this.btnConnect1ChannelEmg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConnect1ChannelEmg.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnConnect1ChannelEmg.ForeColor = System.Drawing.Color.White;
+            this.btnConnect1ChannelEmg.Location = new System.Drawing.Point(603, 535);
+            this.btnConnect1ChannelEmg.Name = "btnConnect1ChannelEmg";
+            this.btnConnect1ChannelEmg.Size = new System.Drawing.Size(112, 50);
+            this.btnConnect1ChannelEmg.TabIndex = 2;
+            this.btnConnect1ChannelEmg.Text = "Connect";
+            this.btnConnect1ChannelEmg.UseVisualStyleBackColor = false;
+            this.btnConnect1ChannelEmg.Click += new System.EventHandler(this.btnConnect1ChannelEmg_Click);
+            // 
+            // btnStart1ChannelEmg
+            // 
+            this.btnStart1ChannelEmg.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnStart1ChannelEmg.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnStart1ChannelEmg.Enabled = false;
+            this.btnStart1ChannelEmg.FlatAppearance.BorderSize = 0;
+            this.btnStart1ChannelEmg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStart1ChannelEmg.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnStart1ChannelEmg.ForeColor = System.Drawing.Color.White;
+            this.btnStart1ChannelEmg.Location = new System.Drawing.Point(751, 535);
+            this.btnStart1ChannelEmg.Name = "btnStart1ChannelEmg";
+            this.btnStart1ChannelEmg.Size = new System.Drawing.Size(112, 50);
+            this.btnStart1ChannelEmg.TabIndex = 2;
+            this.btnStart1ChannelEmg.Text = "Start";
+            this.btnStart1ChannelEmg.UseVisualStyleBackColor = false;
+            this.btnStart1ChannelEmg.Click += new System.EventHandler(this.btnStart1ChannelEmg_Click);
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.Navy;
+            this.panel7.Controls.Add(this.label14);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(915, 100);
+            this.panel7.TabIndex = 1;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI Light", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(342, 27);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(230, 46);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "1 Channel Emg";
+            // 
+            // emg1cChart
+            // 
+            this.emg1cChart.BackColor = System.Drawing.Color.White;
+            this.emg1cChart.Location = new System.Drawing.Point(54, 109);
+            this.emg1cChart.Name = "emg1cChart";
+            this.emg1cChart.Size = new System.Drawing.Size(814, 362);
+            this.emg1cChart.TabIndex = 0;
+            this.emg1cChart.Text = "cartesianChart1";
+            // 
+            // btn1ChannelEmg
+            // 
+            this.btn1ChannelEmg.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btn1ChannelEmg.FlatAppearance.BorderSize = 0;
+            this.btn1ChannelEmg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn1ChannelEmg.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btn1ChannelEmg.ForeColor = System.Drawing.Color.White;
+            this.btn1ChannelEmg.Location = new System.Drawing.Point(627, 624);
+            this.btn1ChannelEmg.Name = "btn1ChannelEmg";
+            this.btn1ChannelEmg.Size = new System.Drawing.Size(137, 54);
+            this.btn1ChannelEmg.TabIndex = 7;
+            this.btn1ChannelEmg.Text = "1 Channel Emg";
+            this.btn1ChannelEmg.UseVisualStyleBackColor = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.numericUpDown2);
+            this.groupBox1.Controls.Add(this.numMax);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.groupBox1.Location = new System.Drawing.Point(608, 465);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(295, 100);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Threshold";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(7, 57);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(40, 19);
+            this.label13.TabIndex = 6;
+            this.label13.Text = "Min :";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(7, 26);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(42, 19);
+            this.label11.TabIndex = 6;
+            this.label11.Text = "Max :";
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(55, 55);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(52, 25);
+            this.numericUpDown2.TabIndex = 5;
+            // 
+            // numMax
+            // 
+            this.numMax.Location = new System.Drawing.Point(55, 24);
+            this.numMax.Name = "numMax";
+            this.numMax.Size = new System.Drawing.Size(52, 25);
+            this.numMax.TabIndex = 5;
             // 
             // EmgChart5
             // 
@@ -885,7 +1293,7 @@
             this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStart.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnStart.ForeColor = System.Drawing.Color.White;
-            this.btnStart.Location = new System.Drawing.Point(706, 571);
+            this.btnStart.Location = new System.Drawing.Point(795, 624);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(108, 54);
             this.btnStart.TabIndex = 1;
@@ -909,10 +1317,10 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.PanelEMG);
             this.panel4.Controls.Add(this.PanelHAND);
             this.panel4.Controls.Add(this.panelConnect);
             this.panel4.Controls.Add(this.panelControls);
-            this.panel4.Controls.Add(this.PanelEMG);
             this.panel4.Controls.Add(this.panelCharts);
             this.panel4.Controls.Add(this.PanelGLOVE);
             this.panel4.Controls.Add(this.PanelRFID);
@@ -921,196 +1329,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(915, 697);
             this.panel4.TabIndex = 8;
-            // 
-            // lblRfid
-            // 
-            this.lblRfid.AutoSize = true;
-            this.lblRfid.Font = new System.Drawing.Font("Segoe UI Light", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblRfid.ForeColor = System.Drawing.Color.Green;
-            this.lblRfid.Location = new System.Drawing.Point(737, 476);
-            this.lblRfid.Name = "lblRfid";
-            this.lblRfid.Size = new System.Drawing.Size(88, 37);
-            this.lblRfid.TabIndex = 11;
-            this.lblRfid.Text = "RFID :";
-            this.lblRfid.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel8
-            // 
-            this.panel8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel8.BackgroundImage")));
-            this.panel8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel8.Controls.Add(this.btnTcpConnect);
-            this.panel8.Controls.Add(this.txtPort);
-            this.panel8.Controls.Add(this.label3);
-            this.panel8.Controls.Add(this.txtIP);
-            this.panel8.Controls.Add(this.label2);
-            this.panel8.Enabled = false;
-            this.panel8.Location = new System.Drawing.Point(297, 129);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(321, 438);
-            this.panel8.TabIndex = 2;
-            // 
-            // btnTcpConnect
-            // 
-            this.btnTcpConnect.AutoEllipsis = true;
-            this.btnTcpConnect.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btnTcpConnect.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTcpConnect.FlatAppearance.BorderSize = 0;
-            this.btnTcpConnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTcpConnect.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnTcpConnect.ForeColor = System.Drawing.Color.White;
-            this.btnTcpConnect.Location = new System.Drawing.Point(66, 343);
-            this.btnTcpConnect.Name = "btnTcpConnect";
-            this.btnTcpConnect.Size = new System.Drawing.Size(198, 45);
-            this.btnTcpConnect.TabIndex = 2;
-            this.btnTcpConnect.Text = "Connect";
-            this.btnTcpConnect.UseVisualStyleBackColor = false;
-            this.btnTcpConnect.Click += new System.EventHandler(this.btnTcpConnect_Click);
-            // 
-            // txtPort
-            // 
-            this.txtPort.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPort.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtPort.Location = new System.Drawing.Point(66, 268);
-            this.txtPort.Name = "txtPort";
-            this.txtPort.Size = new System.Drawing.Size(186, 27);
-            this.txtPort.TabIndex = 1;
-            this.txtPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Light", 15F);
-            this.label3.Location = new System.Drawing.Point(3, 267);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 28);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Port :";
-            // 
-            // txtIP
-            // 
-            this.txtIP.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtIP.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtIP.Location = new System.Drawing.Point(66, 187);
-            this.txtIP.Name = "txtIP";
-            this.txtIP.Size = new System.Drawing.Size(186, 27);
-            this.txtIP.TabIndex = 0;
-            this.txtIP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Light", 15F);
-            this.label2.Location = new System.Drawing.Point(21, 187);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 28);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "IP :";
-            // 
-            // btnGlove
-            // 
-            this.btnGlove.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnGlove.FlatAppearance.BorderSize = 0;
-            this.btnGlove.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnGlove.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnGlove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGlove.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnGlove.ForeColor = System.Drawing.Color.White;
-            this.btnGlove.Image = ((System.Drawing.Image)(resources.GetObject("btnGlove.Image")));
-            this.btnGlove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGlove.Location = new System.Drawing.Point(58, 25);
-            this.btnGlove.Name = "btnGlove";
-            this.btnGlove.Size = new System.Drawing.Size(101, 27);
-            this.btnGlove.TabIndex = 0;
-            this.btnGlove.Text = "GLOVE";
-            this.btnGlove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGlove.UseVisualStyleBackColor = true;
-            this.btnGlove.Click += new System.EventHandler(this.btnPanelGlove_Click);
-            this.btnGlove.MouseEnter += new System.EventHandler(this.btnPanelGlove_MouseEnter);
-            this.btnGlove.MouseLeave += new System.EventHandler(this.btnPanelGlove_MouseLeave);
-            // 
-            // btnHand
-            // 
-            this.btnHand.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnHand.FlatAppearance.BorderSize = 0;
-            this.btnHand.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnHand.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnHand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHand.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnHand.ForeColor = System.Drawing.Color.White;
-            this.btnHand.Image = ((System.Drawing.Image)(resources.GetObject("btnHand.Image")));
-            this.btnHand.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHand.Location = new System.Drawing.Point(56, 23);
-            this.btnHand.Name = "btnHand";
-            this.btnHand.Size = new System.Drawing.Size(101, 34);
-            this.btnHand.TabIndex = 0;
-            this.btnHand.Text = "HAND";
-            this.btnHand.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnHand.UseVisualStyleBackColor = true;
-            this.btnHand.Click += new System.EventHandler(this.btnPanelHand_Click);
-            this.btnHand.MouseEnter += new System.EventHandler(this.btnPanelHand_MouseEnter);
-            this.btnHand.MouseLeave += new System.EventHandler(this.btnPanelHand_MouseLeave);
-            // 
-            // btnRFID
-            // 
-            this.btnRFID.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnRFID.FlatAppearance.BorderSize = 0;
-            this.btnRFID.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnRFID.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnRFID.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRFID.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnRFID.ForeColor = System.Drawing.Color.White;
-            this.btnRFID.Image = ((System.Drawing.Image)(resources.GetObject("btnRFID.Image")));
-            this.btnRFID.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRFID.Location = new System.Drawing.Point(56, 24);
-            this.btnRFID.Name = "btnRFID";
-            this.btnRFID.Size = new System.Drawing.Size(92, 31);
-            this.btnRFID.TabIndex = 0;
-            this.btnRFID.Text = "RFID";
-            this.btnRFID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnRFID.UseVisualStyleBackColor = true;
-            this.btnRFID.Click += new System.EventHandler(this.btnPanelRFID_Click);
-            this.btnRFID.MouseEnter += new System.EventHandler(this.panel5_MouseEnter);
-            this.btnRFID.MouseLeave += new System.EventHandler(this.panel5_MouseLeave);
-            // 
-            // btnEMG
-            // 
-            this.btnEMG.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEMG.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnEMG.FlatAppearance.BorderSize = 0;
-            this.btnEMG.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnEMG.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnEMG.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEMG.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnEMG.ForeColor = System.Drawing.Color.White;
-            this.btnEMG.Image = ((System.Drawing.Image)(resources.GetObject("btnEMG.Image")));
-            this.btnEMG.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEMG.Location = new System.Drawing.Point(56, 27);
-            this.btnEMG.Name = "btnEMG";
-            this.btnEMG.Size = new System.Drawing.Size(92, 26);
-            this.btnEMG.TabIndex = 4;
-            this.btnEMG.Text = "EMG";
-            this.btnEMG.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEMG.UseVisualStyleBackColor = true;
-            this.btnEMG.Click += new System.EventHandler(this.btnPanelEMG_Click);
-            this.btnEMG.MouseEnter += new System.EventHandler(this.btnPanelEMG_MouseEnter);
-            this.btnEMG.MouseLeave += new System.EventHandler(this.btnPanelEMG_MouseLeave);
-            // 
-            // bunifuImageButton1
-            // 
-            this.bunifuImageButton1.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuImageButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuImageButton1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton1.Image")));
-            this.bunifuImageButton1.ImageActive = null;
-            this.bunifuImageButton1.Location = new System.Drawing.Point(1075, 8);
-            this.bunifuImageButton1.Name = "bunifuImageButton1";
-            this.bunifuImageButton1.Size = new System.Drawing.Size(33, 39);
-            this.bunifuImageButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.bunifuImageButton1.TabIndex = 0;
-            this.bunifuImageButton1.TabStop = false;
-            this.bunifuImageButton1.Zoom = 20;
-            this.bunifuImageButton1.Click += new System.EventHandler(this.bunifuImageButton1_Click);
             // 
             // MainPage
             // 
@@ -1127,12 +1345,15 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.btnPanelGlove.ResumeLayout(false);
             this.btnPanelHand.ResumeLayout(false);
             this.btnPanelRFID.ResumeLayout(false);
             this.btnPanelEMG.ResumeLayout(false);
             this.panelConnect.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.PanelHAND.ResumeLayout(false);
             this.PanelHAND.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -1144,10 +1365,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.trThumb)).EndInit();
             this.panelCharts.ResumeLayout(false);
             this.PanelEMG.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMax)).EndInit();
             this.panel4.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1224,7 +1449,6 @@
         private System.Windows.Forms.Label lblTemppinky;
         private System.Windows.Forms.Label lblMiddleFsr;
         private System.Windows.Forms.Label lblRingFsr;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblThumbFsr;
@@ -1233,5 +1457,22 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label lblConnectionTitle;
         private System.Windows.Forms.Label lblRfid;
+        private System.Windows.Forms.TextBox txtPinkyPos;
+        private System.Windows.Forms.TextBox txtRingPos;
+        private System.Windows.Forms.TextBox txtMiddlePos;
+        private System.Windows.Forms.TextBox txtIndexPos;
+        private System.Windows.Forms.TextBox txtThumbPos;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.NumericUpDown numMax;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.Button btn1ChannelEmg;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button btnStart1ChannelEmg;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label label14;
+        private LiveCharts.WinForms.CartesianChart emg1cChart;
+        private System.Windows.Forms.Button btnConnect1ChannelEmg;
     }
 }

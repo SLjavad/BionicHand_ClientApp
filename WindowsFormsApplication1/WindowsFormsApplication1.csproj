@@ -67,6 +67,9 @@
     <Reference Include="C2DPushGraph">
       <HintPath>..\..\..\..\..\..\Projects\R2T Debugger - Farvardin 94\R2T Debugger\bin\Debug\C2DPushGraph.dll</HintPath>
     </Reference>
+    <Reference Include="InTheHand.Net.Personal, Version=3.5.605.0, Culture=neutral, PublicKeyToken=ea38caa273134499, processorArchitecture=MSIL">
+      <HintPath>..\packages\32feet.NET.3.5.0.0\lib\net\InTheHand.Net.Personal.dll</HintPath>
+    </Reference>
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
     </Reference>
@@ -116,13 +119,12 @@
     </Compile>
     <Compile Include="Models\ChartModel.cs" />
     <Compile Include="Models\EMG.cs" />
+    <Compile Include="Models\EMG1C.cs" />
     <Compile Include="Models\Finger.cs" />
     <Compile Include="Models\Glove.cs" />
     <Compile Include="Models\Hand.cs" />
     <Compile Include="Models\RFID.cs" />
-    <Compile Include="Network\BluetoothCommunication.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Network\BluetoothCommunication.cs" />
     <Compile Include="Network\SendMessageConfig.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

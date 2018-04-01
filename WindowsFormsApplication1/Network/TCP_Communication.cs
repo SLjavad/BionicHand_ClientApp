@@ -46,9 +46,20 @@ namespace WindowsFormsApplication1
         // Send TCP
         public void SendMessage(string message)
         {
-            byte[] messageBuffer = Encoding.ASCII.GetBytes(message);
-            NetworkStream networkStream = GetStream();
-            networkStream.Write(messageBuffer, 0, message.Length);
+            try
+            {
+                byte[] messageBuffer = Encoding.ASCII.GetBytes(message);
+                NetworkStream networkStream = GetStream();
+                networkStream.Write(messageBuffer, 0, message.Length);
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("non-connected"))
+                {
+                    MessageBox.Show("Module is disconnected \nPlease Connect at first","Warning",MessageBoxButtons.OK,MessageBoxIcon.Warning,MessageBoxDefaultButton.Button1);
+                }
+            }
+            
         }
         // Receive TCP
         public abstract void StartReceiveMessage();

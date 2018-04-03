@@ -15,6 +15,7 @@ using System.Threading;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.Threading.Tasks;
+using System.Diagnostics.Contracts;
 
 namespace WindowsFormsApplication1
 { 
@@ -57,15 +58,28 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
             panelLists.AddRange(new List<Panel>() { PanelRFID, PanelEMG, PanelHAND, PanelGLOVE, panelConnect, panelControls, panelCharts });
+
+            // EMG 8 Channel
             emg.ConnectionTerminateHandler += Emg_ConnectionTerminateHandler;
             //emg.ReceiveMessageHandler += Emg_ReceiveMessageHandler;
+            emg.ConnectionEstablishHandler += Emg_ConnectionEstablishHandler;
+
+            // EMG 1 Channel
             emg1c.ConnectionEstablished += Emg1c_ConnectionEstablished;
             //emg1c.MessageReceived += Emg1c_MessageReceived;
             emg1c.ConnectionFailed += Emg1c_ConnectionFailed;
+
+            // Image Processing :D
             rfid.ConnectionTerminateHandler += Rfid_ConnectionTerminateHandler;
             //rfid.ReceiveMessageHandler += Rfid_ReceiveMessageHandler;
+            rfid.ConnectionEstablishHandler += Rfid_ConnectionEstablishHandler;
+
+            // Hand
             hand.ConnectionTerminateHandler += Hand_ConnectionTerminateHandler;
             //hand.ReceiveMessageHandler += Hand_ReceiveMessageHandler;
+            hand.ConnectionEstablishHandler += Hand_ConnectionEstablishHandler;
+
+            // Deprecated
             glove.ConnectionTerminateHandler += Glove_ConnectionTerminateHandler;
             //glove.ReceiveMessageHandler += Glove_ReceiveMessageHandler;
 
@@ -146,9 +160,52 @@ namespace WindowsFormsApplication1
             txtPinkyPos.SelectAll();
         }
 
+        private void resetTab_ClearConnectionTexts()
+        {
+            btnControls.ForeColor = Color.Black;
+            btnCharts.ForeColor = Color.Black;
+            txtIP.Clear();
+            txtPort.Clear();
+        }
+
+        private void SetActivePanel(Panel panel)
+        {
+            foreach (Panel item in panelLists)
+            {
+                if (item == panel)
+                {
+                    item.Show();
+                    item.BringToFront();
+                }
+                else
+                {
+                    item.Hide();
+                    item.SendToBack();
+                }
+            }
+        }
+
+        #region Glove
         private void Glove_ReceiveMessageHandler(object sender, MessageReceiveEventArgs e)
         {
             throw new NotImplementedException();
+        }
+
+        private void Glove_ConnectionTerminateHandler(object sender, EventArgs e)
+        {
+            pnlGLOVE.BackColor = Color.FromArgb(198, 40, 40);
+        }
+        #endregion
+
+        #region Hand
+        private void Hand_ConnectionEstablishHandler(object sender, EventArgs e)
+        {
+            Invoke(new Action(() =>
+            {
+                pnlHAND.BackColor = Color.FromArgb(46, 125, 50);
+                SetActivePanel(PanelHAND);
+                MessageBox.Show("Bionic Hand Connected Successfully", "Connection Successful", MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1);
+            })); 
         }
 
         private void Hand_ReceiveMessageHandler(object sender, MessageReceiveEventArgs e)
@@ -190,11 +247,37 @@ namespace WindowsFormsApplication1
             
         }
 
+        private void Hand_ConnectionTerminateHandler(object sender, EventArgs e)
+        {
+            pnlHAND.BackColor = Color.FromArgb(198, 40, 40);
+        }
+        #endregion
+
+        #region Image Processing
+        private void Rfid_ConnectionEstablishHandler(object sender, EventArgs e)
+        {
+            Invoke(new Action(() =>
+            {
+                pnlRFID.BackColor = Color.FromArgb(46, 125, 50);
+                SetActivePanel(PanelRFID);
+                MessageBox.Show("Image Process Device Connected Successfully", "Connection Successful", MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1);
+            }));
+            
+        }
+
         private void Rfid_ReceiveMessageHandler(object sender, MessageReceiveEventArgs e)
         {
             throw new NotImplementedException();
         }
 
+        private void Rfid_ConnectionTerminateHandler(object sender, EventArgs e)
+        {
+            pnlRFID.BackColor = Color.FromArgb(198, 40, 40);
+        }
+
+        #endregion
+
+        #region EMG 1 Channel
         private void Emg1c_ConnectionEstablished(object sender, EventArgs e)
         {
             Invoke(new Action(() => 
@@ -259,6 +342,18 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.GetBaseException().ToString() + "\n\nFROM EMG1C RECEIVE");
             }
         }
+        #endregion
+
+        #region EMG 8 Channels
+        private void Emg_ConnectionEstablishHandler(object sender, EventArgs e)
+        {
+            Invoke(new Action(() =>
+            {
+                pnlEMG.BackColor = Color.FromArgb(46, 125, 50);
+                SetActivePanel(PanelEMG);
+                MessageBox.Show("EMG Connected Successfully","Connection Successful",MessageBoxButtons.OK,MessageBoxIcon.Asterisk,MessageBoxDefaultButton.Button1);
+            }));
+        }
 
         private void Emg_ReceiveMessageHandler(object sender, MessageReceiveEventArgs e)
         {
@@ -317,69 +412,24 @@ namespace WindowsFormsApplication1
                     MessageBox.Show(ex.GetBaseException().ToString());
                 }
             }
-
-
-            //MessageBox.Show(e.Message);
-            //Console.WriteLine(e.Message);
-            //if (richTextBox1.InvokeRequired)
-            //{
-            //    richTextBox1.Invoke(new Action(() => {
-            //        richTextBox1.AppendText(e.Message);
-            //        label9.Text = (++a).ToString();
-            //    }));
-            //}
-            //else
-            //{
-            //    richTextBox1.AppendText(e.Message);
-            //}
-        }
-
-        #region Connection Terminates
-        private void Glove_ConnectionTerminateHandler(object sender, EventArgs e)
-        {
-            pnlGLOVE.BackColor = Color.FromArgb(198, 40, 40);
-        }
-
-        private void Hand_ConnectionTerminateHandler(object sender, EventArgs e)
-        {
-            pnlHAND.BackColor = Color.FromArgb(198, 40, 40);
-        }
-
-        private void Rfid_ConnectionTerminateHandler(object sender, EventArgs e)
-        {
-            pnlRFID.BackColor = Color.FromArgb(198, 40, 40);
         }
 
         private void Emg_ConnectionTerminateHandler(object sender, EventArgs e)
         {
             pnlEMG.BackColor = Color.FromArgb(198, 40, 40);
-        } 
-        #endregion
-
-        private void resetTab_ClearConnectionTexts()
-        {
-            btnControls.ForeColor = Color.Black;
-            btnCharts.ForeColor = Color.Black;
-            txtIP.Clear();
-            txtPort.Clear();
-        }
-
-        private void SetActivePanel(Panel panel)
-        {
-            foreach (Panel item in panelLists)
+            Invoke(new Action(() =>
             {
-                if (item == panel)
-                {
-                    item.Show();
-                    item.BringToFront();
-                }
-                else
-                {
-                    item.Hide();
-                    item.SendToBack();
-                }
+                btnPanelEMG_Click(null, null);
+            }));
+            foreach (var item in EmgChartValues)
+            {
+                item.Clear();
             }
         }
+
+        #endregion
+
+
         
         #region UI Design Codes
 
@@ -494,6 +544,7 @@ namespace WindowsFormsApplication1
             if (!emg.IsConnected())
             {
                 SetActivePanel(panelConnect);
+                linkSwitchEmg1c.Visible = true;
                 panel8.Enabled = true;
                 lblConnectionTitle.Text = "EMG Connection";
                 InitialEmgChart();
@@ -513,7 +564,8 @@ namespace WindowsFormsApplication1
             {
                 SetActivePanel(panelConnect);
                 panel8.Enabled = true;
-                lblConnectionTitle.Text = "RFID Connection";
+                linkSwitchEmg1c.Visible = false;
+                lblConnectionTitle.Text = "Image Processing Connection";
             }
             else
             {
@@ -529,6 +581,7 @@ namespace WindowsFormsApplication1
             {
                 SetActivePanel(panelConnect);
                 panel8.Enabled = true;
+                linkSwitchEmg1c.Visible = false;
                 lblConnectionTitle.Text = "Hand Connection";
             }
             else
@@ -545,6 +598,7 @@ namespace WindowsFormsApplication1
             {
                 SetActivePanel(panelConnect);
                 panel8.Enabled = true;
+                linkSwitchEmg1c.Visible = false;
                 lblConnectionTitle.Text = "Glove Connection";
             }
             else
@@ -579,7 +633,7 @@ namespace WindowsFormsApplication1
             {
                 item.Dock = DockStyle.Fill;
             }
-            PanelEMG.BringToFront();
+            panelConnect.BringToFront();
         }
 
         private void btnTcpConnect_Click(object sender, EventArgs e)
@@ -595,13 +649,9 @@ namespace WindowsFormsApplication1
                 {
                     case ActivePanel.PanelEMG:
                         emg.TCPConnect(txtIP.Text.Trim(), int.Parse(txtPort.Text.Trim()));
-                        pnlEMG.BackColor = Color.FromArgb(46, 125, 50);
-                        SetActivePanel(PanelEMG);
                         break;
                     case ActivePanel.PanelRFID:
                         rfid.TCPConnect(txtIP.Text.Trim(), int.Parse(txtPort.Text.Trim()));
-                        pnlRFID.BackColor = Color.FromArgb(46, 125, 50);
-                        SetActivePanel(PanelRFID);
                         break;
                     case ActivePanel.PanelGlove:
                         glove.TCPConnect(txtIP.Text.Trim(), int.Parse(txtPort.Text.Trim()));
@@ -610,8 +660,6 @@ namespace WindowsFormsApplication1
                         break;
                     case ActivePanel.PanelHand:
                         hand.TCPConnect(txtIP.Text.Trim(), int.Parse(txtPort.Text.Trim()));
-                        pnlHAND.BackColor = Color.FromArgb(46, 125, 50);
-                        SetActivePanel(PanelHAND);
                         break;
                     default:
                         break;
@@ -622,14 +670,6 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.GetBaseException().ToString());
             }
             
-        }
-
-        private void PanelEMG_VisibleChanged(object sender, EventArgs e)
-        {
-            if (activePanel == ActivePanel.PanelEMG)
-            {
-                
-            }
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -780,7 +820,7 @@ namespace WindowsFormsApplication1
         int clicking = 0;
         private void btnConnect1ChannelEmg_Click(object sender, EventArgs e)
         {
-            if (btnConnect1ChannelEmg.Text == "Connect" && emg1c.BluetoothDevice == null)
+            if (btnConnect1ChannelEmg.Text == "Connect" && !emg1c.Connected)
             {
                 btnConnect1ChannelEmg.Text = "Waiting ...";
                 emg1c.Pair_Connect();
@@ -800,7 +840,7 @@ namespace WindowsFormsApplication1
 
         private void btnStart1ChannelEmg_Click(object sender, EventArgs e)
         {
-            if (emg1c.BluetoothDevice.Connected && btnStart1ChannelEmg.Text == "Start") // TODO COnneccted
+            if (emg1c.Connected && btnStart1ChannelEmg.Text == "Start") // TODO COnneccted
             {
                 emg1c.MessageReceived += Emg1c_MessageReceived;
                 emg1c.StartReceiveData();
@@ -812,6 +852,27 @@ namespace WindowsFormsApplication1
                 emg1c.MessageReceived -= Emg1c_MessageReceived;
                 btnStart1ChannelEmg.Text = "Start";
             }
+        }
+
+        private void linkSwitchEmg1c_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            SetActivePanel(PanelEMG);
+            panelEmg1c.Show();
+            panelEmg1c.Dock = DockStyle.Fill;
+            panelEmg1c.BringToFront();
+        }
+
+        private void btnEmg1C_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            panelEmg1c.Show();
+            panelEmg1c.Dock = DockStyle.Fill;
+            panelEmg1c.BringToFront();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            btnPanelEMG_Click(null, null);
+            panelEmg1c.Hide();
         }
     }
 }

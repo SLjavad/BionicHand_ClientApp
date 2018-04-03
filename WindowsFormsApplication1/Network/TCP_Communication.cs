@@ -15,6 +15,7 @@ namespace WindowsFormsApplication1
     {
         public event EventHandler<MessageReceiveEventArgs> ReceiveMessageHandler;
         public event EventHandler ConnectionTerminateHandler;
+        public event EventHandler ConnectionEstablishHandler;
 
         protected virtual void OnMessageReceived(MessageReceiveEventArgs args)
         {
@@ -26,6 +27,11 @@ namespace WindowsFormsApplication1
             ConnectionTerminateHandler?.Invoke(this,EventArgs.Empty);
         }
 
+        protected virtual void OnConnectionEstablished()
+        {
+            ConnectionEstablishHandler?.Invoke(this, EventArgs.Empty);
+        }
+
         public void TCPConnect(string IP , int port)
         {
             Task.Run(() =>
@@ -34,11 +40,11 @@ namespace WindowsFormsApplication1
                 {
                     Connect(IPAddress.Parse(IP), port);
                     NoDelay = true;
-                    MessageBox.Show("Connected");
+                    OnConnectionEstablished();
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Connection Failed");
+                    MessageBox.Show($"Connection Failed\n\n{ex.GetBaseException().ToString()}");
                 }
             });
             

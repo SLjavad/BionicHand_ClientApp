@@ -1,14 +1,8 @@
-﻿using System.IO;
-using System.Diagnostics;
+﻿using System;
+using System.IO;
 using System.Net.Sockets;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Threading;
-using System.Runtime.InteropServices.ComTypes;
-using WindowsFormsApplication1.Network;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplication1.Models
@@ -22,8 +16,6 @@ namespace WindowsFormsApplication1.Models
         Int16[] channels = new Int16[8];
         EMGGestureEnum emgGesture;
 
-        //CancellationTokenSource cancellationTokenSource;
-        //CancellationToken cancellationToken;
         NetworkStream ns;
 
 
@@ -37,11 +29,6 @@ namespace WindowsFormsApplication1.Models
 
         private void HandleMessage(string message)
         {
-            //base.OnMessageReceived(new MessageReceiveEventArgs()
-            //{
-            //    Message = message,
-            //    Parameter = null
-            //});
             if (message.StartsWith("EMG8:"))
             {
                 string value = message.Split(':')[1].Split('#')[0];
@@ -90,7 +77,7 @@ namespace WindowsFormsApplication1.Models
             {
                 if (ex.Message.Contains("non-connected"))
                 {
-                    MessageBox.Show("Module is disconnected \nPlease Connect at first", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                    MessageBox.Show("EMG Module is disconnected \nPlease Connect first", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
                 }
                 else
                 {
@@ -120,14 +107,14 @@ namespace WindowsFormsApplication1.Models
                         }
                         else
                         {
-                            System.Windows.Forms.MessageBox.Show("Connection terminated");
+                            MessageBox.Show("Connection terminated");
                             base.OnConnectionTerminated();
                             break;
                         }
                     }
                     catch (IOException ex)
                     {
-                        System.Windows.Forms.MessageBox.Show(ex.Message.Contains("existing connection was forcibly closed") ? "Connection terminated" : ex.GetBaseException().ToString());
+                        MessageBox.Show(ex.Message.Contains("existing connection was forcibly closed") ? "Connection terminated" : ex.GetBaseException().ToString());
                         base.OnConnectionTerminated();
                         break;
                     }

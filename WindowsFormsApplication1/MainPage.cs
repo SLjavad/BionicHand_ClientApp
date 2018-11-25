@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 using System.Diagnostics.Contracts;
 
 namespace WindowsFormsApplication1
-{ 
+{
     public partial class MainPage : Form
     {
 
@@ -28,10 +28,12 @@ namespace WindowsFormsApplication1
         Glove glove = new Glove();
         Hand hand = new Hand();
         frmLog frmLog = new frmLog();
-        
+
+        bool handManualState = true;
+
         //ChartValues<ChartModel> EmgChartValues = new ChartValues<ChartModel>();
 
-        
+
 
         List<Panel> panelLists = new List<Panel>();
         List<ChartValues<ChartModel>> EmgChartValues = new List<ChartValues<ChartModel>>()
@@ -83,7 +85,7 @@ namespace WindowsFormsApplication1
             glove.ConnectionTerminateHandler += Glove_ConnectionTerminateHandler;
             //glove.ReceiveMessageHandler += Glove_ReceiveMessageHandler;
 
-            // Set Model of data shown in 
+            // Set Model of data shown in chart
             var mapper = Mappers.Xy<ChartModel>().X(a => a.Time.Ticks).Y(a => a.Data);
             Charting.For<ChartModel>(mapper);
         }
@@ -131,6 +133,7 @@ namespace WindowsFormsApplication1
                 item.AxisX[0].MinValue = DateTime.Now.Ticks - TimeSpan.FromSeconds(10).Ticks;
                 item.AxisX[0].LabelFormatter = a => new DateTime((long)a).ToString("mm:ss");
                 item.AxisX[0].Separator = new Separator() { IsEnabled = true, StrokeThickness = 3, Step = TimeSpan.FromSeconds(1).Ticks };
+                item.Zoom = ZoomingOptions.X;
             }
             EmgChart.Series.Add(lineSeries[0]);
             EmgChart1.Series.Add(lineSeries[1]);
@@ -185,6 +188,31 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private Color setTempColor(int value)
+        {
+
+            if (Enumerable.Range(0, 12).Contains(value))
+            {
+                return Color.FromArgb(0, 0, 255);
+            }
+            else if (Enumerable.Range(11, 12).Contains(value))
+            {
+                return Color.FromArgb(100, 100, 255);
+            }
+            else if (Enumerable.Range(22, 12).Contains(value))
+            {
+                return Color.White;
+            }
+            else if (Enumerable.Range(33, 12).Contains(value))
+            {
+                return Color.Yellow;
+            }
+            else
+            {
+                return Color.Red;
+            }
+        }
+
         #region Glove
         private void Glove_ReceiveMessageHandler(object sender, MessageReceiveEventArgs e)
         {
@@ -205,51 +233,75 @@ namespace WindowsFormsApplication1
                 pnlHAND.BackColor = Color.FromArgb(46, 125, 50);
                 SetActivePanel(PanelHAND);
                 MessageBox.Show("Bionic Hand Connected Successfully", "Connection Successful", MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1);
-            })); 
+            }));
         }
 
         private void Hand_ReceiveMessageHandler(object sender, MessageReceiveEventArgs e)
         {
-            int[] values = Array.ConvertAll(e.Message.Split(','),int.Parse);
+            int[] values = Array.ConvertAll(e.Message.Split(','), int.Parse);
+            if (hand.RFIDEnabled)
+            {
+                if (values[15] != 0)
+                {
+                    hand.HandRFID = (HandRFIDs)values[15];
+                    Console.WriteLine(SendMessageConfig.SendRFIDFeedback((HandRFIDs)values[15]));
+                }
+            }
+
             Invoke(new Action(() =>
             {
                 try
                 {
-                    trThumb.Value = values[0] > trThumb.Maximum ? trThumb.Maximum : (values[0] < trThumb.Minimum ? trThumb.Minimum : values[0]);
-                    trIndex.Value = values[1] > trIndex.Maximum ? trIndex.Maximum : (values[1] < trIndex.Minimum ? trIndex.Minimum : values[1]);
-                    trMiddle.Value = values[2] > trMiddle.Maximum ? trIndex.Maximum : (values[2] < trMiddle.Minimum ? trMiddle.Minimum : values[2]);
-                    trRing.Value = values[3] > trRing.Maximum ? trRing.Maximum : (values[3] < trRing.Minimum ? trRing.Minimum : values[3]);
-                    trPinky.Value = values[4] > trPinky.Maximum ? trPinky.Maximum : (values[4] < trPinky.Minimum ? trPinky.Minimum : values[4]);
-                    txtThumbPos.Text = trThumb.Value.ToString();
-                    txtIndexPos.Text = trIndex.Value.ToString();
-                    txtMiddlePos.Text = trMiddle.Value.ToString();
-                    txtRingPos.Text = trRing.Value.ToString();
-                    txtPinkyPos.Text = trPinky.Value.ToString();
+                    // How to run these codes as parallel
+
+                    hand.Thumb.Position = values[0];
+                    hand.Index.Position = values[1];
+                    hand.Middle.Position = values[2];
+                    hand.Ring.Position = values[3];
+                    hand.Pinky.Position = values[4];
+                    if (!handManualState)
+                    {
+                        trThumb.Value = values[0] > trThumb.Maximum ? trThumb.Maximum : (values[0] < trThumb.Minimum ? trThumb.Minimum : values[0]);
+                        trIndex.Value = values[1] > trIndex.Maximum ? trIndex.Maximum : (values[1] < trIndex.Minimum ? trIndex.Minimum : values[1]);
+                        trMiddle.Value = values[2] > trMiddle.Maximum ? trIndex.Maximum : (values[2] < trMiddle.Minimum ? trMiddle.Minimum : values[2]);
+                        trRing.Value = values[3] > trRing.Maximum ? trRing.Maximum : (values[3] < trRing.Minimum ? trRing.Minimum : values[3]);
+                        trPinky.Value = values[4] > trPinky.Maximum ? trPinky.Maximum : (values[4] < trPinky.Minimum ? trPinky.Minimum : values[4]);
+                        txtThumbPos.Text = trThumb.Value.ToString();
+                        txtIndexPos.Text = trIndex.Value.ToString();
+                        txtMiddlePos.Text = trMiddle.Value.ToString();
+                        txtRingPos.Text = trRing.Value.ToString();
+                        txtPinkyPos.Text = trPinky.Value.ToString();
+                        SelectAllTextBoxes();
+                    }
                     thumbCur.Text = values[5].ToString();
                     indexCur.Text = values[6].ToString();
                     middleCur.Text = values[7].ToString();
                     ringCur.Text = values[8].ToString();
                     pinkyCur.Text = values[9].ToString();
-                    SelectAllTextBoxes();
                     lblThumbFsr.Text = values[10].ToString();
                     lblIndexFsr.Text = values[11].ToString();
                     lblMiddleFsr.Text = values[12].ToString();
                     lblRingFsr.Text = values[13].ToString();
-                    lblTemppinky.Text = values[14].ToString();
+                    lblTemppinky.Text = $"Temperature: {values[14]}";
+                    panelTemp.BackColor = setTempColor(values[14]);
                     lblRfid.Text = $"RFID : {values[15]}";
                 }
                 catch (Exception ex)
                 {
-                MessageBox.Show(ex.GetBaseException().ToString()+"\n\n"+"Receiving from hand");
+                    MessageBox.Show(ex.GetBaseException().ToString() + "\n\n" + "Receiving from hand");
                 }
-                
+
             }));
-            
+
         }
 
         private void Hand_ConnectionTerminateHandler(object sender, EventArgs e)
         {
             pnlHAND.BackColor = Color.FromArgb(198, 40, 40);
+            Invoke(new Action(() =>
+            {
+                btnPanelHand_Click(null, null);
+            }));
         }
         #endregion
 
@@ -262,7 +314,7 @@ namespace WindowsFormsApplication1
                 SetActivePanel(PanelRFID);
                 MessageBox.Show("Image Process Device Connected Successfully", "Connection Successful", MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1);
             }));
-            
+
         }
 
         private void Rfid_ReceiveMessageHandler(object sender, MessageReceiveEventArgs e)
@@ -280,14 +332,14 @@ namespace WindowsFormsApplication1
         #region EMG 1 Channel
         private void Emg1c_ConnectionEstablished(object sender, EventArgs e)
         {
-            Invoke(new Action(() => 
+            Invoke(new Action(() =>
             {
                 btnConnect1ChannelEmg.Text = "Connected";
                 btnConnect1ChannelEmg.BackColor = Color.Green;
                 btnStart1ChannelEmg.Enabled = true;
                 InitialEmg1CChart();
             }));
-            
+
             MessageBox.Show("Bluetooth Connected", "Connected", MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1);
         }
 
@@ -306,7 +358,7 @@ namespace WindowsFormsApplication1
             }));
 
         }
-
+        bool emg1cThresholdReach = false;
         private void Emg1c_MessageReceived(object sender, MessageReceiveEventArgs e)
         {
             //string[] values = e.Message.Split(new[] {':','#'}, StringSplitOptions.None);
@@ -316,8 +368,25 @@ namespace WindowsFormsApplication1
                 for (int i = 0; i < values.Length; i++)
                 {
                     string temp1 = values[i].Value;
-                    string temp = temp1.Substring(1, temp1.IndexOf('#')-1);
-                    Thread.Sleep(emg1c.Delay);
+                    string temp = temp1.Substring(1, temp1.IndexOf('#') - 1);
+                    // threshold
+                    if (emg1cThresholdCheck.Checked)
+                    {
+                        if (int.Parse(temp) > numEmg1cThreshold.Value && !emg1cThresholdReach)
+                        {
+                            Console.WriteLine(SendMessageConfig.HandFist());
+                            hand.SendMessage(SendMessageConfig.HandFist());
+                            emg1cThresholdReach = true;
+                        }
+                        else if (int.Parse(temp) < numEmg1cThreshold.Value && emg1cThresholdReach)
+                        {
+                            Console.WriteLine(SendMessageConfig.HandOpen());
+                            hand.SendMessage(SendMessageConfig.HandOpen());
+                            emg1cThresholdReach = false;
+                        }
+                    }
+
+                    //Thread.Sleep(emg1c.Delay);
                     if (int.TryParse(temp, out int j))
                     {
                         emg1cChartValue.Add(new ChartModel()
@@ -325,12 +394,12 @@ namespace WindowsFormsApplication1
                             Data = double.Parse(temp),
                             Time = DateTime.Now
                         });
-                        this.Invoke(new Action(() =>
+                        Invoke(new Action(() =>
                         {
                             emg1cChart.AxisX[0].MaxValue = DateTime.Now.Ticks + TimeSpan.FromSeconds(2).Ticks;
                             emg1cChart.AxisX[0].MinValue = DateTime.Now.Ticks - TimeSpan.FromSeconds(10).Ticks;
                         }));
-                        if (emg1cChartValue.Count>100)
+                        if (emg1cChartValue.Count > 100)
                         {
                             emg1cChartValue.RemoveAt(0);
                         }
@@ -351,60 +420,79 @@ namespace WindowsFormsApplication1
             {
                 pnlEMG.BackColor = Color.FromArgb(46, 125, 50);
                 SetActivePanel(PanelEMG);
-                MessageBox.Show("EMG Connected Successfully","Connection Successful",MessageBoxButtons.OK,MessageBoxIcon.Asterisk,MessageBoxDefaultButton.Button1);
+                MessageBox.Show("EMG Connected Successfully", "Connection Successful", MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1);
             }));
         }
-
+        bool Emg8ThresholdReach = false;
         private void Emg_ReceiveMessageHandler(object sender, MessageReceiveEventArgs e)
         {
-            if (e.Parameter == "EMG8")
+            double SumOfChannels = 0;
+            if (e.Parameter == "EMG")
             {
                 double[] values = Array.ConvertAll(e.Message.Split(','), double.Parse);
                 try
                 {
-                    for (int i = 0; i < 8; i++)
+                    
+                    for (int i = 0; i < 3; i++)
                     {
                         EmgChartValues[i].Add(new ChartModel
                         {
-                            Data = (values[i] * 100),
+                            Data = (values[i]),
                             Time = DateTime.Now
                         });
+                        //SumOfChannels += (values[i] * 100);
+                        
                     }
-                    
-                    this.Invoke(new Action(() =>
+                    //double Threshold = (SumOfChannels / 3);
+
+                    //if (checkBox1.Checked)
+                    //{
+                    //    if ((decimal)Threshold > numMax.Value)
+                    //    {
+                    //        Console.WriteLine(SendMessageConfig.SendFromEmg8ToHand(emg.EmgGesture));
+                    //        hand.SendMessage(SendMessageConfig.SendFromEmg8ToHand(emg.EmgGesture));
+                    //        //Emg8ThresholdReach = true;
+                    //    }
+                    //    else if ((decimal)Threshold < numMax.Value)
+                    //    {
+                    //        Console.WriteLine(SendMessageConfig.SendFromEmg8ToHand(emg.EmgGesture));
+                    //        hand.SendMessage(SendMessageConfig.SendFromEmg8ToHand(emg.EmgGesture));
+                    //        //Emg8ThresholdReach = false;
+                    //    }
+                    //}
+
+
+                    Invoke(new Action(() =>
                     {
+                        lblEMGgesture.Text = emg.EmgGesture.ToString();
                         EmgChart.AxisX[0].MaxValue = DateTime.Now.Ticks + TimeSpan.FromSeconds(1).Ticks;
                         EmgChart.AxisX[0].MinValue = DateTime.Now.Ticks - TimeSpan.FromSeconds(3).Ticks;
                         EmgChart1.AxisX[0].MaxValue = DateTime.Now.Ticks + TimeSpan.FromSeconds(1).Ticks;
                         EmgChart1.AxisX[0].MinValue = DateTime.Now.Ticks - TimeSpan.FromSeconds(3).Ticks;
                         EmgChart2.AxisX[0].MaxValue = DateTime.Now.Ticks + TimeSpan.FromSeconds(1).Ticks;
                         EmgChart2.AxisX[0].MinValue = DateTime.Now.Ticks - TimeSpan.FromSeconds(3).Ticks;
-                        EmgChart3.AxisX[0].MaxValue = DateTime.Now.Ticks + TimeSpan.FromSeconds(1).Ticks;
-                        EmgChart3.AxisX[0].MinValue = DateTime.Now.Ticks - TimeSpan.FromSeconds(3).Ticks;
-                        EmgChart4.AxisX[0].MaxValue = DateTime.Now.Ticks + TimeSpan.FromSeconds(1).Ticks;
-                        EmgChart4.AxisX[0].MinValue = DateTime.Now.Ticks - TimeSpan.FromSeconds(3).Ticks;
-                        EmgChart5.AxisX[0].MaxValue = DateTime.Now.Ticks + TimeSpan.FromSeconds(1).Ticks;
-                        EmgChart5.AxisX[0].MinValue = DateTime.Now.Ticks - TimeSpan.FromSeconds(3).Ticks;
-                        EmgChart6.AxisX[0].MaxValue = DateTime.Now.Ticks + TimeSpan.FromSeconds(1).Ticks;
-                        EmgChart6.AxisX[0].MinValue = DateTime.Now.Ticks - TimeSpan.FromSeconds(3).Ticks;
-                        EmgChart7.AxisX[0].MaxValue = DateTime.Now.Ticks + TimeSpan.FromSeconds(1).Ticks;
-                        EmgChart7.AxisX[0].MinValue = DateTime.Now.Ticks - TimeSpan.FromSeconds(3).Ticks;
-                        //EmgChartValues.CollectGarbage(lineSeries[0]);
-                        //EmgChartValues.CollectGarbage(lineSeries[1]);
-                        //EmgChartValues.CollectGarbage(lineSeries[2]);
-                        //EmgChartValues.CollectGarbage(lineSeries[3]);
-                        //EmgChartValues.CollectGarbage(lineSeries[4]);
-                        //EmgChartValues.CollectGarbage(lineSeries[5]);
-                        //EmgChartValues.CollectGarbage(lineSeries[6]);
-                        //EmgChartValues.CollectGarbage(lineSeries[7]);
-                        //for (int i = 0; i < 8; i++)
-                        //{
-                        //    if (EmgChartValues[i].Count > 100)
-                        //    {
-                        //        EmgChartValues[i].RemoveAt(0);
-                        //    }
-                        //}
-                        
+                        //    EmgChart3.AxisX[0].MaxValue = DateTime.Now.Ticks + TimeSpan.FromSeconds(1).Ticks;
+                        //    EmgChart3.AxisX[0].MinValue = DateTime.Now.Ticks - TimeSpan.FromSeconds(3).Ticks;
+                        //    EmgChart4.AxisX[0].MaxValue = DateTime.Now.Ticks + TimeSpan.FromSeconds(1).Ticks;
+                        //    EmgChart4.AxisX[0].MinValue = DateTime.Now.Ticks - TimeSpan.FromSeconds(3).Ticks;
+                        //    EmgChart5.AxisX[0].MaxValue = DateTime.Now.Ticks + TimeSpan.FromSeconds(1).Ticks;
+                        //    EmgChart5.AxisX[0].MinValue = DateTime.Now.Ticks - TimeSpan.FromSeconds(3).Ticks;
+                        //    EmgChart6.AxisX[0].MaxValue = DateTime.Now.Ticks + TimeSpan.FromSeconds(1).Ticks;
+                        //    EmgChart6.AxisX[0].MinValue = DateTime.Now.Ticks - TimeSpan.FromSeconds(3).Ticks;
+                        //    EmgChart7.AxisX[0].MaxValue = DateTime.Now.Ticks + TimeSpan.FromSeconds(1).Ticks;
+                        //    EmgChart7.AxisX[0].MinValue = DateTime.Now.Ticks - TimeSpan.FromSeconds(3).Ticks;
+                        if (EmgChartValues[0].Count > 100)
+                        {
+                            EmgChartValues[0].RemoveAt(0);
+                        }
+                        if (EmgChartValues[1].Count > 100)
+                        {
+                            EmgChartValues[1].RemoveAt(0);
+                        }
+                        if (EmgChartValues[2].Count > 100)
+                        {
+                            EmgChartValues[2].RemoveAt(0);
+                        }
                     }));
                 }
                 catch (Exception ex)
@@ -430,7 +518,7 @@ namespace WindowsFormsApplication1
         #endregion
 
 
-        
+
         #region UI Design Codes
 
         // Green ==> 46, 125, 50
@@ -499,7 +587,7 @@ namespace WindowsFormsApplication1
             {
                 btnControls.ForeColor = Color.FromArgb(100, 181, 246);
             }
-          }
+        }
 
         private void btnControls_MouseLeave(object sender, EventArgs e)
         {
@@ -520,7 +608,7 @@ namespace WindowsFormsApplication1
             {
                 btnCharts.ForeColor = Color.FromArgb(100, 181, 246);
             }
-            
+
         }
 
         private void btnCharts_MouseLeave(object sender, EventArgs e)
@@ -554,7 +642,7 @@ namespace WindowsFormsApplication1
                 SetActivePanel(PanelEMG);
             }
             activePanel = ActivePanel.PanelEMG;
-            
+
         }
 
         private void btnPanelRFID_Click(object sender, EventArgs e)
@@ -634,6 +722,8 @@ namespace WindowsFormsApplication1
                 item.Dock = DockStyle.Fill;
             }
             panelConnect.BringToFront();
+            panelTemp.BackColor = setTempColor(16);
+
         }
 
         private void btnTcpConnect_Click(object sender, EventArgs e)
@@ -649,9 +739,13 @@ namespace WindowsFormsApplication1
                 {
                     case ActivePanel.PanelEMG:
                         emg.TCPConnect(txtIP.Text.Trim(), int.Parse(txtPort.Text.Trim()));
+                        pnlEMG.BackColor = Color.FromArgb(46, 125, 50);
+                        SetActivePanel(PanelEMG);
                         break;
                     case ActivePanel.PanelRFID:
                         rfid.TCPConnect(txtIP.Text.Trim(), int.Parse(txtPort.Text.Trim()));
+                        pnlEMG.BackColor = Color.FromArgb(46, 125, 50);
+                        SetActivePanel(PanelRFID);
                         break;
                     case ActivePanel.PanelGlove:
                         glove.TCPConnect(txtIP.Text.Trim(), int.Parse(txtPort.Text.Trim()));
@@ -660,6 +754,8 @@ namespace WindowsFormsApplication1
                         break;
                     case ActivePanel.PanelHand:
                         hand.TCPConnect(txtIP.Text.Trim(), int.Parse(txtPort.Text.Trim()));
+                        pnlHAND.BackColor = Color.FromArgb(46, 125, 50);
+                        SetActivePanel(PanelHAND);
                         break;
                     default:
                         break;
@@ -669,7 +765,7 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show(ex.GetBaseException().ToString());
             }
-            
+
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -714,11 +810,13 @@ namespace WindowsFormsApplication1
                 hand.ReceiveMessageHandler += Hand_ReceiveMessageHandler;
                 hand.StartReceiveMessage();
                 btnStartHand.Text = "ManualSend";
+                handManualState = false;
             }
             else
             {
                 hand.ReceiveMessageHandler -= Hand_ReceiveMessageHandler;
                 hand.StopReceiveMessage();
+                handManualState = true;
                 btnStartHand.Text = "AutoReceive";
             }
             //Console.WriteLine(SendMessageConfig.SendToHand(5,55,100,32,100,54,9,17,100,12));
@@ -785,16 +883,15 @@ namespace WindowsFormsApplication1
 
         private void txtThumbPos_KeyDown(object sender, KeyEventArgs e)
         {
-            if (btnStartHand.Text == "AuroReceive")
+            if (handManualState)
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    MessageBox.Show("Test");
                     Console.WriteLine(SendMessageConfig.SendToHand(Int16.Parse(txtThumbPos.Text == string.Empty ? "0" : txtThumbPos.Text), Int16.Parse(txtIndexPos.Text == string.Empty ? "0" : txtIndexPos.Text)
                         , Int16.Parse(txtMiddlePos.Text == string.Empty ? "0" : txtMiddlePos.Text), Int16.Parse(txtRingPos.Text == string.Empty ? "0" : txtRingPos.Text), Int16.Parse(txtPinkyPos.Text == string.Empty ? "0" : txtPinkyPos.Text)
                         , 100, 100, 100, 100, 100));
                 }
-                if (e.KeyCode == Keys.Enter && btnStartHand.Text == "AutoReceive" && hand.IsConnected())
+                if (e.KeyCode == Keys.Enter && hand.IsConnected())
                 {
                     hand.SendMessage(SendMessageConfig.SendToHand(Int16.Parse(txtThumbPos.Text == string.Empty ? "0" : txtThumbPos.Text), Int16.Parse(txtIndexPos.Text == string.Empty ? "0" : txtIndexPos.Text)
                         , Int16.Parse(txtMiddlePos.Text == string.Empty ? "0" : txtMiddlePos.Text), Int16.Parse(txtRingPos.Text == string.Empty ? "0" : txtRingPos.Text), Int16.Parse(txtPinkyPos.Text == string.Empty ? "0" : txtPinkyPos.Text)
@@ -818,41 +915,41 @@ namespace WindowsFormsApplication1
         }
 
         int clicking = 0;
-        private void btnConnect1ChannelEmg_Click(object sender, EventArgs e)
-        {
-            if (btnConnect1ChannelEmg.Text == "Connect" && !emg1c.Connected)
-            {
-                btnConnect1ChannelEmg.Text = "Waiting ...";
-                emg1c.Pair_Connect();
-            }
-            else if (emg1c.Connected)
-            {
-                if (++clicking >= 3)
-                {
-                    MessageBox.Show($"Come On :| \nYou Are Connected To {emg1c.RemoteMachineName}\nDo your work Bro :|", "It's Connected ... Enough D:", MessageBoxButtons.OK,MessageBoxIcon.Asterisk,MessageBoxDefaultButton.Button1);
-                }
-                else
-                {
-                    MessageBox.Show($"Bluetooth was Connected to {emg1c.RemoteMachineName}\nKeep Going :D", "Connected Successfully", MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1);
-                }
-            }
-        }
+        //private void btnConnect1ChannelEmg_Click(object sender, EventArgs e)
+        //{
+        //    if (btnConnect1ChannelEmg.Text == "Connect" && !emg1c.Connected)
+        //    {
+        //        btnConnect1ChannelEmg.Text = "Waiting ...";
+        //        emg1c.Pair_Connect();
+        //    }
+        //    else if (emg1c.Connected)
+        //    {
+        //        if (++clicking >= 3)
+        //        {
+        //            MessageBox.Show($"Come On :| \nYou Are Connected To {emg1c.RemoteMachineName}\nDo your work Bro :|", "It's Connected ... Enough D:", MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1);
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show($"Bluetooth was Connected to {emg1c.RemoteMachineName}\nKeep Going :D", "Connected Successfully", MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1);
+        //        }
+        //    }
+        //}
 
-        private void btnStart1ChannelEmg_Click(object sender, EventArgs e)
-        {
-            if (emg1c.Connected && btnStart1ChannelEmg.Text == "Start") // TODO COnneccted
-            {
-                emg1c.MessageReceived += Emg1c_MessageReceived;
-                emg1c.StartReceiveData();
-                btnStart1ChannelEmg.Text = "Stop";
-            }
-            else if(btnStart1ChannelEmg.Text == "Stop")
-            {
-                emg1c.StopReceiveData();
-                emg1c.MessageReceived -= Emg1c_MessageReceived;
-                btnStart1ChannelEmg.Text = "Start";
-            }
-        }
+        //private void btnStart1ChannelEmg_Click(object sender, EventArgs e)
+        //{
+        //    if (emg1c.Connected && btnStart1ChannelEmg.Text == "Start") // TODO COnneccted
+        //    {
+        //        emg1c.MessageReceived += Emg1c_MessageReceived;
+        //        emg1c.StartReceiveData();
+        //        btnStart1ChannelEmg.Text = "Stop";
+        //    }
+        //    else if (btnStart1ChannelEmg.Text == "Stop")
+        //    {
+        //        emg1c.StopReceiveData();
+        //        emg1c.MessageReceived -= Emg1c_MessageReceived;
+        //        btnStart1ChannelEmg.Text = "Start";
+        //    }
+        //}
 
         private void linkSwitchEmg1c_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -873,6 +970,126 @@ namespace WindowsFormsApplication1
         {
             btnPanelEMG_Click(null, null);
             panelEmg1c.Hide();
+        }
+
+        private void txtThumbPos_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtThumbPos.Text != string.Empty && int.Parse(txtThumbPos.Text) > 100)
+                {
+                    txtThumbPos.Text = "100";
+
+                }
+            }
+            catch (FormatException)
+            {
+
+            }
+        }
+        bool demoFlag = false;
+        private void btnDemoHand_Click(object sender, EventArgs e)
+        {
+            if (!demoFlag)
+            {
+                hand.SendMessage(SendMessageConfig.SendToHand(100, 100, 100, 100, 100, 100, 100, 100, 100, 100));
+                demoFlag = true;
+                btnDemoHand.Text = "StopDemo";
+                Task.Run(() =>
+                {
+                    Thread.Sleep(1000);
+                    while (demoFlag)
+                    {
+                        Thread.Sleep(450);
+                        hand.SendMessage(SendMessageConfig.SendToHand(100, 70, 80, 100, 100, 100, 100, 100, 100, 100));
+                        Thread.Sleep(450);
+                        hand.SendMessage(SendMessageConfig.SendToHand(70, 30, 40, 100, 70, 100, 100, 100, 100, 100));
+                        Thread.Sleep(450);
+                        hand.SendMessage(SendMessageConfig.SendToHand(30, 60, 20, 70, 40, 100, 100, 100, 100, 100));
+                        Thread.Sleep(450);
+                        hand.SendMessage(SendMessageConfig.SendToHand(60, 90, 50, 40, 20, 100, 100, 100, 100, 100));
+                        Thread.Sleep(450);
+                        hand.SendMessage(SendMessageConfig.SendToHand(90, 100, 100, 20, 50, 100, 100, 100, 100, 100));
+                        Thread.Sleep(450);
+                        hand.SendMessage(SendMessageConfig.SendToHand(100, 100, 100, 60, 80, 100, 100, 100, 100, 100));
+                    }
+
+                });
+            }
+            else
+            {
+                btnDemoHand.Text = "Demo";
+                demoFlag = false;
+            }
+
+        }
+
+        private void txtIndexPos_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtIndexPos.Text != string.Empty && int.Parse(txtIndexPos.Text) > 100)
+                {
+                    txtIndexPos.Text = "100";
+
+                }
+            }
+            catch (FormatException)
+            {
+
+            }
+        }
+
+        private void txtMiddlePos_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtMiddlePos.Text != string.Empty && int.Parse(txtMiddlePos.Text) > 100)
+                {
+                    txtMiddlePos.Text = "100";
+
+                }
+            }
+            catch (FormatException)
+            {
+
+            }
+        }
+
+        private void txtPinkyPos_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtPinkyPos.Text != string.Empty && int.Parse(txtPinkyPos.Text) > 100)
+                {
+                    txtPinkyPos.Text = "100";
+
+                }
+            }
+            catch (FormatException)
+            {
+
+            }
+        }
+
+        private void txtRingPos_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtRingPos.Text != string.Empty && int.Parse(txtRingPos.Text) > 100)
+                {
+                    txtRingPos.Text = "100";
+                }
+            }
+            catch (FormatException)
+            {
+
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

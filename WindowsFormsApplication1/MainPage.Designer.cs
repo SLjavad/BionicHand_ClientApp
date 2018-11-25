@@ -33,17 +33,23 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnCharts = new System.Windows.Forms.Button();
             this.btnControls = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnPanelGlove = new System.Windows.Forms.Panel();
             this.pnlGLOVE = new System.Windows.Forms.Panel();
+            this.btnGlove = new System.Windows.Forms.Button();
             this.btnPanelHand = new System.Windows.Forms.Panel();
             this.pnlHAND = new System.Windows.Forms.Panel();
+            this.btnHand = new System.Windows.Forms.Button();
             this.btnPanelRFID = new System.Windows.Forms.Panel();
             this.pnlRFID = new System.Windows.Forms.Panel();
+            this.btnRFID = new System.Windows.Forms.Button();
             this.btnPanelEMG = new System.Windows.Forms.Panel();
             this.pnlEMG = new System.Windows.Forms.Panel();
+            this.btnEMG = new System.Windows.Forms.Button();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.bunifuDragControl2 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.bunifuDragControl3 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
@@ -51,8 +57,18 @@
             this.panelConnect = new System.Windows.Forms.Panel();
             this.linkSwitchEmg1c = new System.Windows.Forms.LinkLabel();
             this.lblConnectionTitle = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.btnTcpConnect = new System.Windows.Forms.Button();
+            this.txtPort = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtIP = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panelControls = new System.Windows.Forms.Panel();
             this.PanelHAND = new System.Windows.Forms.Panel();
+            this.panelTemp = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.txtPinkyPos = new System.Windows.Forms.TextBox();
             this.txtRingPos = new System.Windows.Forms.TextBox();
             this.txtMiddlePos = new System.Windows.Forms.TextBox();
@@ -70,8 +86,6 @@
             this.lblRingFsr = new System.Windows.Forms.Label();
             this.ringCur = new System.Windows.Forms.Label();
             this.lblRfid = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.middleCur = new System.Windows.Forms.Label();
             this.lblThumbFsr = new System.Windows.Forms.Label();
             this.lblIndexFsr = new System.Windows.Forms.Label();
@@ -83,6 +97,7 @@
             this.trMiddle = new System.Windows.Forms.TrackBar();
             this.trIndex = new System.Windows.Forms.TrackBar();
             this.trThumb = new System.Windows.Forms.TrackBar();
+            this.btnDemoHand = new System.Windows.Forms.Button();
             this.btnStartHand = new System.Windows.Forms.Button();
             this.panelCharts = new System.Windows.Forms.Panel();
             this.btnStartChart = new System.Windows.Forms.Button();
@@ -93,17 +108,20 @@
             this.bunifuDragControl5 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.PanelEMG = new System.Windows.Forms.Panel();
             this.panelEmg1c = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.emg1cThresholdCheck = new System.Windows.Forms.CheckBox();
+            this.numEmg1cThreshold = new System.Windows.Forms.NumericUpDown();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.btnConnect1ChannelEmg = new System.Windows.Forms.Button();
             this.btnStart1ChannelEmg = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
             this.emg1cChart = new LiveCharts.WinForms.CartesianChart();
+            this.lblEMGgesture = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.btnEmg1C = new System.Windows.Forms.LinkLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.numMax = new System.Windows.Forms.NumericUpDown();
             this.EmgChart5 = new LiveCharts.WinForms.CartesianChart();
             this.EmgChart7 = new LiveCharts.WinForms.CartesianChart();
@@ -117,26 +135,19 @@
             this.PanelRFID = new System.Windows.Forms.Panel();
             this.PanelGLOVE = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.btnTcpConnect = new System.Windows.Forms.Button();
-            this.txtPort = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtIP = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnGlove = new System.Windows.Forms.Button();
-            this.btnHand = new System.Windows.Forms.Button();
-            this.btnRFID = new System.Windows.Forms.Button();
-            this.btnEMG = new System.Windows.Forms.Button();
-            this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.btnPanelGlove.SuspendLayout();
             this.btnPanelHand.SuspendLayout();
             this.btnPanelRFID.SuspendLayout();
             this.btnPanelEMG.SuspendLayout();
             this.panelConnect.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.PanelHAND.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trPinky)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trRing)).BeginInit();
@@ -146,13 +157,12 @@
             this.panelCharts.SuspendLayout();
             this.PanelEMG.SuspendLayout();
             this.panelEmg1c.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numEmg1cThreshold)).BeginInit();
             this.panel7.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMax)).BeginInit();
             this.panel4.SuspendLayout();
-            this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -188,6 +198,21 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1120, 53);
             this.panel3.TabIndex = 1;
+            // 
+            // bunifuImageButton1
+            // 
+            this.bunifuImageButton1.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuImageButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuImageButton1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton1.Image")));
+            this.bunifuImageButton1.ImageActive = null;
+            this.bunifuImageButton1.Location = new System.Drawing.Point(1075, 8);
+            this.bunifuImageButton1.Name = "bunifuImageButton1";
+            this.bunifuImageButton1.Size = new System.Drawing.Size(33, 39);
+            this.bunifuImageButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.bunifuImageButton1.TabIndex = 0;
+            this.bunifuImageButton1.TabStop = false;
+            this.bunifuImageButton1.Zoom = 20;
+            this.bunifuImageButton1.Click += new System.EventHandler(this.bunifuImageButton1_Click);
             // 
             // btnCharts
             // 
@@ -232,6 +257,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.btnPanelGlove);
             this.panel1.Controls.Add(this.btnPanelHand);
             this.panel1.Controls.Add(this.btnPanelRFID);
@@ -242,6 +268,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(205, 697);
             this.panel1.TabIndex = 2;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(49, 341);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(106, 351);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
             // 
             // btnPanelGlove
             // 
@@ -265,6 +301,28 @@
             this.pnlGLOVE.Size = new System.Drawing.Size(10, 80);
             this.pnlGLOVE.TabIndex = 4;
             // 
+            // btnGlove
+            // 
+            this.btnGlove.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnGlove.FlatAppearance.BorderSize = 0;
+            this.btnGlove.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnGlove.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnGlove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGlove.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnGlove.ForeColor = System.Drawing.Color.White;
+            this.btnGlove.Image = ((System.Drawing.Image)(resources.GetObject("btnGlove.Image")));
+            this.btnGlove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGlove.Location = new System.Drawing.Point(58, 25);
+            this.btnGlove.Name = "btnGlove";
+            this.btnGlove.Size = new System.Drawing.Size(101, 27);
+            this.btnGlove.TabIndex = 0;
+            this.btnGlove.Text = "GLOVE";
+            this.btnGlove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGlove.UseVisualStyleBackColor = true;
+            this.btnGlove.Click += new System.EventHandler(this.btnPanelGlove_Click);
+            this.btnGlove.MouseEnter += new System.EventHandler(this.btnPanelGlove_MouseEnter);
+            this.btnGlove.MouseLeave += new System.EventHandler(this.btnPanelGlove_MouseLeave);
+            // 
             // btnPanelHand
             // 
             this.btnPanelHand.Controls.Add(this.pnlHAND);
@@ -286,6 +344,28 @@
             this.pnlHAND.Name = "pnlHAND";
             this.pnlHAND.Size = new System.Drawing.Size(10, 80);
             this.pnlHAND.TabIndex = 3;
+            // 
+            // btnHand
+            // 
+            this.btnHand.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnHand.FlatAppearance.BorderSize = 0;
+            this.btnHand.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnHand.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnHand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHand.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnHand.ForeColor = System.Drawing.Color.White;
+            this.btnHand.Image = ((System.Drawing.Image)(resources.GetObject("btnHand.Image")));
+            this.btnHand.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHand.Location = new System.Drawing.Point(56, 23);
+            this.btnHand.Name = "btnHand";
+            this.btnHand.Size = new System.Drawing.Size(101, 34);
+            this.btnHand.TabIndex = 0;
+            this.btnHand.Text = "HAND";
+            this.btnHand.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHand.UseVisualStyleBackColor = true;
+            this.btnHand.Click += new System.EventHandler(this.btnPanelHand_Click);
+            this.btnHand.MouseEnter += new System.EventHandler(this.btnPanelHand_MouseEnter);
+            this.btnHand.MouseLeave += new System.EventHandler(this.btnPanelHand_MouseLeave);
             // 
             // btnPanelRFID
             // 
@@ -309,8 +389,31 @@
             this.pnlRFID.Size = new System.Drawing.Size(10, 80);
             this.pnlRFID.TabIndex = 2;
             // 
+            // btnRFID
+            // 
+            this.btnRFID.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnRFID.FlatAppearance.BorderSize = 0;
+            this.btnRFID.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnRFID.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnRFID.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRFID.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnRFID.ForeColor = System.Drawing.Color.White;
+            this.btnRFID.Image = ((System.Drawing.Image)(resources.GetObject("btnRFID.Image")));
+            this.btnRFID.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRFID.Location = new System.Drawing.Point(54, 24);
+            this.btnRFID.Name = "btnRFID";
+            this.btnRFID.Size = new System.Drawing.Size(101, 31);
+            this.btnRFID.TabIndex = 0;
+            this.btnRFID.Text = "IMAGE";
+            this.btnRFID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRFID.UseVisualStyleBackColor = true;
+            this.btnRFID.Click += new System.EventHandler(this.btnPanelRFID_Click);
+            this.btnRFID.MouseEnter += new System.EventHandler(this.panel5_MouseEnter);
+            this.btnRFID.MouseLeave += new System.EventHandler(this.panel5_MouseLeave);
+            // 
             // btnPanelEMG
             // 
+            this.btnPanelEMG.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.btnPanelEMG.Controls.Add(this.pnlEMG);
             this.btnPanelEMG.Controls.Add(this.btnEMG);
             this.btnPanelEMG.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -331,6 +434,29 @@
             this.pnlEMG.Name = "pnlEMG";
             this.pnlEMG.Size = new System.Drawing.Size(10, 80);
             this.pnlEMG.TabIndex = 1;
+            // 
+            // btnEMG
+            // 
+            this.btnEMG.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEMG.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnEMG.FlatAppearance.BorderSize = 0;
+            this.btnEMG.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnEMG.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnEMG.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEMG.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnEMG.ForeColor = System.Drawing.Color.White;
+            this.btnEMG.Image = ((System.Drawing.Image)(resources.GetObject("btnEMG.Image")));
+            this.btnEMG.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEMG.Location = new System.Drawing.Point(57, 27);
+            this.btnEMG.Name = "btnEMG";
+            this.btnEMG.Size = new System.Drawing.Size(92, 26);
+            this.btnEMG.TabIndex = 4;
+            this.btnEMG.Text = "EMG";
+            this.btnEMG.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEMG.UseVisualStyleBackColor = true;
+            this.btnEMG.Click += new System.EventHandler(this.btnPanelEMG_Click);
+            this.btnEMG.MouseEnter += new System.EventHandler(this.btnPanelEMG_MouseEnter);
+            this.btnEMG.MouseLeave += new System.EventHandler(this.btnPanelEMG_MouseLeave);
             // 
             // bunifuDragControl1
             // 
@@ -395,6 +521,82 @@
             this.lblConnectionTitle.Text = "Wellcome Choose a Device";
             this.lblConnectionTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // panel8
+            // 
+            this.panel8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel8.BackgroundImage")));
+            this.panel8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel8.Controls.Add(this.btnTcpConnect);
+            this.panel8.Controls.Add(this.txtPort);
+            this.panel8.Controls.Add(this.label3);
+            this.panel8.Controls.Add(this.txtIP);
+            this.panel8.Controls.Add(this.label2);
+            this.panel8.Enabled = false;
+            this.panel8.Location = new System.Drawing.Point(297, 129);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(321, 438);
+            this.panel8.TabIndex = 2;
+            // 
+            // btnTcpConnect
+            // 
+            this.btnTcpConnect.AutoEllipsis = true;
+            this.btnTcpConnect.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnTcpConnect.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTcpConnect.FlatAppearance.BorderSize = 0;
+            this.btnTcpConnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTcpConnect.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnTcpConnect.ForeColor = System.Drawing.Color.White;
+            this.btnTcpConnect.Location = new System.Drawing.Point(66, 343);
+            this.btnTcpConnect.Name = "btnTcpConnect";
+            this.btnTcpConnect.Size = new System.Drawing.Size(198, 45);
+            this.btnTcpConnect.TabIndex = 2;
+            this.btnTcpConnect.Text = "Connect";
+            this.btnTcpConnect.UseVisualStyleBackColor = false;
+            this.btnTcpConnect.Click += new System.EventHandler(this.btnTcpConnect_Click);
+            // 
+            // txtPort
+            // 
+            this.txtPort.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPort.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.txtPort.Location = new System.Drawing.Point(66, 268);
+            this.txtPort.MaxLength = 5;
+            this.txtPort.Name = "txtPort";
+            this.txtPort.Size = new System.Drawing.Size(186, 27);
+            this.txtPort.TabIndex = 1;
+            this.txtPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPort.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtThumbPos_KeyPress);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Light", 15F);
+            this.label3.Location = new System.Drawing.Point(3, 267);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 28);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Port :";
+            // 
+            // txtIP
+            // 
+            this.txtIP.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtIP.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.txtIP.Location = new System.Drawing.Point(66, 187);
+            this.txtIP.Name = "txtIP";
+            this.txtIP.Size = new System.Drawing.Size(186, 27);
+            this.txtIP.TabIndex = 0;
+            this.txtIP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Light", 15F);
+            this.label2.Location = new System.Drawing.Point(21, 187);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(37, 28);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "IP :";
+            // 
             // panelControls
             // 
             this.panelControls.Location = new System.Drawing.Point(51, 146);
@@ -404,6 +606,8 @@
             // 
             // PanelHAND
             // 
+            this.PanelHAND.Controls.Add(this.panelTemp);
+            this.PanelHAND.Controls.Add(this.groupBox2);
             this.PanelHAND.Controls.Add(this.txtPinkyPos);
             this.PanelHAND.Controls.Add(this.txtRingPos);
             this.PanelHAND.Controls.Add(this.txtMiddlePos);
@@ -420,8 +624,6 @@
             this.PanelHAND.Controls.Add(this.lblRingFsr);
             this.PanelHAND.Controls.Add(this.ringCur);
             this.PanelHAND.Controls.Add(this.lblRfid);
-            this.PanelHAND.Controls.Add(this.label12);
-            this.PanelHAND.Controls.Add(this.label9);
             this.PanelHAND.Controls.Add(this.middleCur);
             this.PanelHAND.Controls.Add(this.lblThumbFsr);
             this.PanelHAND.Controls.Add(this.lblIndexFsr);
@@ -433,11 +635,56 @@
             this.PanelHAND.Controls.Add(this.trMiddle);
             this.PanelHAND.Controls.Add(this.trIndex);
             this.PanelHAND.Controls.Add(this.trThumb);
+            this.PanelHAND.Controls.Add(this.btnDemoHand);
             this.PanelHAND.Controls.Add(this.btnStartHand);
-            this.PanelHAND.Location = new System.Drawing.Point(19, 438);
+            this.PanelHAND.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelHAND.Location = new System.Drawing.Point(0, 0);
             this.PanelHAND.Name = "PanelHAND";
-            this.PanelHAND.Size = new System.Drawing.Size(341, 198);
+            this.PanelHAND.Size = new System.Drawing.Size(915, 697);
             this.PanelHAND.TabIndex = 6;
+            // 
+            // panelTemp
+            // 
+            this.panelTemp.Location = new System.Drawing.Point(677, 203);
+            this.panelTemp.Name = "panelTemp";
+            this.panelTemp.Size = new System.Drawing.Size(200, 100);
+            this.panelTemp.TabIndex = 15;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.groupBox2.Location = new System.Drawing.Point(33, 114);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(156, 112);
+            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Help";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Light", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label12.ForeColor = System.Drawing.Color.Green;
+            this.label12.Location = new System.Drawing.Point(6, 66);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(60, 37);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "FSR";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI Light", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(6, 25);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(108, 37);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "Current";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtPinkyPos
             // 
@@ -446,9 +693,10 @@
             this.txtPinkyPos.MaxLength = 3;
             this.txtPinkyPos.Name = "txtPinkyPos";
             this.txtPinkyPos.Size = new System.Drawing.Size(49, 34);
-            this.txtPinkyPos.TabIndex = 13;
+            this.txtPinkyPos.TabIndex = 4;
             this.txtPinkyPos.Text = "0";
             this.txtPinkyPos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPinkyPos.TextChanged += new System.EventHandler(this.txtPinkyPos_TextChanged);
             this.txtPinkyPos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtThumbPos_KeyDown);
             this.txtPinkyPos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtThumbPos_KeyPress);
             // 
@@ -459,9 +707,10 @@
             this.txtRingPos.MaxLength = 3;
             this.txtRingPos.Name = "txtRingPos";
             this.txtRingPos.Size = new System.Drawing.Size(49, 34);
-            this.txtRingPos.TabIndex = 13;
+            this.txtRingPos.TabIndex = 3;
             this.txtRingPos.Text = "0";
             this.txtRingPos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRingPos.TextChanged += new System.EventHandler(this.txtRingPos_TextChanged);
             this.txtRingPos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtThumbPos_KeyDown);
             this.txtRingPos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtThumbPos_KeyPress);
             // 
@@ -472,9 +721,10 @@
             this.txtMiddlePos.MaxLength = 3;
             this.txtMiddlePos.Name = "txtMiddlePos";
             this.txtMiddlePos.Size = new System.Drawing.Size(49, 34);
-            this.txtMiddlePos.TabIndex = 13;
+            this.txtMiddlePos.TabIndex = 2;
             this.txtMiddlePos.Text = "0";
             this.txtMiddlePos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtMiddlePos.TextChanged += new System.EventHandler(this.txtMiddlePos_TextChanged);
             this.txtMiddlePos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtThumbPos_KeyDown);
             this.txtMiddlePos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtThumbPos_KeyPress);
             // 
@@ -485,9 +735,10 @@
             this.txtIndexPos.MaxLength = 3;
             this.txtIndexPos.Name = "txtIndexPos";
             this.txtIndexPos.Size = new System.Drawing.Size(49, 34);
-            this.txtIndexPos.TabIndex = 13;
+            this.txtIndexPos.TabIndex = 1;
             this.txtIndexPos.Text = "0";
             this.txtIndexPos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtIndexPos.TextChanged += new System.EventHandler(this.txtIndexPos_TextChanged);
             this.txtIndexPos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtThumbPos_KeyDown);
             this.txtIndexPos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtThumbPos_KeyPress);
             // 
@@ -498,9 +749,10 @@
             this.txtThumbPos.MaxLength = 3;
             this.txtThumbPos.Name = "txtThumbPos";
             this.txtThumbPos.Size = new System.Drawing.Size(49, 34);
-            this.txtThumbPos.TabIndex = 13;
+            this.txtThumbPos.TabIndex = 0;
             this.txtThumbPos.Text = "0";
             this.txtThumbPos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtThumbPos.TextChanged += new System.EventHandler(this.txtThumbPos_TextChanged);
             this.txtThumbPos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtThumbPos_KeyDown);
             this.txtThumbPos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtThumbPos_KeyPress);
             // 
@@ -511,7 +763,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(341, 100);
+            this.panel5.Size = new System.Drawing.Size(915, 100);
             this.panel5.TabIndex = 12;
             // 
             // label10
@@ -567,15 +819,14 @@
             // 
             // lblTemppinky
             // 
-            this.lblTemppinky.AutoSize = true;
-            this.lblTemppinky.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblTemppinky.Font = new System.Drawing.Font("Segoe UI Light", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblTemppinky.ForeColor = System.Drawing.Color.Blue;
-            this.lblTemppinky.Location = new System.Drawing.Point(604, 469);
+            this.lblTemppinky.Location = new System.Drawing.Point(670, 158);
             this.lblTemppinky.Name = "lblTemppinky";
-            this.lblTemppinky.Size = new System.Drawing.Size(32, 21);
+            this.lblTemppinky.Size = new System.Drawing.Size(234, 42);
             this.lblTemppinky.TabIndex = 11;
-            this.lblTemppinky.Text = "100";
-            this.lblTemppinky.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTemppinky.Text = "Temperature : 16";
+            this.lblTemppinky.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pinkyCur
             // 
@@ -630,36 +881,12 @@
             this.lblRfid.AutoSize = true;
             this.lblRfid.Font = new System.Drawing.Font("Segoe UI Light", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblRfid.ForeColor = System.Drawing.Color.Black;
-            this.lblRfid.Location = new System.Drawing.Point(736, 356);
+            this.lblRfid.Location = new System.Drawing.Point(670, 112);
             this.lblRfid.Name = "lblRfid";
             this.lblRfid.Size = new System.Drawing.Size(88, 37);
             this.lblRfid.TabIndex = 11;
             this.lblRfid.Text = "RFID :";
             this.lblRfid.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI Light", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label12.ForeColor = System.Drawing.Color.Green;
-            this.label12.Location = new System.Drawing.Point(736, 235);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(60, 37);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "FSR";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI Light", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Location = new System.Drawing.Point(736, 190);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(108, 37);
-            this.label9.TabIndex = 11;
-            this.label9.Text = "Current";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // middleCur
             // 
@@ -738,7 +965,7 @@
             this.trPinky.Name = "trPinky";
             this.trPinky.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trPinky.Size = new System.Drawing.Size(45, 161);
-            this.trPinky.TabIndex = 2;
+            this.trPinky.TabIndex = 5;
             this.trPinky.TickStyle = System.Windows.Forms.TickStyle.Both;
             this.trPinky.Scroll += new System.EventHandler(this.trPinky_Scroll);
             // 
@@ -749,7 +976,7 @@
             this.trRing.Name = "trRing";
             this.trRing.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trRing.Size = new System.Drawing.Size(45, 161);
-            this.trRing.TabIndex = 3;
+            this.trRing.TabIndex = 6;
             this.trRing.TickStyle = System.Windows.Forms.TickStyle.Both;
             this.trRing.Scroll += new System.EventHandler(this.trRing_Scroll);
             // 
@@ -760,7 +987,7 @@
             this.trMiddle.Name = "trMiddle";
             this.trMiddle.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trMiddle.Size = new System.Drawing.Size(45, 161);
-            this.trMiddle.TabIndex = 4;
+            this.trMiddle.TabIndex = 7;
             this.trMiddle.TickStyle = System.Windows.Forms.TickStyle.Both;
             this.trMiddle.Scroll += new System.EventHandler(this.trMiddle_Scroll);
             // 
@@ -771,7 +998,7 @@
             this.trIndex.Name = "trIndex";
             this.trIndex.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trIndex.Size = new System.Drawing.Size(45, 161);
-            this.trIndex.TabIndex = 5;
+            this.trIndex.TabIndex = 8;
             this.trIndex.TickStyle = System.Windows.Forms.TickStyle.Both;
             this.trIndex.Scroll += new System.EventHandler(this.trIndex_Scroll);
             // 
@@ -782,9 +1009,25 @@
             this.trThumb.Name = "trThumb";
             this.trThumb.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trThumb.Size = new System.Drawing.Size(45, 161);
-            this.trThumb.TabIndex = 6;
+            this.trThumb.TabIndex = 9;
             this.trThumb.TickStyle = System.Windows.Forms.TickStyle.Both;
             this.trThumb.Scroll += new System.EventHandler(this.trThumb_Scroll);
+            // 
+            // btnDemoHand
+            // 
+            this.btnDemoHand.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnDemoHand.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDemoHand.FlatAppearance.BorderSize = 0;
+            this.btnDemoHand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDemoHand.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.btnDemoHand.ForeColor = System.Drawing.Color.White;
+            this.btnDemoHand.Location = new System.Drawing.Point(756, 586);
+            this.btnDemoHand.Name = "btnDemoHand";
+            this.btnDemoHand.Size = new System.Drawing.Size(131, 48);
+            this.btnDemoHand.TabIndex = 10;
+            this.btnDemoHand.Text = "Demo";
+            this.btnDemoHand.UseVisualStyleBackColor = false;
+            this.btnDemoHand.Click += new System.EventHandler(this.btnDemoHand_Click);
             // 
             // btnStartHand
             // 
@@ -797,7 +1040,7 @@
             this.btnStartHand.Location = new System.Drawing.Point(383, 586);
             this.btnStartHand.Name = "btnStartHand";
             this.btnStartHand.Size = new System.Drawing.Size(131, 48);
-            this.btnStartHand.TabIndex = 0;
+            this.btnStartHand.TabIndex = 10;
             this.btnStartHand.Text = "AutoReceive";
             this.btnStartHand.UseVisualStyleBackColor = false;
             this.btnStartHand.Click += new System.EventHandler(this.button1_Click);
@@ -809,7 +1052,7 @@
             this.panelCharts.Controls.Add(this.btnChartAdd);
             this.panelCharts.Controls.Add(this.comboBox1);
             this.panelCharts.Controls.Add(this.ChartAll);
-            this.panelCharts.Location = new System.Drawing.Point(214, 40);
+            this.panelCharts.Location = new System.Drawing.Point(83, 27);
             this.panelCharts.Name = "panelCharts";
             this.panelCharts.Size = new System.Drawing.Size(246, 109);
             this.panelCharts.TabIndex = 0;
@@ -895,7 +1138,8 @@
             // 
             // PanelEMG
             // 
-            this.PanelEMG.Controls.Add(this.panelEmg1c);
+            this.PanelEMG.Controls.Add(this.lblEMGgesture);
+            this.PanelEMG.Controls.Add(this.label16);
             this.PanelEMG.Controls.Add(this.btnEmg1C);
             this.PanelEMG.Controls.Add(this.groupBox1);
             this.PanelEMG.Controls.Add(this.EmgChart5);
@@ -907,32 +1151,77 @@
             this.PanelEMG.Controls.Add(this.EmgChart3);
             this.PanelEMG.Controls.Add(this.EmgChart);
             this.PanelEMG.Controls.Add(this.btnStart);
-            this.PanelEMG.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelEMG.Location = new System.Drawing.Point(0, 0);
+            this.PanelEMG.Controls.Add(this.panelEmg1c);
+            this.PanelEMG.Location = new System.Drawing.Point(536, 543);
             this.PanelEMG.Name = "PanelEMG";
-            this.PanelEMG.Size = new System.Drawing.Size(915, 697);
+            this.PanelEMG.Size = new System.Drawing.Size(379, 154);
             this.PanelEMG.TabIndex = 4;
-            //this.PanelEMG.VisibleChanged += new System.EventHandler(this.PanelEMG_VisibleChanged);
             // 
             // panelEmg1c
             // 
+            this.panelEmg1c.Controls.Add(this.groupBox3);
             this.panelEmg1c.Controls.Add(this.linkLabel1);
             this.panelEmg1c.Controls.Add(this.btnConnect1ChannelEmg);
             this.panelEmg1c.Controls.Add(this.btnStart1ChannelEmg);
             this.panelEmg1c.Controls.Add(this.panel7);
             this.panelEmg1c.Controls.Add(this.emg1cChart);
-            this.panelEmg1c.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEmg1c.Location = new System.Drawing.Point(0, 0);
+            this.panelEmg1c.Location = new System.Drawing.Point(43, 227);
             this.panelEmg1c.Name = "panelEmg1c";
-            this.panelEmg1c.Size = new System.Drawing.Size(915, 697);
+            this.panelEmg1c.Size = new System.Drawing.Size(195, 134);
             this.panelEmg1c.TabIndex = 8;
             this.panelEmg1c.Visible = false;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.emg1cThresholdCheck);
+            this.groupBox3.Controls.Add(this.numEmg1cThreshold);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.groupBox3.Location = new System.Drawing.Point(751, 493);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(117, 100);
+            this.groupBox3.TabIndex = 7;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Threshold";
+            // 
+            // emg1cThresholdCheck
+            // 
+            this.emg1cThresholdCheck.AutoSize = true;
+            this.emg1cThresholdCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.emg1cThresholdCheck.Location = new System.Drawing.Point(6, 30);
+            this.emg1cThresholdCheck.Name = "emg1cThresholdCheck";
+            this.emg1cThresholdCheck.Size = new System.Drawing.Size(87, 24);
+            this.emg1cThresholdCheck.TabIndex = 6;
+            this.emg1cThresholdCheck.Text = "Enabled";
+            this.emg1cThresholdCheck.UseVisualStyleBackColor = true;
+            // 
+            // numEmg1cThreshold
+            // 
+            this.numEmg1cThreshold.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.numEmg1cThreshold.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numEmg1cThreshold.Location = new System.Drawing.Point(6, 66);
+            this.numEmg1cThreshold.Maximum = new decimal(new int[] {
+            4100,
+            0,
+            0,
+            0});
+            this.numEmg1cThreshold.Name = "numEmg1cThreshold";
+            this.numEmg1cThreshold.Size = new System.Drawing.Size(95, 26);
+            this.numEmg1cThreshold.TabIndex = 4;
+            this.numEmg1cThreshold.Value = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.linkLabel1.Location = new System.Drawing.Point(743, 658);
+            this.linkLabel1.Location = new System.Drawing.Point(42, 631);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(125, 21);
             this.linkLabel1.TabIndex = 3;
@@ -948,13 +1237,13 @@
             this.btnConnect1ChannelEmg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConnect1ChannelEmg.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnConnect1ChannelEmg.ForeColor = System.Drawing.Color.White;
-            this.btnConnect1ChannelEmg.Location = new System.Drawing.Point(756, 513);
+            this.btnConnect1ChannelEmg.Location = new System.Drawing.Point(174, 499);
             this.btnConnect1ChannelEmg.Name = "btnConnect1ChannelEmg";
             this.btnConnect1ChannelEmg.Size = new System.Drawing.Size(112, 50);
             this.btnConnect1ChannelEmg.TabIndex = 2;
             this.btnConnect1ChannelEmg.Text = "Connect";
             this.btnConnect1ChannelEmg.UseVisualStyleBackColor = false;
-            this.btnConnect1ChannelEmg.Click += new System.EventHandler(this.btnConnect1ChannelEmg_Click);
+            //this.btnConnect1ChannelEmg.Click += new System.EventHandler(this.btnConnect1ChannelEmg_Click);
             // 
             // btnStart1ChannelEmg
             // 
@@ -965,13 +1254,13 @@
             this.btnStart1ChannelEmg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStart1ChannelEmg.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnStart1ChannelEmg.ForeColor = System.Drawing.Color.White;
-            this.btnStart1ChannelEmg.Location = new System.Drawing.Point(627, 513);
+            this.btnStart1ChannelEmg.Location = new System.Drawing.Point(45, 499);
             this.btnStart1ChannelEmg.Name = "btnStart1ChannelEmg";
             this.btnStart1ChannelEmg.Size = new System.Drawing.Size(112, 50);
             this.btnStart1ChannelEmg.TabIndex = 2;
             this.btnStart1ChannelEmg.Text = "Start";
             this.btnStart1ChannelEmg.UseVisualStyleBackColor = false;
-            this.btnStart1ChannelEmg.Click += new System.EventHandler(this.btnStart1ChannelEmg_Click);
+            //this.btnStart1ChannelEmg.Click += new System.EventHandler(this.btnStart1ChannelEmg_Click);
             // 
             // panel7
             // 
@@ -980,7 +1269,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(915, 100);
+            this.panel7.Size = new System.Drawing.Size(195, 100);
             this.panel7.TabIndex = 1;
             // 
             // label14
@@ -1003,6 +1292,25 @@
             this.emg1cChart.TabIndex = 0;
             this.emg1cChart.Text = "cartesianChart1";
             // 
+            // lblEMGgesture
+            // 
+            this.lblEMGgesture.AutoSize = true;
+            this.lblEMGgesture.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblEMGgesture.Location = new System.Drawing.Point(698, 587);
+            this.lblEMGgesture.Name = "lblEMGgesture";
+            this.lblEMGgesture.Size = new System.Drawing.Size(0, 20);
+            this.lblEMGgesture.TabIndex = 6;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label16.Location = new System.Drawing.Point(617, 587);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(75, 20);
+            this.label16.TabIndex = 6;
+            this.label16.Text = "Gesture :";
+            // 
             // btnEmg1C
             // 
             this.btnEmg1C.AutoSize = true;
@@ -1017,48 +1325,38 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.numericUpDown2);
+            this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.numMax);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.groupBox1.Location = new System.Drawing.Point(608, 465);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(295, 100);
+            this.groupBox1.Size = new System.Drawing.Size(148, 100);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Threshold";
             // 
-            // label13
+            // checkBox1
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(7, 57);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(40, 19);
-            this.label13.TabIndex = 6;
-            this.label13.Text = "Min :";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(7, 26);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(42, 19);
-            this.label11.TabIndex = 6;
-            this.label11.Text = "Max :";
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Location = new System.Drawing.Point(55, 55);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(52, 25);
-            this.numericUpDown2.TabIndex = 5;
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(28, 23);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(76, 23);
+            this.checkBox1.TabIndex = 7;
+            this.checkBox1.Text = "Enabled";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // numMax
             // 
-            this.numMax.Location = new System.Drawing.Point(55, 24);
+            this.numMax.DecimalPlaces = 1;
+            this.numMax.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.numMax.Location = new System.Drawing.Point(28, 52);
             this.numMax.Name = "numMax";
-            this.numMax.Size = new System.Drawing.Size(52, 25);
+            this.numMax.Size = new System.Drawing.Size(69, 25);
             this.numMax.TabIndex = 5;
             // 
             // EmgChart5
@@ -1165,9 +1463,9 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.PanelHAND);
             this.panel4.Controls.Add(this.PanelEMG);
             this.panel4.Controls.Add(this.panelConnect);
-            this.panel4.Controls.Add(this.PanelHAND);
             this.panel4.Controls.Add(this.panelControls);
             this.panel4.Controls.Add(this.panelCharts);
             this.panel4.Controls.Add(this.PanelGLOVE);
@@ -1177,186 +1475,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(915, 697);
             this.panel4.TabIndex = 8;
-            // 
-            // panel8
-            // 
-            this.panel8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel8.BackgroundImage")));
-            this.panel8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel8.Controls.Add(this.btnTcpConnect);
-            this.panel8.Controls.Add(this.txtPort);
-            this.panel8.Controls.Add(this.label3);
-            this.panel8.Controls.Add(this.txtIP);
-            this.panel8.Controls.Add(this.label2);
-            this.panel8.Enabled = false;
-            this.panel8.Location = new System.Drawing.Point(297, 129);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(321, 438);
-            this.panel8.TabIndex = 2;
-            // 
-            // btnTcpConnect
-            // 
-            this.btnTcpConnect.AutoEllipsis = true;
-            this.btnTcpConnect.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btnTcpConnect.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTcpConnect.FlatAppearance.BorderSize = 0;
-            this.btnTcpConnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTcpConnect.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnTcpConnect.ForeColor = System.Drawing.Color.White;
-            this.btnTcpConnect.Location = new System.Drawing.Point(66, 343);
-            this.btnTcpConnect.Name = "btnTcpConnect";
-            this.btnTcpConnect.Size = new System.Drawing.Size(198, 45);
-            this.btnTcpConnect.TabIndex = 2;
-            this.btnTcpConnect.Text = "Connect";
-            this.btnTcpConnect.UseVisualStyleBackColor = false;
-            this.btnTcpConnect.Click += new System.EventHandler(this.btnTcpConnect_Click);
-            // 
-            // txtPort
-            // 
-            this.txtPort.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPort.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtPort.Location = new System.Drawing.Point(66, 268);
-            this.txtPort.MaxLength = 5;
-            this.txtPort.Name = "txtPort";
-            this.txtPort.Size = new System.Drawing.Size(186, 27);
-            this.txtPort.TabIndex = 1;
-            this.txtPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtPort.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtThumbPos_KeyPress);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Light", 15F);
-            this.label3.Location = new System.Drawing.Point(3, 267);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 28);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Port :";
-            // 
-            // txtIP
-            // 
-            this.txtIP.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtIP.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtIP.Location = new System.Drawing.Point(66, 187);
-            this.txtIP.Name = "txtIP";
-            this.txtIP.Size = new System.Drawing.Size(186, 27);
-            this.txtIP.TabIndex = 0;
-            this.txtIP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Light", 15F);
-            this.label2.Location = new System.Drawing.Point(21, 187);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 28);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "IP :";
-            // 
-            // btnGlove
-            // 
-            this.btnGlove.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnGlove.FlatAppearance.BorderSize = 0;
-            this.btnGlove.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnGlove.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnGlove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGlove.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnGlove.ForeColor = System.Drawing.Color.White;
-            this.btnGlove.Image = ((System.Drawing.Image)(resources.GetObject("btnGlove.Image")));
-            this.btnGlove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGlove.Location = new System.Drawing.Point(58, 25);
-            this.btnGlove.Name = "btnGlove";
-            this.btnGlove.Size = new System.Drawing.Size(101, 27);
-            this.btnGlove.TabIndex = 0;
-            this.btnGlove.Text = "GLOVE";
-            this.btnGlove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGlove.UseVisualStyleBackColor = true;
-            this.btnGlove.Click += new System.EventHandler(this.btnPanelGlove_Click);
-            this.btnGlove.MouseEnter += new System.EventHandler(this.btnPanelGlove_MouseEnter);
-            this.btnGlove.MouseLeave += new System.EventHandler(this.btnPanelGlove_MouseLeave);
-            // 
-            // btnHand
-            // 
-            this.btnHand.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnHand.FlatAppearance.BorderSize = 0;
-            this.btnHand.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnHand.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnHand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHand.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnHand.ForeColor = System.Drawing.Color.White;
-            this.btnHand.Image = ((System.Drawing.Image)(resources.GetObject("btnHand.Image")));
-            this.btnHand.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHand.Location = new System.Drawing.Point(56, 23);
-            this.btnHand.Name = "btnHand";
-            this.btnHand.Size = new System.Drawing.Size(101, 34);
-            this.btnHand.TabIndex = 0;
-            this.btnHand.Text = "HAND";
-            this.btnHand.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnHand.UseVisualStyleBackColor = true;
-            this.btnHand.Click += new System.EventHandler(this.btnPanelHand_Click);
-            this.btnHand.MouseEnter += new System.EventHandler(this.btnPanelHand_MouseEnter);
-            this.btnHand.MouseLeave += new System.EventHandler(this.btnPanelHand_MouseLeave);
-            // 
-            // btnRFID
-            // 
-            this.btnRFID.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnRFID.FlatAppearance.BorderSize = 0;
-            this.btnRFID.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnRFID.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnRFID.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRFID.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnRFID.ForeColor = System.Drawing.Color.White;
-            this.btnRFID.Image = ((System.Drawing.Image)(resources.GetObject("btnRFID.Image")));
-            this.btnRFID.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRFID.Location = new System.Drawing.Point(54, 24);
-            this.btnRFID.Name = "btnRFID";
-            this.btnRFID.Size = new System.Drawing.Size(101, 31);
-            this.btnRFID.TabIndex = 0;
-            this.btnRFID.Text = "IMAGE";
-            this.btnRFID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnRFID.UseVisualStyleBackColor = true;
-            this.btnRFID.Click += new System.EventHandler(this.btnPanelRFID_Click);
-            this.btnRFID.MouseEnter += new System.EventHandler(this.panel5_MouseEnter);
-            this.btnRFID.MouseLeave += new System.EventHandler(this.panel5_MouseLeave);
-            // 
-            // btnEMG
-            // 
-            this.btnEMG.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEMG.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnEMG.FlatAppearance.BorderSize = 0;
-            this.btnEMG.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnEMG.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnEMG.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEMG.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnEMG.ForeColor = System.Drawing.Color.White;
-            this.btnEMG.Image = ((System.Drawing.Image)(resources.GetObject("btnEMG.Image")));
-            this.btnEMG.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEMG.Location = new System.Drawing.Point(57, 27);
-            this.btnEMG.Name = "btnEMG";
-            this.btnEMG.Size = new System.Drawing.Size(92, 26);
-            this.btnEMG.TabIndex = 4;
-            this.btnEMG.Text = "EMG";
-            this.btnEMG.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEMG.UseVisualStyleBackColor = true;
-            this.btnEMG.Click += new System.EventHandler(this.btnPanelEMG_Click);
-            this.btnEMG.MouseEnter += new System.EventHandler(this.btnPanelEMG_MouseEnter);
-            this.btnEMG.MouseLeave += new System.EventHandler(this.btnPanelEMG_MouseLeave);
-            // 
-            // bunifuImageButton1
-            // 
-            this.bunifuImageButton1.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuImageButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuImageButton1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton1.Image")));
-            this.bunifuImageButton1.ImageActive = null;
-            this.bunifuImageButton1.Location = new System.Drawing.Point(1075, 8);
-            this.bunifuImageButton1.Name = "bunifuImageButton1";
-            this.bunifuImageButton1.Size = new System.Drawing.Size(33, 39);
-            this.bunifuImageButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.bunifuImageButton1.TabIndex = 0;
-            this.bunifuImageButton1.TabStop = false;
-            this.bunifuImageButton1.Zoom = 20;
-            this.bunifuImageButton1.Click += new System.EventHandler(this.bunifuImageButton1_Click);
             // 
             // MainPage
             // 
@@ -1373,15 +1491,21 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.btnPanelGlove.ResumeLayout(false);
             this.btnPanelHand.ResumeLayout(false);
             this.btnPanelRFID.ResumeLayout(false);
             this.btnPanelEMG.ResumeLayout(false);
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.PanelHAND.ResumeLayout(false);
             this.PanelHAND.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trPinky)).EndInit();
@@ -1394,16 +1518,15 @@
             this.PanelEMG.PerformLayout();
             this.panelEmg1c.ResumeLayout(false);
             this.panelEmg1c.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numEmg1cThreshold)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMax)).EndInit();
             this.panel4.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1495,9 +1618,6 @@
         private System.Windows.Forms.TextBox txtThumbPos;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.NumericUpDown numMax;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panelEmg1c;
         private System.Windows.Forms.Button btnStart1ChannelEmg;
         private System.Windows.Forms.Panel panel7;
@@ -1507,5 +1627,15 @@
         private System.Windows.Forms.LinkLabel linkSwitchEmg1c;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.LinkLabel btnEmg1C;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Panel panelTemp;
+        private System.Windows.Forms.Button btnDemoHand;
+        private System.Windows.Forms.NumericUpDown numEmg1cThreshold;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblEMGgesture;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.CheckBox emg1cThresholdCheck;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

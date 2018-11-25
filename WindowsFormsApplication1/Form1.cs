@@ -1,21 +1,14 @@
-﻿using WindowsFormsApplication1.Models;
+﻿using CustomUIControls.Graphing;
 using System;
 using System.Collections;
 using System.ComponentModel;
-using System.Data;
+using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO.Ports;  // for get availabe ports
 using System.Runtime.InteropServices;
 using System.Threading;
-using System.Timers;
-using System.Management;
-using System.Threading;
-using System.Diagnostics;
-using CustomUIControls.Graphing; 
+using System.Windows.Forms;
+using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1
 {

@@ -38,6 +38,14 @@ namespace WindowsFormsApplication1
             {
                 try
                 {
+                    // BeginConnect(IPAddress.Parse(IP), port, new AsyncCallback((result) =>
+                    //{
+                    //    if (result.IsCompleted)
+                    //    {
+                    //        EndConnect(result);
+                    //        OnConnectionEstablished();
+                    //    }
+                    //}), this);
                     Connect(IPAddress.Parse(IP), port);
                     NoDelay = true;
                     OnConnectionEstablished();
@@ -69,9 +77,7 @@ namespace WindowsFormsApplication1
         }
         // Receive TCP
         public abstract void StartReceiveMessage();
-
-        //Process Method
-        //protected abstract void Process();
+        
 
         public bool IsConnected()
         {

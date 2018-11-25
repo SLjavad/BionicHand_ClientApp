@@ -10,9 +10,16 @@ using System.Windows.Documents;
 
 namespace WindowsFormsApplication1.Models
 {
+    public enum HandRFIDs
+    {
+        
+    }
+
     class Hand : TCP_Communication
     {
-        Finger thumb , index , middle , ring , pinky;
+        Finger thumb = new Finger() , index  = new Finger() , middle = new Finger(), ring = new Finger(), pinky = new Finger();
+        HandRFIDs handRFID;
+        bool rFIDEnabled;
         Int16 currentGesture;
         Int16 chargeBattery;
         NetworkStream ns;
@@ -26,14 +33,23 @@ namespace WindowsFormsApplication1.Models
 
             if (message.StartsWith("fhget:"))
             {
-                string values = message.Split(':')[1].Split(new [] {Environment.NewLine},StringSplitOptions.None)[0];
-                for (int i = 0; i < values.Length; i++)
+                string[] values = message.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+                try
                 {
-                    MessageReceiveEventArgs receiveEventArgs = new MessageReceiveEventArgs();
-                    receiveEventArgs.Parameter = null;
-                    receiveEventArgs.Message = values;
-                    base.OnMessageReceived(receiveEventArgs);
+                    for (int i = 0; i < (values.Length); i++)
+                    {
+                        string data = values[i].Split(':')[1];
+                        MessageReceiveEventArgs receiveEventArgs = new MessageReceiveEventArgs();
+                        receiveEventArgs.Parameter = null;
+                        receiveEventArgs.Message = data;
+                        base.OnMessageReceived(receiveEventArgs);
+                    }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.GetBaseException().ToString() + "\n\nfrom Hand Handle message");
+                }
+
             }
         }
 
@@ -51,6 +67,8 @@ namespace WindowsFormsApplication1.Models
         public Finger Pinky { get => pinky; set => pinky = value; }
         public short CurrentGesture { get => currentGesture; set => currentGesture = value; }
         public short ChargeBattery { get => chargeBattery; set => chargeBattery = value; }
+        public HandRFIDs HandRFID { get => handRFID; set => handRFID = value; }
+        public bool RFIDEnabled { get => rFIDEnabled; set => rFIDEnabled = value; }
 
         public override void StartReceiveMessage()
         {
@@ -79,11 +97,14 @@ namespace WindowsFormsApplication1.Models
                     {
                         if (IsConnected())
                         {
-                            byte[] messageByte = new byte[ReceiveBufferSize];
-                            int a = ns.Read(messageByte, 0, ReceiveBufferSize);
-                            byte[] Result = new byte[a];
-                            Array.Copy(messageByte, Result, a);
-                            string message = Encoding.ASCII.GetString(Result);
+                            if (Available<10)
+                                continue;
+                            int temp = Available;
+                            byte[] messageByte = new byte[temp];
+                            int a = ns.Read(messageByte, 0, temp);
+                            //byte[] Result = new byte[a];
+                            //Array.Copy(messageByte, Result, a);
+                            string message = Encoding.ASCII.GetString(messageByte);
                             HandleMessage(message);
                         }
                         else

@@ -31,9 +31,11 @@ namespace WindowsFormsApplication1.Models
                             byte[] messageByte = new byte[ReceiveBufferSize];
                             ns.Read(messageByte, 0, ReceiveBufferSize);
                             string message = Encoding.ASCII.GetString(messageByte);
-                            MessageReceiveEventArgs receiveEventArgs = new MessageReceiveEventArgs();
-                            receiveEventArgs.Parameter = "Glove";
-                            receiveEventArgs.Message = message;
+                            MessageReceiveEventArgs receiveEventArgs = new MessageReceiveEventArgs
+                            {
+                                Parameter = "Glove",
+                                Message = message
+                            };
                             //Process();
                             base.OnMessageReceived(receiveEventArgs);
                         }

@@ -40,7 +40,6 @@ J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsAppl
 J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.application
 J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
 J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
-J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
 J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
 J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
 J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
@@ -65,3 +64,4 @@ J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsAppl
 J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.frmLog.resources
 J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\InTheHand.Net.Personal.dll
 J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\InTheHand.Net.Personal.xml
+J:\Code\C#\Projects\BioHand\PC Program\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojAssemblyReference.cache

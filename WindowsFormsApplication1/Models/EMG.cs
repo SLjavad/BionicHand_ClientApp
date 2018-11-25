@@ -1,7 +1,9 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Net.Sockets;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -9,11 +11,11 @@ namespace WindowsFormsApplication1.Models
 {
     public enum EMGGestureEnum
     {
-        Fist = 1, Open, ToOut, ToIn, Unknown
+        first = 1, second, third, forth, fifth, sixth, seventh, eighth
     }
     class EMG : TCP_Communication
     {
-        Int16[] channels = new Int16[8];
+        //Int16[] channels = new Int16[8];
         EMGGestureEnum emgGesture;
 
         NetworkStream ns;
@@ -29,44 +31,45 @@ namespace WindowsFormsApplication1.Models
 
         private void HandleMessage(string message)
         {
-            if (message.StartsWith("EMG8:"))
+            // EMG:int,int,int\r\nGES:int\r\n
+            try
             {
-                string value = message.Split(':')[1].Split('#')[0];
-                MessageReceiveEventArgs receiveEventArgs = new MessageReceiveEventArgs
+                if (message.StartsWith("EMG:"))
                 {
-                    Parameter = "EMG8",
-                    Message = value
-                };
-                base.OnMessageReceived(receiveEventArgs);
+                    //string[] data = message.Split(':')[1].Split('#');
+                    string[] data = message.Split(new[] { "EMG:", "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                    for (int i = 0; i < data.Length; i++)
+                    {
+                        if (data[i].Contains("GES"))
+                        {
+                            string[] temp = data[i].Split(new[] { "GES:" }, StringSplitOptions.RemoveEmptyEntries);
+                            emgGesture = (EMGGestureEnum)int.Parse(temp[0]);
+                        }
+                        else
+                        {
+                            base.OnMessageReceived(new MessageReceiveEventArgs
+                            {
+                                Message = data[i],
+                                Parameter = "EMG"
+                            });
+                        }
+                    }
+                }
+                else if (message.StartsWith("GES:"))
+                {
+                    emgGesture = (EMGGestureEnum)int.Parse(message.Substring(4, 1));
+                }
             }
-            else if (message.StartsWith("GES:"))
+            catch (Exception ex)
             {
-                emgGesture = (EMGGestureEnum)int.Parse(message.Split(':')[1]);
-                //switch (EmgGesture)
-                //{
-                //    case EMGGestureEnum.Fist:
-                        
-                //        break;
-                //    case EMGGestureEnum.Open:
-                        
-                //        break;
-                //    case EMGGestureEnum.ToOut:
-                        
-                //        break;
-                //    case EMGGestureEnum.ToIn:
-                        
-                //        break;
-                //    case EMGGestureEnum.Unknown:
-                        
-                //        break;
-                //    default:
-                //        break;
-                //}
+                MessageBox.Show(ex.GetBaseException().ToString() + "\n\n" + "From EMG Handle Message");
             }
+
+
         }
         bool flag = false;
-        
-        
+
+
         public override void StartReceiveMessage()
         {
             try
@@ -96,8 +99,14 @@ namespace WindowsFormsApplication1.Models
                     {
                         if (IsConnected())
                         {
-                            byte[] messageByte = new byte[ReceiveBufferSize];
-                            int a = ns.Read(messageByte, 0, ReceiveBufferSize);
+                            if (Available < 5)
+                            {
+                                continue;
+                            }
+                            int cont = Available;
+                            //Console.WriteLine(Available.ToString() + "sdf");
+                            byte[] messageByte = new byte[cont];
+                            int a = ns.Read(messageByte, 0, cont);
                             byte[] Result = new byte[a];
                             Array.Copy(messageByte, Result, a);
                             string message = Encoding.ASCII.GetString(Result);
@@ -117,6 +126,10 @@ namespace WindowsFormsApplication1.Models
                         MessageBox.Show(ex.Message.Contains("existing connection was forcibly closed") ? "Connection terminated" : ex.GetBaseException().ToString());
                         base.OnConnectionTerminated();
                         break;
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show(e.GetBaseException().ToString());
                     }
 
 

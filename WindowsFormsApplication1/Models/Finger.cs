@@ -8,14 +8,14 @@ namespace WindowsFormsApplication1.Models
 {
     class Finger
     {
-        Int16 position;
-        Int16 desiredPos;
-        Int16 current;
-        Int16 pressure;
+        int position;
+        int desiredPos;
+        int current;
+        int pressure;
 
-        public short Position { get => position; set => position = value; }
-        public short DesiredPos { get => desiredPos; set => desiredPos = value; }
-        public short Current { get => current; set => current = value; }
-        public short Pressure { get => pressure; set => pressure = value; }
+        public int Position { get => position; set => position = value; }
+        public int DesiredPos { get => desiredPos; set => desiredPos = value; }
+        public int Current { get => current; set => current = value; }
+        public int Pressure { get => pressure; set => pressure = value; }
     }
 }

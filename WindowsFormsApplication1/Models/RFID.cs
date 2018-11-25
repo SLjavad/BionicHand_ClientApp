@@ -15,7 +15,7 @@ namespace WindowsFormsApplication1.Models
             
         }
 
-        RFIDGestureEnum RFIDgesture;
+        //RFIDGestureEnum RFIDgesture;
 
         public override void StartReceiveMessage()
         {

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1.Network
 {
-    abstract class BluetoothCommunication /*: BluetoothClient*/
+    abstract class BluetoothCommunication : BluetoothClient
     {
         private BluetoothDeviceInfo bluetoothDevice;
         
@@ -35,8 +35,8 @@ namespace WindowsFormsApplication1.Network
             ConnectionFailed?.Invoke(this, eventArgs);
         }
 
-        //public abstract void Pair_Connect();
-        //public abstract void StartReceiveData();
-        //public abstract void StopReceiveData();
+        public abstract void Pair_Connect();
+        public abstract void StartReceiveData();
+        public abstract void StopReceiveData();
     }
 }
